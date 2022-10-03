@@ -1,4 +1,5 @@
 #Lobby class
+from concurrent.futures import thread
 from encodings import utf_8
 import threading
 import json
@@ -87,7 +88,7 @@ class Lobby:
                 break
 
     def spawn_thread(self, client):
-        thread = threading.Thread(target=self.handle, args=(client,))
+        thread = threading.Thread(target=self.handle, args=(client))
         thread.start()
 
 
