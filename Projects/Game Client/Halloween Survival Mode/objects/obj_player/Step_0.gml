@@ -15,7 +15,7 @@ var moving = (hmove != 0 || vmove != 0);
 //move
 var walkspeed = 1;
 
-/*
+
 if (key_left)
 	x -= walkspeed;
 	
@@ -27,7 +27,7 @@ if (key_down)
 
 if (key_up)
 	y -= walkspeed;
-*/
+
 if (moving)
 {
 	var _d = ds_map_create();

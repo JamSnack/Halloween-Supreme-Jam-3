@@ -6,3 +6,4 @@ event_inherited();
 
 
 p_id = 0;
+interpolation_rate = 0.5;
