@@ -46,7 +46,14 @@ function send_data(data_map)
 function handle_data(data)
 {	
 	var parsed_data = json_decode(data);
-	//show_debug_message("Handling data: "+string(data));
+	
+	if (setting_show_incoming_packets)
+	{
+		try
+		{
+			debug_log.append("Input: "+string(data));
+		}
+	}
 	
 	if (parsed_data != -1)
 	{

@@ -16,4 +16,8 @@ debug_log =
 
 //We want to create the lobby right now
 debug_log.append("Trying to create lobby...");
+terminal_input = "";
+
+setting_show_incoming_packets = false;
+
 createLobby(55555);

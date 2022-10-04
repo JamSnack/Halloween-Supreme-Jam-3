@@ -84,11 +84,11 @@ class Lobby:
 
                 #if (self.lobby_host == client): TO-DO: Host migration
                 print("Client removed from lobby: "+str(self.id))
-                self.message_disconnect(client)
+                #self.message_disconnect(client)
                 break
 
     def spawn_thread(self, client):
-        thread = threading.Thread(target=self.handle, args=(client))
+        thread = threading.Thread(target=self.handle, args=(client,))
         thread.start()
 
 
@@ -131,7 +131,7 @@ class Lobby:
 
 
     def message_disconnect(self, client):
-        message = self.constructPacket(cmd='"player_disconnected"')
+        message = self.constructPacket(cmd='"player_disconnected"') #TODO: Pass player id along with disconnection message
         self.broadcast(message, client)
 
 
