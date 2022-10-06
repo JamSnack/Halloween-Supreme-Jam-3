@@ -85,6 +85,7 @@ function handle_data(data)
 					{
 						x += parsed_data[? "h"];
 						y += parsed_data[? "v"];
+						image_xscale = parsed_data[? "h"];
 					
 						moved = true;
 					
