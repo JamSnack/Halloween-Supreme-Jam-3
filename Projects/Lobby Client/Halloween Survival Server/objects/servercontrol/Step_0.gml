@@ -60,14 +60,10 @@ if (TIME % 2 == 0)
 			_d[? "p_id"] = p_id;
 			_d[? "x"] = x;
 			_d[? "y"] = y;
+			_d[? "xscale"] = image_xscale;
 			send_data(_d);
 			
 			moved = false;
 		}
 	}
-	
-	
-	//time_last = TIME;
 }
-
-show_debug_message(string(TIME));
