@@ -19,5 +19,6 @@ debug_log.append("Trying to create lobby...");
 terminal_input = "";
 
 setting_show_incoming_packets = false;
+time_last = 0;
 
 createLobby(55555);

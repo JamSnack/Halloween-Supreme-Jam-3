@@ -49,7 +49,7 @@ if (imguigml_ready())
 
 //HEARTBEAT
 
-if (TIME % 3 == 0)
+if (TIME % 2 == 0)
 {
 	with (entity_player)
 	{
@@ -65,4 +65,9 @@ if (TIME % 3 == 0)
 			moved = false;
 		}
 	}
+	
+	
+	//time_last = TIME;
 }
+
+show_debug_message(string(TIME));
