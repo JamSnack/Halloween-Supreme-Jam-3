@@ -98,6 +98,15 @@ function handle_data(data)
 				}
 			}
 			break;
+			
+			case "chat":
+			{
+				//bounce the chat to all clients
+				debug_log.append(parsed_data[? "n"] + ": " + parsed_data[? "t"]);
+				
+				send_data(parsed_data);
+			}
+			break;
 		}
 	}
 }
