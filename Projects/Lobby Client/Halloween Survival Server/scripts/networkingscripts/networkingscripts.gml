@@ -69,9 +69,12 @@ function handle_data(data)
 			case "player_connected":
 			{
 				var _id = real(parsed_data[? "p_id"]);
-				var _p = instance_create_layer(100, 100, "INSTANCES", entity_player);
+				var _p = instance_create_layer(100, 100, "instances", entity_player);
 				_p.p_id =_id;
 				debug_log.append("A player connected: " + string(_id));
+				
+				//Bounce to clients
+				send_data(parsed_data);
 			}
 			break;
 			

@@ -36,7 +36,7 @@ class Lobby:
 
 
     def removeClient(self, index):
-        self.message_disconnect(self.lobby_host, index)
+        self.message_disconnect(self.lobby_host, self.client_ids[index])
 
         self.clients.pop(index)
         self.client_ids.pop(index)
@@ -78,7 +78,7 @@ class Lobby:
             else:
                 self.lobby_host.send(message)
         except:
-            print("Error in broadcast")
+            print("Error in broadcast: client probably doesn't exist. Close it")
     
      # Handling Messages From Clients
     def handle(self, client):
@@ -145,7 +145,11 @@ class Lobby:
     def message_disconnect(self, client, id):
         message = self.constructPacket(cmd='"player_disconnected"', p_id = id)
         self.broadcast(message, client)
-        self.lobby_host.send(message)
+
+        try:
+            self.lobby_host.send(message)
+        except:
+            self.lobby_host.close()
 
 
 
