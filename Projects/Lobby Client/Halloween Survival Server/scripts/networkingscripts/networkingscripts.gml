@@ -107,6 +107,23 @@ function handle_data(data)
 				send_data(parsed_data);
 			}
 			break;
+			
+			case "player_disconnected":
+			{
+				var pl_id = parsed_data[? "p_id"];
+				
+				debug_log.append(string(pl_id) + " has disconnected.");
+				
+				with (entity_player)
+				{
+					if (pl_id == p_id)
+					{
+						instance_destroy();
+						break;
+					}
+				}
+			}
+			break;
 		}
 	}
 }

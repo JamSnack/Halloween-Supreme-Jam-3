@@ -8,6 +8,7 @@ class Lobby:
     def __init__(self, id, packet_size):
         self.id = id #lobby_id
         self.clients = [] #list of clients
+        self.client_ids = [] #list of client IDs
         self.lobby_host = None #the client who is hosting the lobby
         self.packet_size = packet_size
         self.next_player_id = 0 #Used to assign player ids
@@ -34,38 +35,50 @@ class Lobby:
         self.sendLobbyInfo(client)
 
 
-    def removeClient(self,index):
+    def removeClient(self, index):
+        self.message_disconnect(self.lobby_host, index)
+
         self.clients.pop(index)
+        self.client_ids.pop(index)
 
 
     def sendLobbyInfo(self, client):
+        #construct data packet
         data = """{ "cmd" : "lobby_connect_success", "l_id" : """ + str(self.id) + """, "plr_id" : """ + str(self.next_player_id) + " }"
 
+        #prepare data packet
         data = str(json.loads(data)).replace("'", '"')
         data = data.encode("utf_8")
-        #print(data)
+
+        #send data packet
         client.send(data)
-
-
         
+        #inform other clients that a player has connected
         if (client != self.lobby_host):
             data = """{ "cmd" : "player_connected", "p_id" : """ + str(self.next_player_id) + " }"
             data = str(json.loads(data)).replace("'", '"')
             data = data.encode("utf_8")
             
-            self.lobby_host.send(data)
+            self.broadcast(data, client)
 
+        #Add new client ID to a list in such a way that the indexes between client_ids and clients match.
+        self.client_ids.append(self.next_player_id)
+
+        #Create the next player ID.
         self.next_player_id += 1
 
 
     # Sending packets to all clients, excluding the player who initially sent the packet (server to clients) OR send it to the packet to the lobby host (client to server)
     def broadcast(self, message, exclude):
-        if (exclude == self.lobby_host):
-            for client in self.clients:
-                if (client != exclude):
-                        client.send(message)
-        else:
-            self.lobby_host.send(message)
+        try:
+            if (exclude == self.lobby_host):
+                for client in self.clients:
+                    if (client != exclude):
+                            client.send(message)
+            else:
+                self.lobby_host.send(message)
+        except:
+            print("Error in broadcast")
     
      # Handling Messages From Clients
     def handle(self, client):
@@ -84,7 +97,6 @@ class Lobby:
 
                 #if (self.lobby_host == client): TO-DO: Host migration
                 print("Client removed from lobby: "+str(self.id))
-                #self.message_disconnect(client)
                 break
 
     def spawn_thread(self, client):
@@ -130,9 +142,10 @@ class Lobby:
         return str_json
 
 
-    def message_disconnect(self, client):
-        message = self.constructPacket(cmd='"player_disconnected"') #TODO: Pass player id along with disconnection message
+    def message_disconnect(self, client, id):
+        message = self.constructPacket(cmd='"player_disconnected"', p_id = id)
         self.broadcast(message, client)
+        self.lobby_host.send(message)
 
 
 
