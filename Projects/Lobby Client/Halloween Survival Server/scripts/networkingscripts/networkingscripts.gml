@@ -83,8 +83,12 @@ function handle_data(data)
 				{
 					if (pl_id == p_id)
 					{
-						x += parsed_data[? "h"];
-						y += parsed_data[? "v"];
+						var _sprinting = parsed_data[? "s"];
+						var _x_dir = parsed_data[? "h"];
+						var _y_dir = parsed_data[? "v"];
+						
+						x += _x_dir + (_x_dir*_sprinting*2);
+						y += _y_dir + (_y_dir*_sprinting*2);
 						image_xscale = parsed_data[? "h"];
 					
 						moved = true;

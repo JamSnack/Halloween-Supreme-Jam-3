@@ -48,22 +48,18 @@ if (imguigml_ready())
 }
 
 //HEARTBEAT
-
-if (TIME % 2 == 0)
+with (entity_player)
 {
-	with (entity_player)
+	if (moved)
 	{
-		if (moved)
-		{
-			var _d = ds_map_create();
-			_d[? "cmd"] = "player_pos";
-			_d[? "p_id"] = p_id;
-			_d[? "x"] = x;
-			_d[? "y"] = y;
-			_d[? "xscale"] = image_xscale;
-			send_data(_d);
+		var _d = ds_map_create();
+		_d[? "cmd"] = "player_pos";
+		_d[? "p_id"] = p_id;
+		_d[? "x"] = x;
+		_d[? "y"] = y;
+		_d[? "xscale"] = image_xscale;
+		send_data(_d);
 			
-			moved = false;
-		}
+		moved = false;
 	}
 }
