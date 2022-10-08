@@ -58,6 +58,7 @@ def receive():
         #that expects to receive packets from the client AND THEN have the lobby placement code inside that
         lobby_id = -1
         packet_list = []
+        client_name = ""
 
         try:
             print("Waiting for lobby_info packet...")
@@ -72,6 +73,7 @@ def receive():
                     if type(packet) is dict:
                         if (packet["cmd"] == "lobby_info"):
                             lobby_id = packet["id"]
+                            client_name = packet["p_n"]
                             break
         except:
             print("Some exception...")
@@ -83,7 +85,7 @@ def receive():
             #- Look for an existing lobby to add the client into
             for lobby in lobbies:
                 if (lobby.getId() == lobby_id):
-                    lobby.addClient(client)
+                    lobby.addClient(client, client_name)
                     _success = True
                 elif (len(lobby.getClients()) == 0):
                     #The lobby is empty, destroy it.
@@ -97,7 +99,7 @@ def receive():
             temp_lobby = Lobby.Lobby(next_id, packet_size)
             print("Lobby created: "+str(temp_lobby.getId()))
 
-            temp_lobby.addClient(client)
+            temp_lobby.addClient(client, client_name)
             lobbies.append(temp_lobby)
 
             next_id += 1

@@ -9,6 +9,7 @@ class Lobby:
         self.id = id #lobby_id
         self.clients = [] #list of clients
         self.client_ids = [] #list of client IDs
+        self.client_names = [] #list of client names
         self.lobby_host = None #the client who is hosting the lobby
         self.packet_size = packet_size
         self.next_player_id = 0 #Used to assign player ids
@@ -19,14 +20,15 @@ class Lobby:
     def getClients(self):
         return self.clients
 
-    def addClient(self,client):
-        #The first player in the lobby is desegnated as the host.
+    def addClient(self, client, client_name):
+        #The first player in the lobby is designated as the host.
         if (len(self.clients) == 0):
             self.lobby_host = client
 
         #Add the new client to clients and start a thread for them.
         self.clients.append(client)
-        print("Client added to lobby: "+str(self.id))
+        self.client_names.append(client_name)
+        print(client_name + " added to lobby: "+str(self.id))
         
         #Spawn a thread for this client
         self.spawn_thread(client)
@@ -40,6 +42,7 @@ class Lobby:
 
         self.clients.pop(index)
         self.client_ids.pop(index)
+        self.client_names.pop(index)
 
 
     def sendLobbyInfo(self, client):
@@ -55,7 +58,9 @@ class Lobby:
         
         #inform other clients that a player has connected
         if (client != self.lobby_host):
-            data = """{ "cmd" : "player_connected", "p_id" : """ + str(self.next_player_id) + " }"
+
+            data = self.constructPacket( cmd = '"player_connected"', p_id = str(self.next_player_id), p_n = '"' + str(self.client_names[len(self.client_names)-1]) + "'" ) #"""{ "cmd" : "player_connected", "p_id" : """ + str(self.next_player_id) + """ "p_n" : """ + str(self.client_names.pop()) + " }"
+            print(data)
             data = str(json.loads(data)).replace("'", '"')
             data = data.encode("utf_8")
             
