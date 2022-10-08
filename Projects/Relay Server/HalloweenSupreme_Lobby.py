@@ -4,6 +4,8 @@ from encodings import utf_8
 import threading
 import json
 
+from numpy import real
+
 class Lobby:
     def __init__(self, id, packet_size):
         self.id = id #lobby_id
@@ -88,21 +90,58 @@ class Lobby:
      # Handling Messages From Clients
     def handle(self, client):
         while True:
-            try:
-                # Relay those messages!
-                message = client.recv(self.packet_size) #No idea how to make this data size accurate. using 4096 rn
+            chunks = []
+            break_client = False
+            bytes_recvd = 0
+            MSGLEN = self.packet_size
+
+            #get packet length by receiving characters one at a time until finding our delimeter
+            buf = ""
+
+            while True:
+                _char = client.recv(1)
+                _char.decode('utf-8').replace('\x00', '')
+                _char = str(int.from_bytes(_char, byteorder='big'))
+                print("_char is: " + _char)
+                #exception handling
+                '''if not _char:
+                    if buf:
+                        raise RuntimeError("underflow")
+                else:
+                    print("breaking...")
+                    break'''
                 
-                #print("Data is: "+str(message))
-                self.broadcast(message, client)
-            except:
-                # Something went horribly wrong! Disconnect the client.
+                #we've found the header else we're still looking for it:
+                if _char == "|":
+                    MSGLEN = int(buf)
+                    print("MSGLEN is: " + str(MSGLEN))
+                    break
+                elif _char != "":
+                    buf = buf + _char
+
+                print("buffer is currently: " + buf)
+
+            #unpack the rest of the data
+            while bytes_recvd < MSGLEN:
+                try:
+                    # Relay those messages!
+                    message = client.recv(min(MSGLEN - bytes_recvd, self.packet_size))
+
+                    chunks.append(message)
+                    bytes_recvd = bytes_recvd + len(message)
+                    
+                    #print("Data is: "+str(message))
+                    self.broadcast(message, client)
+                except:
+                    break_client = True
+                    break
+
+            #Disconnect the client.
+            if break_client:
                 index = self.clients.index(client)
                 self.removeClient(index)
                 client.close()
-
-                #if (self.lobby_host == client): TO-DO: Host migration
                 print("Client removed from lobby: "+str(self.id))
-                break
 
     def spawn_thread(self, client):
         thread = threading.Thread(target=self.handle, args=(client,))

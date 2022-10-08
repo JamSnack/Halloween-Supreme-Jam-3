@@ -4,5 +4,5 @@ function lobby_search(lobby_id)
 	var _ds = ds_map_create();
 	_ds[? "cmd"] = "lobby_info";
 	_ds[? "id"] = real(lobby_id);
-	send_data(_ds);
+	send_data_raw(_ds);
 }

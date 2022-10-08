@@ -33,3 +33,18 @@ setting_show_incoming_packets = false;
 setting_show_log = false;
 
 createLobby(55555);
+
+//Init targeting type
+enum TARGET_TYPE
+{
+	normal,
+}
+
+//enemy testing
+function spawn_enemy()
+{
+	if (instance_exists(entity_player))
+		instance_create_layer(entity_player.x + 64, entity_player.y + 64, "Instances", entity_enemy);
+}
+
+global.next_enemy_id = 1;

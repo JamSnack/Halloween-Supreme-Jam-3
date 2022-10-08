@@ -12,6 +12,9 @@ if (imguigml_ready())
 		
 	if (imguigml_button("Restart Lobby"))
 		game_restart();
+		
+	if (imguigml_button("Spawn Enemy"))
+		spawn_enemy();
 	
 	debug_scroll = clamp(debug_scroll, -string_height(debug_log.text) + 600, 0);
 	

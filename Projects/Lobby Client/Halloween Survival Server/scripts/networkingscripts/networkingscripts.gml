@@ -25,11 +25,39 @@ function send_data(data_map)
 	var buff = buffer_create(128, buffer_grow, 1);
 	
 	buffer_seek(buff, buffer_seek_start, 0);
+	var _header = buffer_write(buff, buffer_string, string_length(json_map));
+	buffer_write(buff, buffer_string, "|")
+	var _b = buffer_write(buff, buffer_string, json_map);
+	
+	if (_header == -1) then show_debug_message("header write failed.");
+	if (_b == -1) then show_debug_message("buffer_write failed.");
+	
+	show_debug_message(string(string_length(json_map)) + "|" + json_map);
+	var packet_sent = network_send_raw(global.socket, buff, buffer_tell(buff)); //final argument is optional here
+		
+	if (packet_sent == 0)
+	{
+		//the send has failed. We need to try again later.
+		show_debug_message("FAILED TO SEND: PACKET IS " +string(data_map[? "cmd"]));
+	}// else global.packets_sent++;
+	
+	//cleanup
+	buffer_delete(buff);
+	ds_map_destroy(data_map);
+}
+
+function send_data_raw(data_map)
+{
+	//Send the data without a header
+	var json_map = json_encode(data_map);
+	var buff = buffer_create(128, buffer_grow, 1);
+	
+	buffer_seek(buff, buffer_seek_start, 0);
 	var _b = buffer_write(buff, buffer_string, json_map);
 	
 	if (_b == -1) then show_debug_message("buffer_write failed.");
 	
-	show_debug_message(json_map);
+	//show_debug_message(json_map);
 	var packet_sent = network_send_raw(global.socket, buff, buffer_tell(buff)); //final argument is optional here
 		
 	if (packet_sent == 0)
@@ -63,6 +91,12 @@ function handle_data(data)
 			{
 				global.lobby_id = parsed_data[? "l_id"];
 				debug_log.append("Lobby Created Successfully!\n\nShare this ID with your friends to play together: " + string(global.lobby_id));
+				
+				var _d = ds_map_create();
+				_d[? "cmd"] = "test_packet";
+				_d[? "msg"] = "test message";
+				_d[? "v"] = 13;
+				send_data(_d);
 			}
 			break;
 			
@@ -152,6 +186,25 @@ function handle_data(data)
 						parsed_data[? "cmd"] = "player_name_recieved";
 						send_data(parsed_data);
 						break;
+					}
+				}
+			}
+			break;
+			
+			case "request_enemy":
+			{
+				//The client has requested an enemy
+				var e_id = parsed_data[? "e_id"];
+				
+				if (instance_exists(entity_enemy))
+				{
+					with (entity_enemy)
+					{
+						if (e_id == enemy_id)
+						{
+							send_enemy_to_client();
+							break;
+						}
 					}
 				}
 			}
