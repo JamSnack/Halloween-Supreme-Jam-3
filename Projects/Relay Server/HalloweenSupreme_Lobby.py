@@ -149,8 +149,11 @@ class Lobby:
 
     def message_disconnect(self, client, id):
         message = self.constructPacket(cmd='"player_disconnected"', p_id = id)
-        self.broadcast(message, client)
 
+        #broadcast to all clients. Edit: Gonna bounce this from the server so that we're using new framework & the server is in charge over the relay server.
+        #self.broadcast(message, client)
+
+        #broadcast to just host
         try:
             self.lobby_host.send(message)
         except:

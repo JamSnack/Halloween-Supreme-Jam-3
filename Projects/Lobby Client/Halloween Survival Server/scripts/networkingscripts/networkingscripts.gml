@@ -69,9 +69,13 @@ function handle_data(data)
 			case "player_connected":
 			{
 				var _id = real(parsed_data[? "p_id"]);
+				var _pn = parsed_data[? "p_n"];
+				
 				var _p = instance_create_layer(100, 100, "instances", entity_player);
 				_p.p_id =_id;
-				debug_log.append(parsed_data[? "p_n"] + " connected: " + string(_id));
+				_p.p_n = _pn;
+				
+				debug_log.append(_pn + " connected: " + string(_id));
 				
 				//Bounce to clients
 				send_data(parsed_data);
@@ -122,6 +126,27 @@ function handle_data(data)
 					if (pl_id == p_id)
 					{
 						instance_destroy();
+						break;
+					}
+				}
+				
+				//bounce disconnect to clients
+				send_data(parsed_data);
+			}
+			break;
+			
+			case "player_name_request":
+			{
+				var pl_id = parsed_data[? "p_id"];
+				
+				with (entity_player)
+				{
+					if (pl_id == p_id)
+					{
+						//reused parsed_data map to bounce back a name:
+						parsed_data[? "p_n"] = p_n;
+						parsed_data[? "cmd"] = "player_name_recieved";
+						send_data(parsed_data);
 						break;
 					}
 				}
