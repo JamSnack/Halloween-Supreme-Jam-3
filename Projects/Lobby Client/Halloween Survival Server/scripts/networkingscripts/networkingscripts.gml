@@ -79,6 +79,10 @@ function handle_data(data)
 				
 				//Bounce to clients
 				send_data(parsed_data);
+				
+				//This will probe each entity_player and cause them to send position packets, forcing them to exist in the new client's game.
+				with (entity_player)
+					moved = true;
 			}
 			break;
 			
