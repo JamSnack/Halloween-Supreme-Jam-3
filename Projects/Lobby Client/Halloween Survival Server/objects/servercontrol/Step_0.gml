@@ -4,7 +4,7 @@ if (imguigml_ready())
 {
 	
 	//OUTPUT WINDOW
-	imguigml_set_next_window_size(600, 600);
+	imguigml_set_next_window_size(600, 100);
 	imguigml_set_next_window_pos(0, 0);
 	imguigml_begin("Output");
 	if (imguigml_button("Clear Output"))
@@ -12,8 +12,8 @@ if (imguigml_ready())
 		
 	if (imguigml_button("Restart Lobby"))
 		game_restart();
-		
-	imguigml_text(debug_log.text);
+	
+	debug_scroll = clamp(debug_scroll, -string_height(debug_log.text) + 600, 0);
 	
 	//TERMINAL INPUT
 	terminal_input = imguigml_input_text("Terminal Input", terminal_input, 128)[1];
@@ -25,6 +25,7 @@ if (imguigml_ready())
 		{
 			case "/help": { debug_log.append("\n/help - List these commands\n/receive - Toggle view of incoming packets"); } break;
 			case "/receive": { debug_log.append("Toggled incoming packets."); setting_show_incoming_packets = !setting_show_incoming_packets} break;
+			case "/show log": { setting_show_log = !setting_show_log; } break;
 			default: { debug_log.append("Unknown command. Try /help for more info.") } break;
 		}
 		
@@ -63,3 +64,10 @@ with (entity_player)
 		moved = false;
 	}
 }
+
+
+//DEBUG SCROLLING (Fuck)
+if (mouse_wheel_up())
+	debug_scroll -= 24;
+else if (mouse_wheel_down())
+	debug_scroll += 24;
