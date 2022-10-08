@@ -59,7 +59,7 @@ class Lobby:
         #inform other clients that a player has connected
         if (client != self.lobby_host):
 
-            data = self.constructPacket( cmd = '"player_connected"', p_id = str(self.next_player_id), p_n = '"' + str(self.client_names[len(self.client_names)-1]) + "'" ) #"""{ "cmd" : "player_connected", "p_id" : """ + str(self.next_player_id) + """ "p_n" : """ + str(self.client_names.pop()) + " }"
+            data = self.constructPacket( cmd = '"player_connected"', p_id = str(self.next_player_id), p_n = '"' + str(self.client_names[len(self.client_names)-1]) + '"' ) #"""{ "cmd" : "player_connected", "p_id" : """ + str(self.next_player_id) + """ "p_n" : """ + str(self.client_names.pop()) + " }"
             print(data)
             data = str(json.loads(data)).replace("'", '"')
             data = data.encode("utf_8")
