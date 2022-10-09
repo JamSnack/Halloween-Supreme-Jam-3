@@ -25,9 +25,8 @@ function send_data(data_map)
 	var buff = buffer_create(128, buffer_grow, 1);
 	
 	buffer_seek(buff, buffer_seek_start, 0);
-	var _header = buffer_write(buff, buffer_string, string_length(json_map));
-	buffer_write(buff, buffer_string, "|")
-	var _b = buffer_write(buff, buffer_string, json_map);
+	var _header = buffer_write(buff, buffer_text, string(string_byte_length(json_map)) + "|");
+	var _b = buffer_write(buff, buffer_text, json_map);
 	
 	if (_header == -1) then show_debug_message("header write failed.");
 	if (_b == -1) then show_debug_message("buffer_write failed.");
@@ -53,7 +52,7 @@ function send_data_raw(data_map)
 	var buff = buffer_create(128, buffer_grow, 1);
 	
 	buffer_seek(buff, buffer_seek_start, 0);
-	var _b = buffer_write(buff, buffer_string, json_map);
+	var _b = buffer_write(buff, buffer_text, json_map);
 	
 	if (_b == -1) then show_debug_message("buffer_write failed.");
 	
@@ -79,7 +78,8 @@ function handle_data(data)
 	{
 		try
 		{
-			debug_log.append("Input: "+string(data));
+			debug_log.append("Data: "+string(data));
+			//debug_log.append("PData: "+string(parsed_data));
 		}
 	}
 	

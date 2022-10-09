@@ -6,7 +6,7 @@ switch(t)
 	case network_type_data:
 	{
 		var b_data = async_load[? "buffer"];
-		var data = buffer_read(b_data, buffer_string);
+		var data = buffer_read(b_data, buffer_text);
 		handle_data(data);
 		
 		//buffer cleanup

@@ -4,7 +4,7 @@ from encodings import utf_8
 import threading
 import json
 
-from numpy import real
+from numpy import real, true_divide
 
 class Lobby:
     def __init__(self, id, packet_size):
@@ -77,64 +77,68 @@ class Lobby:
 
     # Sending packets to all clients, excluding the player who initially sent the packet (server to clients) OR send it to the packet to the lobby host (client to server)
     def broadcast(self, message, exclude):
-        try:
-            if (exclude == self.lobby_host):
-                for client in self.clients:
-                    if (client != exclude):
-                            client.send(message)
-            else:
-                self.lobby_host.send(message)
-        except:
-            print("Error in broadcast: client probably doesn't exist. Close it")
+
+        if (exclude == self.lobby_host):
+            for client in self.clients:
+                if (client != exclude):
+                        client.send(message)
+        else:
+            self.lobby_host.send(message)
+
+        #print("Error in broadcast: client probably doesn't exist. Close it")
     
      # Handling Messages From Clients
     def handle(self, client):
         while True:
-            chunks = []
             break_client = False
-            bytes_recvd = 0
-            MSGLEN = self.packet_size
 
-            #get packet length by receiving characters one at a time until finding our delimeter
-            buf = ""
-
+            message_length = 0
+            header = b''
             while True:
-                _char = client.recv(1)
-                _char.decode('utf-8').replace('\x00', '')
-                _char = str(int.from_bytes(_char, byteorder='big'))
-                print("_char is: " + _char)
-                #exception handling
-                '''if not _char:
-                    if buf:
-                        raise RuntimeError("underflow")
+                _c = client.recv(1) #recv one byte from the client
+
+                if (_c == b'|'):
+                    try:
+                        print("H : " + str(header))
+                        message_length = int(header)
+                    except:
+                        message_length = -1
+                        print("Header pickled!")
+                    break
                 else:
-                    print("breaking...")
-                    break'''
+                    header = header + _c
                 
-                #we've found the header else we're still looking for it:
-                if _char == "|":
-                    MSGLEN = int(buf)
-                    print("MSGLEN is: " + str(MSGLEN))
-                    break
-                elif _char != "":
-                    buf = buf + _char
+            
+            #We have constructed the header at this point, use it to receieve and distribute the rest of the packet
+            chunks = []
+            bytes_received = 0
 
-                print("buffer is currently: " + buf)
-
-            #unpack the rest of the data
-            while bytes_recvd < MSGLEN:
+            while bytes_received < message_length:
                 try:
-                    # Relay those messages!
-                    message = client.recv(min(MSGLEN - bytes_recvd, self.packet_size))
-
-                    chunks.append(message)
-                    bytes_recvd = bytes_recvd + len(message)
+                    data = client.recv(message_length - bytes_received)
                     
-                    #print("Data is: "+str(message))
-                    self.broadcast(message, client)
-                except:
+                    bytes_received = bytes_received + len(data)
+                    chunks.append(data)
+                    #print('bytes_received')
+                    
+
+                    #we have received all of the data: broadcast it and then reset. Otherwise append to chunks.
+                    if (bytes_received >= message_length):
+                        prepared_data = b''.join(chunks)
+
+                        #1. b'\x00{ "h": 0.0, "cmd": "player_move", "p_id": 1.0, "v": -1.0, "s": 0.0 }'
+                        #print(prepared_data)
+
+                        self.broadcast(prepared_data, client) #think this'll work?
+                
+                    '''print("Something went wrong...")
                     break_client = True
+                    break'''
+                except:
+                    print("Error receiving data: " + str(b''.join(chunks)))
                     break
+                
+
 
             #Disconnect the client.
             if break_client:
@@ -142,6 +146,7 @@ class Lobby:
                 self.removeClient(index)
                 client.close()
                 print("Client removed from lobby: "+str(self.id))
+                break
 
     def spawn_thread(self, client):
         thread = threading.Thread(target=self.handle, args=(client,))
