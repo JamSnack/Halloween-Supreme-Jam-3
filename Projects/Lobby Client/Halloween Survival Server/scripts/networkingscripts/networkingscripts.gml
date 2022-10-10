@@ -210,6 +210,25 @@ function handle_data(data)
 				}
 			}
 			break;
+			
+			case "request_item":
+			{
+				//The client has requested an enemy
+				var i_id = parsed_data[? "i_id"];
+				
+				if (instance_exists(entity_item))
+				{
+					with (entity_item)
+					{
+						if (i_id == item_id)
+						{
+							send_item_to_client();
+							break;
+						}
+					}
+				}	
+			}
+			break;
 		}
 	}
 }

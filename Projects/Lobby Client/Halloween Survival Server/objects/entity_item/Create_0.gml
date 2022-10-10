@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-function send_item_to_player()
+function send_item_to_client()
 {
 	var _d = ds_map_create();
 	_d[? "cmd"] = "create_item";
