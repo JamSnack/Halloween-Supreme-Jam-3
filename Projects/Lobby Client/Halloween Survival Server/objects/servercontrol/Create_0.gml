@@ -2,6 +2,7 @@
 
 //Init variables
 global.lobby_id = -1;
+split_packets = ds_list_create();
 
 //Init Imguigml
 imguigml_activate();

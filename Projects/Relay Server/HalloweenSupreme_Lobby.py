@@ -95,19 +95,23 @@ class Lobby:
             message_length = 0
             header = b''
             while True:
-                _c = client.recv(1) #recv one byte from the client
+                try:
+                    _c = client.recv(1) #recv one byte from the client
+                    #print(_c)
 
-                if (_c == b'|'):
-                    try:
-                        print("H : " + str(header))
-                        message_length = int(header)
-                    except:
-                        message_length = -1
-                        print("Header pickled!")
+                    if (_c == b'|'):
+                        try:
+                            print("H : " + str(header))
+                            message_length = int(header)
+                        except:
+                            message_length = -1
+                            print("Header pickled!")
+                        break
+                    else:
+                        header = header + _c
+                except:
+                    break_client = True
                     break
-                else:
-                    header = header + _c
-                
             
             #We have constructed the header at this point, use it to receieve and distribute the rest of the packet
             chunks = []
@@ -123,7 +127,7 @@ class Lobby:
                     
 
                     #we have received all of the data: broadcast it and then reset. Otherwise append to chunks.
-                    if (bytes_received >= message_length):
+                    if (bytes_received == message_length):
                         prepared_data = b''.join(chunks)
 
                         #1. b'\x00{ "h": 0.0, "cmd": "player_move", "p_id": 1.0, "v": -1.0, "s": 0.0 }'
@@ -131,11 +135,9 @@ class Lobby:
 
                         self.broadcast(prepared_data, client) #think this'll work?
                 
-                    '''print("Something went wrong...")
-                    break_client = True
-                    break'''
                 except:
                     print("Error receiving data: " + str(b''.join(chunks)))
+                    break_client = True
                     break
                 
 
