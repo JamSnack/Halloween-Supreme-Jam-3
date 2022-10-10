@@ -104,6 +104,7 @@ function handle_data(data)
 			{
 				var _id = real(parsed_data[? "p_id"]);
 				var _pn = parsed_data[? "p_n"];
+				var _pi = parsed_data[? "p_i"];
 				
 				var _p = instance_create_layer(100, 100, "instances", entity_player);
 				_p.p_id =_id;

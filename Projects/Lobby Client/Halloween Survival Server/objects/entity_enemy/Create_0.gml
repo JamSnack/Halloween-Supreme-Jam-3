@@ -17,4 +17,4 @@ function send_enemy_to_client()
 	send_data(_d);
 }
 
-move_delay = 10;
+move_delay = 2;

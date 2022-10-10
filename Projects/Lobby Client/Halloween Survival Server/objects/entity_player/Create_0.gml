@@ -5,3 +5,5 @@ moved = false; //If the player's position has changed since the last heartbeat
 
 death_timer_reset = room_speed*600;
 death_timer = death_timer_reset;
+
+player_inventory = array_create(global.inventory_size, 0);

@@ -6,3 +6,12 @@ function lobby_search(lobby_id)
 	_ds[? "id"] = real(lobby_id);
 	send_data_raw(_ds);
 }
+
+function networking_player_update_inventory()
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "inventory_update";
+	_d[? "p_id"] = p_id;
+	_d[? "inv"] = player_inventory;
+	send_data(_d);
+}

@@ -101,7 +101,7 @@ class Lobby:
 
                     if (_c == b'|'):
                         try:
-                            print("H : " + str(header))
+                            #print("H : " + str(header))
                             message_length = int(header)
                         except:
                             message_length = -1

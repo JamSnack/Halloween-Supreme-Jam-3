@@ -4,7 +4,7 @@ if (imguigml_ready())
 {
 	
 	//OUTPUT WINDOW
-	imguigml_set_next_window_size(600, 100);
+	imguigml_set_next_window_size(600, 120);
 	imguigml_set_next_window_pos(0, 0);
 	imguigml_begin("Output");
 	if (imguigml_button("Clear Output"))

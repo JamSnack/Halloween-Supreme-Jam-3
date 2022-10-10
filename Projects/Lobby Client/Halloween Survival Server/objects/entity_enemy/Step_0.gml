@@ -33,6 +33,6 @@ if (moved && move_delay <= 0)
 	send_data(_d);
 	
 	moved = false;
-	move_delay = 20;
+	move_delay = 2;
 }
 else move_delay--;

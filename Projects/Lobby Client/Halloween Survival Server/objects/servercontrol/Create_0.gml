@@ -2,6 +2,7 @@
 
 //Init variables
 global.lobby_id = -1;
+global.inventory_size = 8;
 split_packets = ds_list_create();
 
 //Init Imguigml
@@ -45,7 +46,7 @@ enum TARGET_TYPE
 function spawn_enemy()
 {
 	if (instance_exists(entity_player))
-		instance_create_layer(entity_player.x + 64, entity_player.y + 64, "Instances", entity_enemy);
+		instance_create_layer(entity_player.x + 64, entity_player.y + 64, "Instances", entity_item);
 }
 
-global.next_enemy_id = 1;
+global.next_id = 1;
