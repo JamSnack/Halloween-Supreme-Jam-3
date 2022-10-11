@@ -3,5 +3,11 @@
 draw_x = x;
 draw_y = y;
 interpolation_rate = 0.1;
-destroy_timer_reset = -1; //The value destroy_timer will reset to on the event that it does reset.
-destroy_timer = -1; //-1: Don't destroy this entity after some amount of time. Any other number will count to 0 and be destroyed.
+anim_index = 0;
+
+despawn_timer_set = room_speed*120;
+despawn_timer = despawn_timer_set;
+
+idle_sprite = sprite_index;
+walk_sprite = sprite_index;
+run_sprite = sprite_index;

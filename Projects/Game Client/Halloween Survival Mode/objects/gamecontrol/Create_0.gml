@@ -10,8 +10,8 @@ stored_lobby_id = "";
 //Initialize Multiplayer stuff
 global.port = 55555;
 global.socket = noone;
-global.is_host = false; //Whether or not this client is hosting a multiplayer game.
 global.player_id = -1; //Will be granted on lobby-join. Keeps track of who's who
+global.player_name = "Player";
 
 
 //Keep track of multiplayer state:
@@ -20,6 +20,102 @@ global.lobby_id = -1;
 //Chat
 chat_overlay = {
 	text : "",
-	append : function append(new_text) { text = (new_text + "\n" + text) },
-	clear_text : function clear_text() { text = "" }
+	append : function append(new_text) 
+	{
+		text = text + "\n" + new_text;
+		
+		if (string_height(text) > 380)
+		{
+			show_debug_message("test");
+			var _c = string_pos("\n", text);
+			text = string_delete(text, 1, _c);
+		}
+	},
+	clear_text : function clear_text() { text = "" },
+	chat_text : "",
+	send_chat : function send_chat() 
+	{ 
+		if (chat_text != "")
+		{
+			var _d = ds_map_create();
+			_d[? "cmd"] = "chat"
+			_d[? "n"] = string(global.player_name);
+			_d[? "t"] = chat_text;
+			send_data(_d);
+		
+			chat_text = "";
+		}
+	},
 }
+
+global.chatting = false;
+
+//Initialize boring stuff
+global.display_width = display_get_gui_width();
+global.display_height = display_get_gui_height();
+
+//Font
+draw_set_font(fnt_default);
+
+//Initialize player stuff
+global.inventory_size = 8;
+inventory_slot_selected = 0; //index of the currently selected slot
+inventory_is_open = false;
+inventory_anim_value = 0;
+
+//The physical inventory this client has access to.
+client_inventory = 
+{
+	inven : array_create(global.inventory_size, 0),
+	add : function(item_id)
+	{
+		for (var i = 0; i < global.inventory_size; i++)
+			if (inven[i] == 0)
+			{
+				inven[i] = item_id;
+				return true;
+			}
+					
+		return false;
+	},
+	remove : function(item_id)
+	{
+		if (item_id == undefined)
+			array_pop(inven);
+		else
+		{
+			for (var i = 0; i < global.inventory_size; i++)
+				if (inven[i] == item_id)
+				{
+					array_delete(inven, i, 1);
+					break;
+				}
+		}
+	},
+	
+	is_empty : function()
+	{
+		for (var i = 0; i < global.inventory_size; i++)
+				if (inven[i] != 0)
+					return false;
+					
+		return true;
+	},
+	
+	is_full : function()
+	{
+		for (var i = 0; i < global.inventory_size; i++)
+			if (inven[i] == 0)
+				return false;
+					
+		return true;
+	},
+	
+	inventory_to_string : function()
+	{
+		for (var i = 0; i < global.inventory_size; i++)
+			show_debug_message("invetory[" + string(i) + "]: " + string(inven[i]));
+	}
+}
+
+//server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

@@ -6,6 +6,10 @@ event_inherited();
 
 
 p_id = 0;
-interpolation_rate = 0.5;
-destroy_timer_reset = room_speed*600;
-destroy_timer = destroy_timer_reset;
+p_n = "";
+
+interpolation_rate = 0.3;
+
+walk_sprite = spr_player_walk;
+run_sprite = spr_player_run;
+idle_sprite = spr_player_idle;

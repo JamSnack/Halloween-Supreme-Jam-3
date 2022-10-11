@@ -4,22 +4,44 @@ if (imguigml_ready())
 {
 	if (room == rm_zero)
 	{
+		var _s = 300;
+		imguigml_set_next_window_pos(global.display_width/2 - _s/2, 80);
+		imguigml_set_next_window_size(_s, 300);
 		imguigml_begin("Multiplayer");
-		stored_lobby_id = imguigml_input_text("Lobby ID", stored_lobby_id, 8)[1]; //returns imguigml_input_text at [1], which is the text feild portion of the array.
+		
+		imguigml_text("Enter Username:");
+		global.player_name = imguigml_input_text(" ", global.player_name, 12)[1];
+		
+		if (global.player_name == "")
+			global.player_name = ">:)";
+		
+		imguigml_text("Enter Lobby ID:");
+		stored_lobby_id = imguigml_input_text("", stored_lobby_id, 5)[1]; //returns imguigml_input_text at [1], which is the text feild portion of the array.
 		var join_lobby = imguigml_button("Join Lobby");
 	
 		if (join_lobby)
 			joinLobby(stored_lobby_id);
 		
 		//Draw stuff
-		imguigml_text("Lobby ID: " + string(global.lobby_id));
+		var l_text = (global.lobby_id == -1) ? "No lobby entered." : string(global.lobby_id);
+		
+		imguigml_text("Lobby ID: " + l_text);
 		imguigml_end();
 	}
 	else
 	{
-		imguigml_set_next_window_pos(0, room_height - 200);
+		//Chat box
+		imguigml_set_next_window_pos(0, 450);
+		imguigml_set_next_window_size(400, 300);
 		imguigml_begin("Chat");
 		imguigml_text(chat_overlay.text);
+		
+		var _s = "-----------------\n";
+		
+		if (!global.chatting)
+			imguigml_text(_s + "Press Enter to chat.");
+		else imguigml_text(_s + chat_overlay.chat_text);
+		
 		imguigml_end();
 	}
 }
@@ -28,5 +50,31 @@ if (imguigml_ready())
 if (global.lobby_id != -1 && room == rm_zero)
 {
 	room_goto(rm_world);
-	chat_overlay.append("Welcome to Treat Squad, player " + string(global.player_id) + "!\nWorld: "+string(global.lobby_id));
+	chat_overlay.append("Welcome to Treat Squad, " + string(global.player_name) + "!\nWorld: "+string(global.lobby_id));
+}
+
+//Chatting
+var chat_key = keyboard_check_released(vk_enter);
+	
+//show_debug_message(string(global.chatting));	
+
+if (global.chatting)
+{
+	if (chat_key)
+	{
+		chat_overlay.send_chat();
+		global.chatting = false;
+		keyboard_string = "";
+	}
+	else
+	{
+		if (string_length(keyboard_string) < 42)
+			chat_overlay.chat_text = keyboard_string;
+		else keyboard_string = chat_overlay.chat_text;
+	}
+}
+else if (chat_key)
+{
+	global.chatting = true;
+	keyboard_string = "";
 }

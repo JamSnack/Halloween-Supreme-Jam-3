@@ -12,5 +12,6 @@ function lobby_search(lobby_id)
 	var _ds = ds_map_create();
 	_ds[? "cmd"] = "lobby_info";
 	_ds[? "id"] = id_as_real_number;
-	send_data(_ds);
+	_ds[? "p_n"] = global.player_name;
+	send_data_raw(_ds);
 }
