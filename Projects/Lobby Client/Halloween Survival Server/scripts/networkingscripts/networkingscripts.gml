@@ -192,7 +192,7 @@ function handle_data(data)
 			}
 			break;
 			
-			case "request_enemy":
+			case "request_enemy_entity":
 			{
 				//The client has requested an enemy
 				var e_id = parsed_data[? "e_id"];
@@ -211,7 +211,7 @@ function handle_data(data)
 			}
 			break;
 			
-			case "request_item":
+			case "request_item_entity":
 			{
 				//The client has requested an enemy
 				var i_id = parsed_data[? "i_id"];
@@ -227,6 +227,33 @@ function handle_data(data)
 						}
 					}
 				}	
+			}
+			break;
+			
+			case "request_remove_item":
+			{
+				//The player wants to remove this item from their inventory. Is it legal?
+				//drop_item, slot
+				var pl_id = parsed_data[? "pl_id"];
+				
+				//check inventory
+				with (entity_player)
+				{
+					if (pl_id == p_id)
+					{
+						var slot = parsed_data[? "slot"];
+						var drop_item = parsed_data[? "d_i"];
+						
+						//player inventory -> check for item at slot -> remove it -> send result to player
+						player_inventory[slot] = 0;
+						
+						if (drop_item)
+							//create item that has been dropped
+					
+						break;
+					}
+				}
+				
 			}
 			break;
 		}

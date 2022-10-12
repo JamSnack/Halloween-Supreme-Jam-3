@@ -78,19 +78,26 @@ client_inventory =
 					
 		return false;
 	},
-	remove : function(item_id)
+	remove : function(slot)
 	{
+		/*
 		if (item_id == undefined)
-			array_pop(inven);
-		else
+			array_pop(inven); //pop?
+		else //Item id is an item
 		{
 			for (var i = 0; i < global.inventory_size; i++)
+			{
 				if (inven[i] == item_id)
 				{
 					array_delete(inven, i, 1);
 					break;
 				}
+			}
 		}
+		*/
+		
+		//used if player receives request from server to have an item removed
+		inven[slot] = 0;
 	},
 	
 	is_empty : function()

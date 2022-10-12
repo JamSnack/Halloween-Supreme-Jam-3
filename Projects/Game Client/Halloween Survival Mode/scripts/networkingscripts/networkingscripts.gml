@@ -205,7 +205,7 @@ function handle_data(data)
 				if (!instance_updated)
 				{
 					var _d = ds_map_create();
-					_d[? "cmd"] = "request_enemy";
+					_d[? "cmd"] = "request_enemy_entity";
 					_d[? "e_id"] = e_id;
 					send_data(_d);
 				}
@@ -252,13 +252,14 @@ function handle_data(data)
 				if (!instance_updated)
 				{
 					var _d = ds_map_create();
-					_d[? "cmd"] = "request_item";
+					_d[? "cmd"] = "request_item_entity";
 					_d[? "i_id"] = i_id;
 					send_data(_d);
 				}
 			}
 			break;
 			
+			//add one item
 			case "item_pickup":
 			{
 				var pl_id = parsed_data[? "p_id"];
@@ -266,6 +267,28 @@ function handle_data(data)
 				if (pl_id == global.player_id)
 					if (!client_inventory.is_full())
 						client_inventory.add(parsed_data[? "index"]);
+			}
+			break;
+	
+			
+			//During CSCI 211:
+			//remove one item
+			case "item_remove":
+			{
+				var pl_id = parsed_data[? "p_id"];
+				
+				if (pl_id == global.player_id)
+					client_inventory.remove(parsed_data[? "slot"]);
+			}
+			
+			
+			case "inventory_update":
+			{
+				//resyncs the entire inventory
+				var pl_id = parsed_data[? "p_id"];
+				
+				if (pl_id == global.player_id)
+					array_copy(client_inventory.inven, 0, parsed_data[? "inv"], 0, global.inventory_size);
 			}
 			break;
 		}
