@@ -13,7 +13,7 @@ function send_enemy_to_client()
 	_d[? "y"] = y;
 	_d[? "mhp"] = max_hp;
 	_d[? "hp"] = hp;
-	_d[? "o_i"] = "obj_enemy_entity"; //what to create on the player's side
+	_d[? "o_i"] = enemy_index; //what to create on the player's side
 	send_data(_d);
 }
 
