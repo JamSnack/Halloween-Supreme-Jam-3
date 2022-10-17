@@ -8,8 +8,8 @@ if (instance_exists(entity_player))
 	
 	if (_dist < 64)
 	{
-		x = lerp(_nearest.x, x, 0.7);
-		y = lerp(_nearest.y, y, 0.7);
+		x = lerp(x, _nearest.x, 0.2);
+		y = lerp(y, _nearest.y, 0.2);
 		moved = true;
 	}
 }

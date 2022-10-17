@@ -42,11 +42,20 @@ enum TARGET_TYPE
 	normal,
 }
 
-//enemy testing
+//Game Stage
+//global.game_state = "INTERMISSION";
+global.game_stage = 10;
+global.game_timer = 1*room_speed;
+init_intermission = false;
+
 function spawn_enemy()
 {
-	if (instance_exists(entity_player))
-		instance_create_layer(entity_player.x + 64, entity_player.y + 64, "Instances", entity_item);
+	repeat(global.game_stage + instance_number(entity_player))
+	{
+		var _x = irandom(1000);
+		
+		var _e = instance_create_layer(_x, y, "Instances", choose(entity_enemy, entity_fast_enemy));
+	}
 }
 
 global.next_id = 1;

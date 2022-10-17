@@ -17,4 +17,23 @@ function send_enemy_to_client()
 	send_data(_d);
 }
 
+function update_enemy()
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "enemy_update";
+	_d[? "e_id"] = enemy_id;
+	_d[? "hp"] = hp;
+	send_data(_d);
+}
+
+function damage(amt)
+{
+	hp -= amt;
+	
+	//death check
+	if (hp <= 0)
+		instance_destroy();
+	else update_enemy();
+}
+
 move_delay = 2;

@@ -11,6 +11,8 @@ function send_item_to_client()
 	send_data(_d);
 }
 
+send_item_to_client();
+
 move_delay = 2;
 moved = false;
 

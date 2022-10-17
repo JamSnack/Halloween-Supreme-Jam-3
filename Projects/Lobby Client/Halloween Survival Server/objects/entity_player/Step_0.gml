@@ -4,7 +4,7 @@ if (instance_exists(entity_item))
 {
 	var _nearest = instance_nearest(x, y, entity_item);
 	
-	if (distance_to_object(_nearest) < 32)
+	if (distance_to_object(_nearest) < 16)
 		with (_nearest)
 		{
 			//Send item data
@@ -19,3 +19,10 @@ if (instance_exists(entity_item))
 			instance_destroy();
 		}
 }
+
+//boundaries
+x = clamp(x, 0, 999);
+y = dead ? clamp(y, 3000, 3500) : clamp(y, 1000, 3000);
+
+//correct xscale
+if (image_xscale == 0) image_xscale = 1;

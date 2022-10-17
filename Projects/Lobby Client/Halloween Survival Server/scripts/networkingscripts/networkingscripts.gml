@@ -31,7 +31,7 @@ function send_data(data_map)
 	if (_header == -1) then show_debug_message("header write failed.");
 	if (_b == -1) then show_debug_message("buffer_write failed.");
 	
-	show_debug_message(string(string_length(json_map)) + "|" + json_map);
+	//show_debug_message(string(string_length(json_map)) + "|" + json_map);
 	var packet_sent = network_send_raw(global.socket, buff, buffer_tell(buff)); //final argument is optional here
 		
 	if (packet_sent == 0)
@@ -118,12 +118,22 @@ function handle_data(data)
 				//This will probe each entity_player and cause them to send position packets, forcing them to exist in the new client's game.
 				with (entity_player)
 					moved = true;
+					
+				//send the tile data to the new player
+				if (instance_exists(entity_block))
+				{
+					with(entity_block)
+					{
+						send_new_block_to_player();	
+					}
+				}
 			}
 			break;
 			
 			case "player_move":
 			{
 				var pl_id = parsed_data[? "p_id"];
+				var blocks_exist = instance_exists(entity_block);
 				
 				with (entity_player)
 				{
@@ -132,9 +142,16 @@ function handle_data(data)
 						var _sprinting = parsed_data[? "s"];
 						var _x_dir = parsed_data[? "h"];
 						var _y_dir = parsed_data[? "v"];
+						var x_speed = _x_dir + (_x_dir*_sprinting*2);
+						var y_speed = _y_dir + (_y_dir*_sprinting*2);
 						
-						x += _x_dir + (_x_dir*_sprinting*2);
-						y += _y_dir + (_y_dir*_sprinting*2);
+						
+						if (blocks_exist && !collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, entity_block, false, true) || !blocks_exist)
+							x += x_speed;
+							
+						if (blocks_exist && !collision_rectangle(bbox_left, bbox_top + y_speed, bbox_right, bbox_bottom + y_speed, entity_block, false, true) || !blocks_exist)
+							y += y_speed
+							
 						image_xscale = parsed_data[? "h"];
 					
 						moved = true;
@@ -196,6 +213,7 @@ function handle_data(data)
 			{
 				//The client has requested an enemy
 				var e_id = parsed_data[? "e_id"];
+				var instance_updated = false;
 				
 				if (instance_exists(entity_enemy))
 				{
@@ -204,9 +222,16 @@ function handle_data(data)
 						if (e_id == enemy_id)
 						{
 							send_enemy_to_client();
+							instance_updated = true;
 							break;
 						}
 					}
+				}
+				
+				if (!instance_updated)
+				{
+					parsed_data[? "cmd"] = "enemy_destroy";
+					send_data(parsed_data);
 				}
 			}
 			break;
@@ -254,6 +279,27 @@ function handle_data(data)
 					}
 				}
 				
+			}
+			break;
+			
+			case "request_shoot":
+			{
+				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", entity_player_projectile);
+				_s.direction = parsed_data[? "dir"];
+				_s.speed = 4;
+				
+				parsed_data[? "cmd"] = "player_shoot";
+				send_data(parsed_data);
+			}
+			break;
+			
+			case "request_tile_place":
+			{
+				var _x = parsed_data[? "x"];
+				var _y = parsed_data[? "y"];
+				
+				if (instance_exists(entity_block) && !collision_point(_x, _y, entity_block, false,true) || !instance_exists(entity_block) )
+					instance_create_layer(_x, _y, "Instances", entity_block);
 			}
 			break;
 		}

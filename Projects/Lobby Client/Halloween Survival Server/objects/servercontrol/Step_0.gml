@@ -74,3 +74,44 @@ if (mouse_wheel_up())
 	debug_scroll -= 24;
 else if (mouse_wheel_down())
 	debug_scroll += 24;
+	
+//Game Control
+if (instance_exists(entity_enemy))
+{
+	//reset game_timer
+	global.game_timer = room_speed*1;
+	init_intermission = false;
+}
+else
+{
+	if (!init_intermission)
+	{
+		if (instance_exists(entity_player))
+			entity_player.dead = false;
+		
+		init_intermission = true;
+	}
+	
+	if (instance_number(entity_player) > 0)
+	{
+		//Intermission
+		global.game_timer--;
+		
+		if (global.game_timer % room_speed == 0)
+		{
+			var _d = ds_map_create();
+			_d[? "cmd"] = "game_timer_update";
+			_d[? "time"] = global.game_timer/60;
+			send_data(_d);
+		}
+	
+		//Spawn the wave
+		if (global.game_timer <= 0)
+		{
+			spawn_enemy();
+			global.game_stage++;
+		}
+	
+		
+	}
+}

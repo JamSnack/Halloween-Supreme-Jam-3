@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"imguigml_defines","path":"scripts/imguigml_defines/imguigml_defines.yy",},"order":2,},
+    {"id":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"order":6,},
     {"id":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"order":3,},
     {"id":{"name":"imguigml_config","path":"scripts/imguigml_config/imguigml_config.yy",},"order":5,},
     {"id":{"name":"__imguigml_internal_functions","path":"scripts/__imguigml_internal_functions/__imguigml_internal_functions.yy",},"order":0,},
@@ -13,8 +14,11 @@
     {"id":{"name":"__rousr_functions","path":"scripts/__rousr_functions/__rousr_functions.yy",},"order":1,},
     {"id":{"name":"imguigml_wrapper_widget","path":"scripts/imguigml_wrapper_widget/imguigml_wrapper_widget.yy",},"order":4,},
     {"id":{"name":"NetworkingWrappers","path":"scripts/NetworkingWrappers/NetworkingWrappers.yy",},"order":1,},
+    {"id":{"name":"entity_fast_enemy","path":"objects/entity_fast_enemy/entity_fast_enemy.yy",},"order":7,},
+    {"id":{"name":"spr_hbox_player","path":"sprites/spr_hbox_player/spr_hbox_player.yy",},"order":2,},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},"order":3,},
     {"id":{"name":"shd_imgui","path":"shaders/shd_imgui/shd_imgui.yy",},"order":0,},
+    {"id":{"name":"entity_player_projectile","path":"objects/entity_player_projectile/entity_player_projectile.yy",},"order":5,},
     {"id":{"name":"imguigml_functions","path":"scripts/imguigml_functions/imguigml_functions.yy",},"order":2,},
     {"id":{"name":"Macros","path":"scripts/Macros/Macros.yy",},"order":2,},
     {"id":{"name":"imguigml_wrapper","path":"scripts/imguigml_wrapper/imguigml_wrapper.yy",},"order":3,},
