@@ -3,9 +3,8 @@ p_id = 0; //which player owns this object; pass player_id into this object on in
 p_n = ""; //The playername of this object
 moved = false; //If the player's position has changed since the last heartbeat
 dead = false; //whether or not this player is dead
-max_hp = 1;
+max_hp = 10;
 hp = max_hp;
-knockback = true;
 
 death_timer_reset = room_speed*600;
 death_timer = death_timer_reset;
@@ -25,26 +24,36 @@ function damage(attack)
 		y = 3100;
 		
 		//Check to see if all players have died
-		for (var i = 0; i < instance_count; i++) 
+		with ( entity_player )
 		{
-			with ( instance_find(entity_player, i) )
+			if (dead == false)
+				break;
+			else
 			{
-				if (dead == false)
-					break;
-				else
-				{
-					global.game_stage = 1;
+				//reset/go to intermission
+				global.game_stage = 1;
 				
-					//cleanup
-					with (entity_enemy)
-						instance_destroy();
+				//cleanup
+				with (entity_enemy)
+					instance_destroy();
 					
-					with (entity_block)
-						instance_destroy();
-				}
+				with (entity_block)
+					instance_destroy();
+					
+				//Reset stats
+				max_hp = 10;
 			}
 		}
+		
+		//set hp to max_hp
+		hp = max_hp;
 	}
 		
 	//send results
+	var _d = ds_map_create();
+	_d[? "cmd"] = "player_hp";
+	_d[? "hp"] = hp;
+	_d[? "mhp"] = max_hp;
+	_d[? "p_id"] = p_id;
+	send_data(_d);
 }
