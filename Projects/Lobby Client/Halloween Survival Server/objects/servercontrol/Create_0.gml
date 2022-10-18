@@ -59,3 +59,20 @@ function spawn_enemy()
 }
 
 global.next_id = 1;
+
+//Game stuff
+enum BUILD
+{
+	block,
+	door,
+	glass,
+	last	
+}
+
+enum CANDY
+{
+	yellow,
+	magenta,
+	teal,
+	last
+}

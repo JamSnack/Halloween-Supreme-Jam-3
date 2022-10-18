@@ -14,9 +14,30 @@ switch (targeting_type)
 		{
 			var _nearest = instance_nearest(x, y, entity_player);
 			
-			//var _dist = distance_to_object(_nearest);
+			var x_dir = sign(_nearest.x - x + 1) * move_speed;
+			var y_dir = sign(_nearest.y - y + 1) * move_speed;
 			
-			mp_linear_step_object(_nearest.x, _nearest.y, move_speed, entity_block);
+			x_speed = approach(x_speed, x_dir, torque);
+			y_speed = approach(y_speed, y_dir, torque);
+			
+			//horizontal movement
+			if (collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, entity_block, false, true))
+			{
+				x_speed = -x_speed*bounce_factor;
+			}
+			
+			x += x_speed;
+			
+			
+			
+			//vertical movement
+			if (collision_rectangle(bbox_left, bbox_top + y_speed, bbox_right, bbox_bottom + y_speed, entity_block, false, true))
+			{
+				y_speed = -y_speed*bounce_factor;
+			}
+			
+			y += y_speed;
+			
 			moved = true;
 		}
 	}

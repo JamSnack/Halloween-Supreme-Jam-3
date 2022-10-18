@@ -14,5 +14,18 @@ if (instance_exists(entity_enemy))
 	}
 }
 
-if (lifetime > 3*room_speed || (instance_exists(entity_block) && collision_point(x, y, entity_block, false, true)) )
+var colliding_with_block = false;
+
+if (instance_exists(entity_block))
+{
+	var col = collision_point(x, y, entity_block, false, true);
+	
+	if (col != noone)
+	{
+		if (col.object_index != entity_block_glass)
+			colliding_with_block = true;
+	}
+}
+
+if (lifetime > 3*room_speed || colliding_with_block)
 	instance_destroy();

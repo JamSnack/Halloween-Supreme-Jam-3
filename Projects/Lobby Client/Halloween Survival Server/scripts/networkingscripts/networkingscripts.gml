@@ -139,21 +139,40 @@ function handle_data(data)
 				{
 					if (pl_id == p_id)
 					{
+						//take data from packet -> init vars
 						var _sprinting = parsed_data[? "s"];
 						var _x_dir = parsed_data[? "h"];
 						var _y_dir = parsed_data[? "v"];
+						
+						//init potential movement speed this step:
 						var x_speed = _x_dir + (_x_dir*_sprinting*2);
 						var y_speed = _y_dir + (_y_dir*_sprinting*2);
 						
+						//check for collision, setting speed to 0 if colliding
+						if (blocks_exist)
+						{
+							//find collisions -> init vars
+							var h_collision = collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, entity_block, false, true);
+							var v_collision = collision_rectangle(bbox_left, bbox_top + y_speed, bbox_right, bbox_bottom + y_speed, entity_block, false, true);
+							
+							//horizontal collision
+							if (h_collision != noone && h_collision.object_index != entity_block_door)
+								x_speed = 0;
+							
+							//vertical collision
+							if (v_collision != noone && v_collision.object_index != entity_block_door)
+								y_speed = 0;
+						}
 						
-						if (blocks_exist && !collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, entity_block, false, true) || !blocks_exist)
-							x += x_speed;
-							
-						if (blocks_exist && !collision_rectangle(bbox_left, bbox_top + y_speed, bbox_right, bbox_bottom + y_speed, entity_block, false, true) || !blocks_exist)
-							y += y_speed
-							
+						
+						//apply speed to movement
+						x += x_speed;
+						y += y_speed;
+						
+						//set image_xscale
 						image_xscale = parsed_data[? "h"];
-					
+						
+						//flag this object as moved, sending new position to clients.
 						moved = true;
 					
 						break;
@@ -298,8 +317,16 @@ function handle_data(data)
 				var _x = parsed_data[? "x"];
 				var _y = parsed_data[? "y"];
 				
-				if (instance_exists(entity_block) && !collision_point(_x, _y, entity_block, false,true) || !instance_exists(entity_block) )
-					instance_create_layer(_x, _y, "Instances", entity_block);
+				var _type = entity_block;
+				
+				switch (parsed_data[? "type"])
+				{
+					case 1: { _type = entity_block_door; } break;
+					case 2: { _type = entity_block_glass; } break;
+				}
+				
+				if (instance_exists(entity_block) && collision_point(_x, _y, entity_block, false,true) == noone || !instance_exists(entity_block) )
+					instance_create_layer(_x, _y, "Instances", _type);
 			}
 			break;
 		}

@@ -1,9 +1,4 @@
 /// @description
-max_hp = 10;
-hp = max_hp;
-
-tile_id = get_next_id();
-
 function send_new_block_to_player()
 {
 	var _d = ds_map_create();
@@ -13,6 +8,7 @@ function send_new_block_to_player()
 	_d[? "hp"] = hp;
 	_d[? "mhp"] = max_hp;
 	_d[? "t_id"] = tile_id;
+	_d[? "type"] = type;
 	send_data(_d);
 }
 
