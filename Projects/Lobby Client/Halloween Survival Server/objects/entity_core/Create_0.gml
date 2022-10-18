@@ -12,5 +12,7 @@ builds_stored = array_create(BUILD.last, 0);
 //candies
 candies_stored = array_create(CANDY.last, 0);
 
-//keeps track of players in range
-range = 128;
+//stats
+range = 128; //keeps track of players in range
+block_production_time = 15*room_speed;
+block_production = 0;

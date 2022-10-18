@@ -11,6 +11,9 @@ death_timer = death_timer_reset;
 
 player_inventory = array_create(global.inventory_size, 0);
 
+candy_array = array_create(CANDY.last, 0);
+has_candy = false;
+
 function damage(attack)
 {
 	//deal damage
