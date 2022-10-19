@@ -8,7 +8,7 @@ if (instance_exists(entity_enemy))
 	if (distance_to_point(nearest_enemy.x, nearest_enemy.y) < 8)
 	{
 		with (nearest_enemy)
-			nearest_enemy.damage(1);
+			nearest_enemy.damage(1, other.parent_player);
 			
 		instance_destroy();
 	}

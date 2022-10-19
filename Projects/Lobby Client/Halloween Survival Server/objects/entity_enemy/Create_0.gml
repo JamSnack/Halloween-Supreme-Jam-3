@@ -26,13 +26,16 @@ function update_enemy()
 	send_data(_d);
 }
 
-function damage(amt)
+function damage(amt, killer)
 {
 	hp -= amt;
 	
 	//death check
 	if (hp <= 0)
+	{
+		killer.candy_array[held_treat] += 1;
 		instance_destroy();
+	}
 	else update_enemy();
 }
 
