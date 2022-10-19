@@ -297,18 +297,34 @@ function handle_data(data)
 			{
 				var _x = parsed_data[? "x"];
 				var _y = parsed_data[? "y"];
-				var _type = parsed_data[? "type"];
+				var _index = parsed_data[? "type"];
+				_type = entity_block;
 				
 				if (instance_exists(entity_core) && entity_core.builds_stored[_type] > 0)
-				{
-					switch (_type)
+				{					
+					//select correct object
+					switch (_index)
 					{
 						case 1: { _type = entity_block_door; } break;
 						case 2: { _type = entity_block_glass; } break;
 					}
-				
+					
+					//create instance
 					if (instance_exists(entity_block) && collision_point(_x, _y, entity_block, false,true) == noone || !instance_exists(entity_block) )
+					{
 						instance_create_layer(_x, _y, "Instances", _type);
+						
+						//remove a build from core
+						entity_core.builds_stored[_index] -= 1;
+					
+						//update players
+						var _d = ds_map_create();
+						_d[? "cmd"] = "update_core_builds_at_index";
+						_d[? "index"] = _index;
+						_d[? "amt"] = entity_core.builds_stored[_index];
+						send_data(_d);
+					}
+					
 				}
 				else
 				{

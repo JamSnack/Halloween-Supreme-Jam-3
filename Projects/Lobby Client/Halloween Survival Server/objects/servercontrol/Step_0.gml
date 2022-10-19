@@ -86,11 +86,12 @@ if (global.game_timer <= 0)
 	{
 		with (entity_player)	
 		{
-			dead = false;
-			
 			//decrease game_stage for each player death.
-			if (global.game_stage > 0)
-				global.game_stage -= 1;
+			if (dead)
+				if (global.game_stage > 0)
+					global.game_stage -= 1;
+			
+			dead = false;
 		}
 	}
 			

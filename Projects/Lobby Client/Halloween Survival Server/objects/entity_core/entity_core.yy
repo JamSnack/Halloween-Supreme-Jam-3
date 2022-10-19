@@ -32,6 +32,7 @@
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"max_hp","path":"objects/entity_block/entity_block.yy",},"objectId":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"value":"25","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"type","path":"objects/entity_block/entity_block.yy",},"objectId":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"value":"BUILD.last","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Objects",
