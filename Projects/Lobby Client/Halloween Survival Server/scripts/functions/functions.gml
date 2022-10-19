@@ -56,4 +56,7 @@ function scr_move_toward_point(target_x, target_y, move_speed)
 	}
 			
 	y += y_speed;
+	
+	//update object on client
+	moved = true;
 }

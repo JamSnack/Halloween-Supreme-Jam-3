@@ -13,10 +13,7 @@ switch (targeting_type)
 		if (instance_exists(entity_player))
 		{
 			var _nearest = instance_nearest(x, y, entity_player);
-			
 			scr_move_toward_point(_nearest.x, _nearest.y, move_speed);
-			
-			moved = true;
 		}
 	}
 	break;
