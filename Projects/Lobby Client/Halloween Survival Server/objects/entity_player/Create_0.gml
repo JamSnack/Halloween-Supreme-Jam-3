@@ -24,7 +24,7 @@ function damage(attack)
 	{
 		dead = true;
 		x = 500;
-		y = 3100;
+		y = 2100;
 		
 		//Check to see if all players have died
 		with ( entity_player )

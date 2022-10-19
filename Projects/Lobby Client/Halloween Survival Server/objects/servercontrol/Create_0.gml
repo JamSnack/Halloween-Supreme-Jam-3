@@ -45,7 +45,7 @@ enum TARGET_TYPE
 //Game Stage
 //global.game_state = "INTERMISSION";
 global.game_stage = 10;
-global.game_timer = 1*room_speed;
+global.game_timer = 10*room_speed;
 init_intermission = false;
 
 function spawn_enemy()
@@ -54,7 +54,7 @@ function spawn_enemy()
 	{
 		var _x = irandom(1000);
 		
-		var _e = instance_create_layer(_x, y, "Instances", choose(entity_enemy, entity_fast_enemy));
+		var _e = instance_create_layer(_x, -100, "Instances", choose(entity_enemy, entity_fast_enemy));
 	}
 }
 

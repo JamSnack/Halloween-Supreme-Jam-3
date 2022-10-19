@@ -7,7 +7,7 @@ event_inherited();
 //some stuff handled in variable definitions...
 
 //Init core stuff
-builds_stored = array_create(BUILD.last, 0);
+builds_stored = array_create(BUILD.last, 999);
 
 //candies
 candies_stored = array_create(CANDY.last, 0);

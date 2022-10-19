@@ -76,27 +76,45 @@ else if (mouse_wheel_down())
 	debug_scroll += 24;
 	
 //Game Control
-if (instance_exists(entity_enemy))
+if (global.game_timer <= 0)
 {
-	//reset game_timer
-	global.game_timer = room_speed*1;
-	init_intermission = false;
-}
-else
-{
-	if (!init_intermission)
+	//Intermission is over!
+	global.game_timer = room_speed*(45+irandom(30));
+	
+	//respawn players
+	if (instance_exists(entity_player))
 	{
-		if (instance_exists(entity_player))
-			entity_player.dead = false;
-		
-		init_intermission = true;
+		with (entity_player)	
+		{
+			dead = false;
+			
+			//decrease game_stage for each player death.
+			if (global.game_stage > 0)
+				global.game_stage -= 1;
+		}
+	}
+			
+	//respawn core
+	if (!instance_exists(entity_core))
+	{
+		instance_create_layer(CENTER_X, CENTER_Y, "Instances", entity_core);
+		global.game_stage = floor((global.game_stage)/2); //if the players got cored, drastically decrease game_stage
 	}
 	
+	//spawn mobs
+	spawn_enemy();
+	
+	//passively increase game_stage
+	global.game_stage++;
+}
+else
+{	
 	if (instance_number(entity_player) > 0)
 	{
-		//Intermission
+		//Waiting to increase game_stage...
 		global.game_timer--;
 		
+		/*
 		if (global.game_timer % room_speed == 0)
 		{
 			var _d = ds_map_create();
@@ -104,14 +122,6 @@ else
 			_d[? "time"] = global.game_timer/60;
 			send_data(_d);
 		}
-	
-		//Spawn the wave
-		if (global.game_timer <= 0)
-		{
-			spawn_enemy();
-			global.game_stage++;
-		}
-	
-		
+		*/
 	}
 }

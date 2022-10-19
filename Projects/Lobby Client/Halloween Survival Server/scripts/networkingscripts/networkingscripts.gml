@@ -91,12 +91,6 @@ function handle_data(data)
 			{
 				global.lobby_id = parsed_data[? "l_id"];
 				debug_log.append("Lobby Created Successfully!\n\nShare this ID with your friends to play together: " + string(global.lobby_id));
-				
-				var _d = ds_map_create();
-				_d[? "cmd"] = "test_packet";
-				_d[? "msg"] = "test message";
-				_d[? "v"] = 13;
-				send_data(_d);
 			}
 			break;
 			
@@ -104,9 +98,9 @@ function handle_data(data)
 			{
 				var _id = real(parsed_data[? "p_id"]);
 				var _pn = parsed_data[? "p_n"];
-				var _pi = parsed_data[? "p_i"];
+				//var _pi = parsed_data[? "p_i"];
 				
-				var _p = instance_create_layer(100, 100, "instances", entity_player);
+				var _p = instance_create_layer(CENTER_X - 100, CENTER_Y, "instances", entity_player);
 				_p.p_id =_id;
 				_p.p_n = _pn;
 				
@@ -114,19 +108,6 @@ function handle_data(data)
 				
 				//Bounce to clients
 				send_data(parsed_data);
-				
-				//This will probe each entity_player and cause them to send position packets, forcing them to exist in the new client's game.
-				with (entity_player)
-					moved = true;
-					
-				//send the tile data to the new player
-				if (instance_exists(entity_block))
-				{
-					with(entity_block)
-					{
-						send_new_block_to_player();	
-					}
-				}
 			}
 			break;
 			
@@ -316,17 +297,56 @@ function handle_data(data)
 			{
 				var _x = parsed_data[? "x"];
 				var _y = parsed_data[? "y"];
+				var _type = parsed_data[? "type"];
 				
-				var _type = entity_block;
-				
-				switch (parsed_data[? "type"])
+				if (instance_exists(entity_core) && entity_core.builds_stored[_type] > 0)
 				{
-					case 1: { _type = entity_block_door; } break;
-					case 2: { _type = entity_block_glass; } break;
-				}
+					switch (_type)
+					{
+						case 1: { _type = entity_block_door; } break;
+						case 2: { _type = entity_block_glass; } break;
+					}
 				
-				if (instance_exists(entity_block) && collision_point(_x, _y, entity_block, false,true) == noone || !instance_exists(entity_block) )
-					instance_create_layer(_x, _y, "Instances", _type);
+					if (instance_exists(entity_block) && collision_point(_x, _y, entity_block, false,true) == noone || !instance_exists(entity_block) )
+						instance_create_layer(_x, _y, "Instances", _type);
+				}
+				else
+				{
+					var _d = ds_map_create();
+					_d[? "cmd"] = "chat";
+					_d[? "n"] = "Server";
+					_d[? "t"] = "Core is empty.";
+					send_data(_d);
+				}
+			}
+			break;
+			
+			case "request_world_update":
+			{				
+				//This will probe each entity_player and cause them to send position packets, forcing them to exist in the new client's game.
+				with (entity_player)
+					moved = true;
+					
+				//send the tile data to the new player
+				if (instance_exists(entity_block))
+				{
+					with(entity_block)
+					{
+						send_new_block_to_player();	
+					}
+				}
+			}
+			break;
+			
+			case "request_tile_destroy":
+			{
+				if (instance_exists(entity_block))
+				{
+					var _c = collision_point(parsed_data[? "x"], parsed_data[? "y"], entity_block, false, true);
+					
+					if (_c != noone)
+						with (_c) { instance_destroy(); }
+				}
 			}
 			break;
 		}

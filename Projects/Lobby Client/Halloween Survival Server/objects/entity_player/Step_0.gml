@@ -23,8 +23,8 @@ if (instance_exists(entity_item))
 */
 
 //boundaries
-x = clamp(x, 0, 999);
-y = dead ? clamp(y, 3000, 3500) : clamp(y, 1000, 3000);
+x = clamp(x, 0, 2000);
+y = dead ? clamp(y, 2010, 2250) : clamp(y, 0, 2000);
 
 //correct xscale
 if (image_xscale == 0) image_xscale = 1;
