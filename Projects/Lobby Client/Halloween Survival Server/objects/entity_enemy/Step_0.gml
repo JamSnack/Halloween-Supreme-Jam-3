@@ -14,43 +14,7 @@ switch (targeting_type)
 		{
 			var _nearest = instance_nearest(x, y, entity_player);
 			
-			var x_dir = sign(_nearest.x - x + 1);
-			var y_dir = sign(_nearest.y - y + 1);
-			
-			x_speed = approach(x_speed, x_dir * move_speed, torque);
-			y_speed = approach(y_speed, y_dir * move_speed, torque);
-			
-			//horizontal movement
-			if (collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, entity_block, false, true))
-			{	
-				repeat(10)
-				{
-					if (collision_rectangle(bbox_left + x_dir, bbox_top, bbox_right + x_dir, bbox_bottom, entity_block, false, true) == noone )
-						x += x_dir;
-					else break;
-				}
-				
-				x_speed = -x_speed*bounce_factor;
-			}
-			
-			x += x_speed;
-			
-			
-			
-			//vertical movement
-			if (collision_rectangle(bbox_left, bbox_top + y_speed, bbox_right, bbox_bottom + y_speed, entity_block, false, true))
-			{
-				repeat(10)
-				{
-					if (collision_rectangle(bbox_left, bbox_top + y_dir, bbox_right, bbox_bottom + y_dir, entity_block, false, true) == noone )
-						y += y_dir;
-					else break;
-				}
-				
-				y_speed = -y_speed*bounce_factor;
-			}
-			
-			y += y_speed;
+			scr_move_toward_point(_nearest.x, _nearest.y, move_speed);
 			
 			moved = true;
 		}
