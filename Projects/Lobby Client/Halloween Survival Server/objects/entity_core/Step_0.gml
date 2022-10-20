@@ -16,9 +16,21 @@ if (instance_exists(entity_player))
 				for (var j = 0; j < CANDY.last; j++)
 				{
 					candies_stored[j] += _p.candy_array[j];
+
+					//send effect
+					var _d = ds_map_create();
+					_d[? "cmd"] = "effect_player_candy_to_core";
+					_d[? "x"] = _p.x;
+					_d[? "y"] = _p.y;
+					_d[? "amt"] = (_p.candy_array[j] div 2) + 1;
+					_d[? "t"] = j;
+					send_data(_d);
+					
+					//reset
 					_p.candy_array[j] = 0;
 				}
 				
+				//reset
 				_p.has_candy = false;
 			}
 		}

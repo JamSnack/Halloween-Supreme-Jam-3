@@ -361,6 +361,33 @@ function handle_data(data)
 				}
 			}
 			break;
+			
+			case "request_tile_update":
+			{
+				var instance_updated = false;
+				
+				if (instance_exists(entity_block))
+				{
+					var t_id = parsed_data[? "t_id"];
+					with(entity_block)
+					{
+						if (t_id == tile_id)
+						{
+							update_block();
+							instance_updated = true;
+							break;
+						}
+					}
+				}
+				
+				//destroy requested tile
+				if (instance_updated = false)
+				{
+					parsed_data[? "cmd"] = "tile_destroy";	
+					send_data(parsed_data);
+				}
+			}
+			break;
 		}
 	}
 }

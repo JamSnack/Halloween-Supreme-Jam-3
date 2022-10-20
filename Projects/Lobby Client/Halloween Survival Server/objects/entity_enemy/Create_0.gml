@@ -35,9 +35,11 @@ function damage(amt, killer)
 	{
 		killer.candy_array[held_treat] += 1;
 		killer.has_candy = true;
+		killer_id = killer.p_id;
 		instance_destroy();
 	}
 	else update_enemy();
 }
 
+killer_id = -4;
 move_delay = 2;

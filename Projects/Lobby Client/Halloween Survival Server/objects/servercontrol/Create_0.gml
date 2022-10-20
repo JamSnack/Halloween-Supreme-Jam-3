@@ -46,7 +46,6 @@ enum TARGET_TYPE
 //global.game_state = "INTERMISSION";
 global.game_stage = 5;
 global.game_timer = 30;
-init_intermission = false;
 
 function spawn_enemy()
 {
