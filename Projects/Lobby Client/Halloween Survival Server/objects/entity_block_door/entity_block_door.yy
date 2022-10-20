@@ -31,8 +31,8 @@
     {"propertyId":{"name":"type","path":"objects/entity_block/entity_block.yy",},"objectId":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Blocks",
+    "path": "folders/Objects/Blocks.yy",
   },
   "resourceVersion": "1.0",
   "name": "entity_block_door",

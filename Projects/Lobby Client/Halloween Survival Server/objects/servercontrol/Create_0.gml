@@ -40,21 +40,33 @@ alarm[0] = 10;
 enum TARGET_TYPE
 {
 	normal,
+	none
 }
 
 //Game Stage
 //global.game_state = "INTERMISSION";
 global.game_stage = 5;
 global.game_timer = 30;
+bosses_alive = 0;
 
 function spawn_enemy()
 {
-	repeat(global.game_stage + instance_number(entity_player))
+	for (var _i = 0; _i < instance_number(entity_player); _i++)
 	{
-		var _x = irandom(1000);
-		
-		var _e = instance_create_layer(_x, -100, "Instances", choose(entity_enemy, entity_fast_enemy));
+		//Hostile generic enemies
+		repeat( irandom(2) + min(6, global.game_stage div 5) )
+			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_generic_enemy() );
 	}
+	
+	
+	
+	//Keep boss count up
+	if (bosses_alive < global.game_stage div 10)
+	{
+		instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_boss() );
+		bosses_alive += 1;	
+	}
+
 }
 
 global.next_id = 1;
@@ -65,6 +77,7 @@ enum BUILD
 	block,
 	door,
 	glass,
+	false_block,
 	last	
 }
 
@@ -76,5 +89,18 @@ enum CANDY
 	red,
 	green,
 	blue,
+	last
+}
+
+enum ENEMY
+{
+	generic_enemy,
+	greenthin,
+	jumpkin,
+	golden_jumpkin,
+	zombie,
+	pigyamo,
+	pumpkin,
+	weed,
 	last
 }

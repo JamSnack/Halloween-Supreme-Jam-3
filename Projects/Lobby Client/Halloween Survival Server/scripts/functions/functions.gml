@@ -60,3 +60,15 @@ function scr_move_toward_point(target_x, target_y, move_speed)
 	//update object on client
 	moved = true;
 }
+
+function scr_get_generic_enemy()
+{
+	if (global.game_stage < 25)
+		return choose(entity_fast_enemy, entity_jumpkin);
+}
+
+function scr_get_boss()
+{
+	if (global.game_stage > 5)
+		return entity_pigyamo;
+}

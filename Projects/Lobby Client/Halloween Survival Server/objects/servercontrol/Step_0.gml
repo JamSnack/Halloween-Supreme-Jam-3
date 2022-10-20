@@ -79,7 +79,7 @@ else if (mouse_wheel_down())
 if (global.game_timer <= 0)
 {
 	//Intermission is over!
-	global.game_timer = room_speed*(45+irandom(30));
+	global.game_timer = room_speed*(10+irandom(10));
 	
 	//respawn players
 	if (instance_exists(entity_player))
@@ -105,6 +105,17 @@ if (global.game_timer <= 0)
 	//spawn mobs
 	spawn_enemy();
 	
+	
+	//Fill the world with nodes
+	repeat (30 - instance_number(ENTITY_NODE))
+	{
+		var _x = irandom_range(32, WORLD_WIDTH-32);
+		var _y = irandom_range(32, WORLD_HEIGHT-32)
+			
+		if (collision_point(_x, _y, entity_block, false, true) == noone)
+			instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	
+	}
+	
 	//passively increase game_stage
 	global.game_stage++;
 }
@@ -114,15 +125,5 @@ else
 	{
 		//Waiting to increase game_stage...
 		global.game_timer--;
-		
-		/*
-		if (global.game_timer % room_speed == 0)
-		{
-			var _d = ds_map_create();
-			_d[? "cmd"] = "game_timer_update";
-			_d[? "time"] = global.game_timer/60;
-			send_data(_d);
-		}
-		*/
 	}
 }

@@ -33,7 +33,7 @@ function damage(amt, killer)
 	//death check
 	if (hp <= 0)
 	{
-		killer.candy_array[held_treat] += 1;
+		killer.candy_array[held_treat] += held_treat_amt;
 		killer.has_candy = true;
 		killer_id = killer.p_id;
 		instance_destroy();

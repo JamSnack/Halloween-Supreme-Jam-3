@@ -300,7 +300,7 @@ function handle_data(data)
 				var _index = parsed_data[? "type"];
 				_type = entity_block;
 				
-				if (instance_exists(entity_core) && entity_core.builds_stored[_type] > 0)
+				if (instance_exists(entity_core) && entity_core.builds_stored[_index] > 0)
 				{					
 					//select correct object
 					switch (_index)
@@ -324,11 +324,7 @@ function handle_data(data)
 				}
 				else
 				{
-					var _d = ds_map_create();
-					_d[? "cmd"] = "chat";
-					_d[? "n"] = "Server";
-					_d[? "t"] = "Core is empty.";
-					send_data(_d);
+					instance_create_layer(_x, _y, "Instances", entity_false_block);
 				}
 			}
 			break;
@@ -345,6 +341,15 @@ function handle_data(data)
 					with(entity_block)
 					{
 						send_new_block_to_player();	
+					}
+				}
+				
+				//send enemy data to the new player
+				if (instance_exists(entity_enemy))
+				{
+					with(entity_enemy)
+					{
+						send_enemy_to_client();	
 					}
 				}
 			}

@@ -3,3 +3,5 @@
 #macro TIME floor(current_time/100)
 #macro CENTER_X 1000
 #macro CENTER_Y 1000
+#macro WORLD_WIDTH 2000
+#macro WORLD_HEIGHT 2000

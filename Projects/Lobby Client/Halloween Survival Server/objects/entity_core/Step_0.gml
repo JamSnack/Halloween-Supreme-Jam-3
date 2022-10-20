@@ -75,3 +75,4 @@ if (block_production <= 0)
 		networking_update_core_builds_at_index(BUILD.glass);
 	}
 }
+else block_production--;
