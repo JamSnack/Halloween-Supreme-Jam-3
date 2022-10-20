@@ -34,6 +34,7 @@ function damage(amt, killer)
 	if (hp <= 0)
 	{
 		killer.candy_array[held_treat] += 1;
+		killer.has_candy = true;
 		instance_destroy();
 	}
 	else update_enemy();

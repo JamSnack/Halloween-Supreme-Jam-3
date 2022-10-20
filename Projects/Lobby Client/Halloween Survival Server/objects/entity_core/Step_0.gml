@@ -15,7 +15,7 @@ if (instance_exists(entity_player))
 				//loop through candy & deposit it
 				for (var j = 0; j < CANDY.last; j++)
 				{
-					candies_stored[j] = _p.candy_array[j];
+					candies_stored[j] += _p.candy_array[j];
 					_p.candy_array[j] = 0;
 				}
 				
@@ -35,6 +35,8 @@ if (block_production <= 0)
 	{
 		candies_stored[CANDY.yellow] -= 1;
 		builds_stored[BUILD.block] += 1;
+		networking_update_core_candies_at_index(CANDY.yellow);
+		networking_update_core_builds_at_index(BUILD.block);
 	}
 	
 	//doors
@@ -42,6 +44,8 @@ if (block_production <= 0)
 	{
 		candies_stored[CANDY.magenta] -= 1;
 		builds_stored[BUILD.door] += 1;
+		networking_update_core_candies_at_index(CANDY.magenta);
+		networking_update_core_builds_at_index(BUILD.door);
 	}
 	
 	//glass
@@ -49,5 +53,7 @@ if (block_production <= 0)
 	{
 		candies_stored[CANDY.teal] -= 1;
 		builds_stored[BUILD.glass] += 1;
+		networking_update_core_candies_at_index(CANDY.teal);
+		networking_update_core_builds_at_index(BUILD.glass);
 	}
 }

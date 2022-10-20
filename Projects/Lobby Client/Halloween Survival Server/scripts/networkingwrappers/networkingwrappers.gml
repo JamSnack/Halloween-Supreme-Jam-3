@@ -15,3 +15,21 @@ function networking_player_update_inventory()
 	_d[? "inv"] = player_inventory;
 	send_data(_d);
 }
+
+function networking_update_core_builds_at_index(_index)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "update_core_builds_at_index";
+	_d[? "index"] = _index;
+	_d[? "amt"] = entity_core.builds_stored[_index];
+	send_data(_d);
+}
+
+function networking_update_core_candies_at_index(_index)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "update_core_candies_at_index";
+	_d[? "index"] = _index;
+	_d[? "amt"] = entity_core.candies_stored[_index];
+	send_data(_d);
+}

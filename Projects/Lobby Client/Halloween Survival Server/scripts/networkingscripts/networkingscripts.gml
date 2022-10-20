@@ -318,11 +318,7 @@ function handle_data(data)
 						entity_core.builds_stored[_index] -= 1;
 					
 						//update players
-						var _d = ds_map_create();
-						_d[? "cmd"] = "update_core_builds_at_index";
-						_d[? "index"] = _index;
-						_d[? "amt"] = entity_core.builds_stored[_index];
-						send_data(_d);
+						networking_update_core_builds_at_index(_index);
 					}
 					
 				}
