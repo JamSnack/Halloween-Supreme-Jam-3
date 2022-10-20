@@ -22,7 +22,7 @@ if (instance_exists(entity_player))
 					_d[? "cmd"] = "effect_player_candy_to_core";
 					_d[? "x"] = _p.x;
 					_d[? "y"] = _p.y;
-					_d[? "amt"] = (_p.candy_array[j] div 2) + 1;
+					_d[? "amt"] = ceil(_p.candy_array[j]/2);
 					_d[? "t"] = j;
 					send_data(_d);
 					
