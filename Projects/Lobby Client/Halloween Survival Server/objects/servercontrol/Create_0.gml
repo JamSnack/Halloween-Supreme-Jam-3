@@ -3,7 +3,7 @@
 //Init variables
 global.lobby_id = -1;
 global.inventory_size = 8;
-split_packets = ds_list_create();
+//split_packets = ds_list_create();
 
 //Init Imguigml
 imguigml_activate();
@@ -34,7 +34,7 @@ terminal_input = "";
 setting_show_incoming_packets = false;
 setting_show_log = false;
 
-createLobby(55555);
+alarm[0] = 10;
 
 //Init targeting type
 enum TARGET_TYPE
@@ -73,5 +73,8 @@ enum CANDY
 	yellow,
 	magenta,
 	teal,
+	red,
+	green,
+	blue,
 	last
 }

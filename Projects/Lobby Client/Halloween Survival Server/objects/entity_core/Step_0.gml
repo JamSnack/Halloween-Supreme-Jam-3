@@ -15,19 +15,25 @@ if (instance_exists(entity_player))
 				//loop through candy & deposit it
 				for (var j = 0; j < CANDY.last; j++)
 				{
-					candies_stored[j] += _p.candy_array[j];
+					if (_p.candy_array[j] > 0)
+					{
+						candies_stored[j] += _p.candy_array[j];
 
-					//send effect
-					var _d = ds_map_create();
-					_d[? "cmd"] = "effect_player_candy_to_core";
-					_d[? "x"] = _p.x;
-					_d[? "y"] = _p.y;
-					_d[? "amt"] = ceil(_p.candy_array[j]/2);
-					_d[? "t"] = j;
-					send_data(_d);
+						//send effect
+						var _d = ds_map_create();
+						_d[? "cmd"] = "effect_player_candy_to_core";
+						_d[? "x"] = _p.x;
+						_d[? "y"] = _p.y;
+						_d[? "amt"] = ceil(_p.candy_array[j]/2);
+						_d[? "t"] = j;
+						send_data(_d);
 					
-					//reset
-					_p.candy_array[j] = 0;
+						//send new candies
+						networking_update_core_candies_at_index(j);
+					
+						//reset
+						_p.candy_array[j] = 0;
+					}
 				}
 				
 				//reset
