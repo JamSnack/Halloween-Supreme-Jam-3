@@ -38,6 +38,9 @@ if (instance_exists(entity_player))
 				
 				//reset
 				_p.has_candy = false;
+				
+				//Apply max_hp
+				_p.max_hp = 10 + STAT_HP;
 			}
 		}
 	}

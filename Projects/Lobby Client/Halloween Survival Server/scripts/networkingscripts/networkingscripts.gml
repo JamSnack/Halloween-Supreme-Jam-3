@@ -126,8 +126,10 @@ function handle_data(data)
 						var _y_dir = parsed_data[? "v"];
 						
 						//init potential movement speed this step:
-						var x_speed = (1.5 + _sprinting*1.5 + STAT_SPEED)*_x_dir;
-						var y_speed = (1.5 + _sprinting*1.5 + STAT_SPEED)*_y_dir;
+						var _stat_speed = (instance_exists(entity_core) ? STAT_SPEED : 0)
+						
+						var x_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_x_dir;
+						var y_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_y_dir;
 						
 						//check for collision, setting speed to 0 if colliding
 						if (blocks_exist)

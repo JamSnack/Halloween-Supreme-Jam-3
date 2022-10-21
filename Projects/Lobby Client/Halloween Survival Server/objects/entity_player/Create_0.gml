@@ -80,7 +80,7 @@ function damage(attack)
 	var _d = ds_map_create();
 	_d[? "cmd"] = "player_hp";
 	_d[? "hp"] = hp;
-	_d[? "mhp"] = max_hp*STAT_HP;
+	_d[? "mhp"] = max_hp;
 	_d[? "p_id"] = p_id;
 	send_data(_d);
 }
