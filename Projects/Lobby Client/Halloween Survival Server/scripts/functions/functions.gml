@@ -72,3 +72,39 @@ function scr_get_boss()
 	if (global.game_stage > 5)
 		return entity_pigyamo;
 }
+
+function scr_death_message(playername)
+{	
+	switch (irandom(25))
+	{
+		case 0: { playername += " died while smelling the roses."; } break;
+		case 1: { playername += " had too much candy!"; } break;
+		case 2: { playername += " had too little candy!"; } break;
+		case 3: { playername += " won't see the squad again."; } break;
+		case 4: { playername += " didn't survive Halloween."; } break;
+		case 5: { playername += " was slaughtered."; } break;
+		case 6: { playername += " was impaled. Twice."; } break;
+		case 7: { playername += " figured out what happens at 0 HP."; } break;
+		case 8: { playername += " turned into fertilizer."; } break;
+		case 9: { playername += " became Greenthin feed."; } break;
+		case 10: { playername = "We won't be seeing " + playername + " anymore."; } break;
+		case 11: { playername = "RIP " + playername } break;
+		case 12: { playername += " was impaled."; } break;
+		case 13: { playername += " has logged off."; } break;
+		case 14: { playername += " was plundered and torn asunder by a teeny foul thing."; } break;
+		case 15: { playername += " isn't having a very good day."; } break;
+		case 16: { playername += " has gone missing! Last seen with Jumpkin Bob."; } break;
+		case 17: { playername = "The surface area of " + playername + "'s body was forcefully increased."; } break;
+		case 18: { playername += " and " + choose("Red Treat", "Teal Treat", "Yellow Treat", "Green Treat") + " did not mix."; } break;
+		case 19: { playername += " lost a revive! Way to go!"; } break;
+		case 20: { playername += " is now road nachos."; } break;
+		case 21: { playername += " Cry hard die trying"; } break;
+		default: { playername += " has died."; }
+	}
+	
+	var _d = ds_map_create();
+	_d[? "cmd"] = "chat";
+	_d[? "t"] = playername;
+	_d[? "n"] = "";
+	send_data(_d);
+}

@@ -27,6 +27,10 @@ function damage(attack)
 	//death check
 	if (hp <= 0)
 	{
+		//death message
+		scr_death_message(p_n);
+		
+		//Revive player or restart the round
 		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
 			var _col = collision_point(CENTER_X - 100, CENTER_Y, entity_block, false, true);
