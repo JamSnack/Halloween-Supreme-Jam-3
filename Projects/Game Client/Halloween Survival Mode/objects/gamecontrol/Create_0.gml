@@ -12,24 +12,29 @@ global.port = 55555;
 global.socket = noone;
 global.player_id = -1; //Will be granted on lobby-join. Keeps track of who's who
 global.player_name = "Player";
+global.use_effects = false;
 
 
 //Keep track of multiplayer state:
 global.lobby_id = -1;
 
 //Chat
+global.chat_alpha = 0;
+
 chat_overlay = {
 	text : "",
 	append : function append(new_text) 
 	{
 		text = text + "\n" + new_text;
 		
-		if (string_height(text) > 380)
+		if (string_height(text) > 190)
 		{
 			show_debug_message("test");
 			var _c = string_pos("\n", text);
 			text = string_delete(text, 1, _c);
 		}
+		
+		global.chat_alpha = 1.0;
 	},
 	clear_text : function clear_text() { text = "" },
 	chat_text : "",
@@ -58,13 +63,13 @@ global.display_height = display_get_gui_height();
 draw_set_font(fnt_default);
 
 //Initialize player stuff
-global.inventory_size = 8;
+global.inventory_size = 0;
 inventory_slot_selected = 0; //index of the currently selected slot
 inventory_is_open = false;
 inventory_anim_value = 0;
 
 //The physical inventory this client has access to.
-client_inventory = 
+/*client_inventory = 
 {
 	inven : array_create(global.inventory_size, 0),
 	add : function(item_id)
@@ -78,26 +83,19 @@ client_inventory =
 					
 		return false;
 	},
-	remove : function(slot)
+	remove : function(item_id)
 	{
-		/*
 		if (item_id == undefined)
-			array_pop(inven); //pop?
-		else //Item id is an item
+			array_pop(inven);
+		else
 		{
 			for (var i = 0; i < global.inventory_size; i++)
-			{
 				if (inven[i] == item_id)
 				{
 					array_delete(inven, i, 1);
 					break;
 				}
-			}
 		}
-		*/
-		
-		//used if player receives request from server to have an item removed
-		inven[slot] = 0;
 	},
 	
 	is_empty : function()
@@ -123,6 +121,47 @@ client_inventory =
 		for (var i = 0; i < global.inventory_size; i++)
 			show_debug_message("invetory[" + string(i) + "]: " + string(inven[i]));
 	}
+}
+*/
+//Game state
+global.game_timer = 0;
+
+//animation cuvres
+global.pop_curve = animcurve_get_channel(ac_pop, 0);
+
+//enums
+//cloned from server counterparts
+enum BUILD 
+{
+	block,
+	door,
+	glass,
+	false_block,
+	last
+}
+
+enum CANDY
+{
+	yellow,
+	magenta,
+	teal,
+	red,
+	green,
+	blue,
+	last
+}
+
+enum ENEMY
+{
+	generic_enemy,
+	greenthin,
+	jumpkin,
+	golden_jumpkin,
+	zombie,
+	pigyamo,
+	pumpkin,
+	weed,
+	last
 }
 
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

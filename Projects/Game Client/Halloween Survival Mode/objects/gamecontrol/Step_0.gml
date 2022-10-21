@@ -28,22 +28,6 @@ if (imguigml_ready())
 		imguigml_text("Lobby ID: " + l_text);
 		imguigml_end();
 	}
-	else
-	{
-		//Chat box
-		imguigml_set_next_window_pos(0, 450);
-		imguigml_set_next_window_size(400, 300);
-		imguigml_begin("Chat");
-		imguigml_text(chat_overlay.text);
-		
-		var _s = "-----------------\n";
-		
-		if (!global.chatting)
-			imguigml_text(_s + "Press Enter to chat.");
-		else imguigml_text(_s + chat_overlay.chat_text);
-		
-		imguigml_end();
-	}
 }
 
 //Have we successfully found a lobby?
@@ -78,3 +62,5 @@ else if (chat_key)
 	global.chatting = true;
 	keyboard_string = "";
 }
+
+global.chat_alpha = approach(global.chat_alpha, global.chatting, 0.0025 + 0.09*global.chatting);

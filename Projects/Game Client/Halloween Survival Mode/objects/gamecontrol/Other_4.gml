@@ -1,7 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
+global.use_effects = false;
+
 if (room == rm_world)
 {
 	var _p = instance_create_layer(100, 100, "Instances", obj_player);
 	_p.p_id = global.player_id;
+	
+	global.use_effects = true;
 }
+
+//request world update
+var _d = ds_map_create();
+_d[? "cmd"] = "request_world_update";
+send_data(_d);

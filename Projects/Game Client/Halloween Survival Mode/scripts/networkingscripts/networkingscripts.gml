@@ -68,7 +68,7 @@ function send_data_raw(data_map)
 function handle_data(data)
 {	
 	var parsed_data = json_decode(data);
-	show_debug_message("Handling data: "+string(data));
+	//show_debug_message("Handling data: "+string(data));
 	
 	if (parsed_data != -1)
 	{
@@ -208,16 +208,23 @@ function handle_data(data)
 					_d[? "cmd"] = "request_enemy_entity";
 					_d[? "e_id"] = e_id;
 					send_data(_d);
+					
+					show_debug_message("Request Enemy");
 				}
 			}
 			break;
 			
 			case "create_enemy":
 			{
-				var _e = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", asset_get_index(parsed_data[? "o_i"]))
+				var _e = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_enemy_entity)
 				_e.max_hp = parsed_data[? "mhp"];
 				_e.hp = parsed_data[? "hp"];
 				_e.enemy_id = parsed_data[? "e_id"];
+				
+				with (_e)
+					scr_select_enemy_sprites(parsed_data[? "o_i"]);
+				
+				show_debug_message("Create Enemy");
 			}
 			break;
 			
@@ -259,7 +266,6 @@ function handle_data(data)
 			}
 			break;
 			
-			//add one item
 			case "item_pickup":
 			{
 				var pl_id = parsed_data[? "p_id"];
@@ -269,28 +275,196 @@ function handle_data(data)
 						client_inventory.add(parsed_data[? "index"]);
 			}
 			break;
-	
 			
-			//During CSCI 211:
-			//remove one item
-			case "item_remove":
+			case "enemy_destroy":
 			{
-				var pl_id = parsed_data[? "p_id"];
+				//show_debug_message("enemy_destroy!");
+				var e_id = parsed_data[? "e_id"];
 				
-				if (pl_id == global.player_id)
-					client_inventory.remove(parsed_data[? "slot"]);
-			}
-			
-			
-			case "inventory_update":
-			{
-				//resyncs the entire inventory
-				var pl_id = parsed_data[? "p_id"];
-				
-				if (pl_id == global.player_id)
-					array_copy(client_inventory.inven, 0, parsed_data[? "inv"], 0, global.inventory_size);
+				with (obj_enemy_entity)
+				{
+					if (e_id == enemy_id)
+					{
+						//destroy
+						instance_destroy();
+						
+						//effects
+						repeat(parsed_data[? "amt"])
+						{
+							if (instance_exists(obj_core) && parsed_data[? "k_id"] == global.player_id)
+							{
+								var _t = instance_create_layer(x, y, "Instances", efct_treat_to_player);
+								_t.image_index = parsed_data[? "candy"];
+							}
+						}
+						
+						//break
+						break;
+					}
+				}
 			}
 			break;
+			
+			case "game_timer_update":
+			{
+				global.game_timer = parsed_data[? "time"];
+			}
+			break;
+			
+			case "tile_place":
+			{
+				var _type = parsed_data[? "type"];
+				
+				switch (_type)
+				{
+					case 0: { _type = obj_block_entity; } break;
+					case 1: { _type = obj_block_door_entity; } break;
+					case 2: { _type = obj_block_glass_entity; } break;
+					case BUILD.false_block: { _type = obj_false_block; } break;
+					case BUILD.last: { _type = obj_core; } break;
+				}
+				
+				if (global.use_effects && _type != obj_false_block)
+				{
+					var _t = instance_create_layer(CENTER_X, CENTER_Y, "Instances", efct_place_tile);
+					_t.object = _type;
+					_t.sprite_index = object_get_sprite(_type);
+					_t.hp = parsed_data[? "hp"];
+					_t.max_hp = parsed_data[? "mhp"];
+					_t.object_id = parsed_data[? "t_id"];
+					_t.target_x = parsed_data[? "x"];
+					_t.target_y = parsed_data[? "y"];
+				}
+				else
+				{
+					var _t = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", _type);
+					_t.hp = parsed_data[? "hp"];
+					_t.max_hp = parsed_data[? "mhp"];
+					_t.tile_id = parsed_data[? "t_id"];
+				}
+			}
+			break;
+			
+			case "tile_destroy":
+			{
+				var t_id = parsed_data[? "t_id"];
+				
+				if (instance_exists(obj_block_entity))
+				{
+					with(obj_block_entity)
+					{
+						if (t_id == tile_id)
+						{
+							instance_destroy();
+							break;
+						}
+					}
+				}
+			}
+			break;
+			
+			case "tile_update":
+			{
+				if (instance_exists(obj_block_entity))
+				{
+					var _t = collision_point(parsed_data[? "x"], parsed_data[? "y"], obj_block_entity, false, true);
+					
+					if (_t != noone)
+					{
+						_t.hp = parsed_data[? "hp"];	
+					}
+					//else request tile?
+				}
+			}
+			break;
+			
+			case "enemy_update":
+			{
+				
+				var e_id = parsed_data[? "e_id"];
+				
+				if (instance_exists(obj_enemy_entity))
+				{
+					with (obj_enemy_entity)
+					{
+						if (e_id = enemy_id)
+						{
+							hp = parsed_data[? "hp"];
+							
+							//assume hp set here will always be a decrease
+							damage_animation = 1;
+							
+							break;
+						}
+					}
+				}
+			}
+			break;
+			
+			case "player_shoot":
+			{
+				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_projectile);
+				_s.direction = parsed_data[? "dir"];
+				_s.image_angle = _s.direction;
+				_s.speed = 4;
+			}
+			break;
+			
+			case "player_hp":
+			{
+				var pl_id = parsed_data[? "p_id"];
+				
+				if (pl_id == global.player_id)
+				{
+					obj_player.hp = parsed_data[? "hp"];
+				}
+				else
+				{
+					var _h = parsed_data[? "hp"];
+					var _mh = parsed_data[? "mhp"];
+					
+					with (obj_player_entity)
+					{
+						if (pl_id = p_id)
+						{
+							hp = _h;
+							max_hp = _mh;
+							break;
+						}
+					}
+				}
+			}
+			break;
+			
+			case "update_core_builds_at_index": { obj_core.builds_stored[parsed_data[? "index"]] = parsed_data[? "amt"]; } break;
+			
+			case "update_core_candies_at_index":
+			{ 
+				if (instance_exists(obj_core))
+				{
+					obj_core.candies_stored[parsed_data[? "index"]] = parsed_data[? "amt"]; 
+					obj_core.free_surface_candy_pile = true;
+				}
+			} 
+			break;
+			
+			case "effect_player_candy_to_core" :
+			{
+				if (instance_exists(obj_core) && point_distance(obj_player.x, obj_player.y, obj_core.x, obj_core.y) > 128)
+				{
+					var _r = parsed_data[? "amt"];
+					var _x = parsed_data[? "x"];
+					var _y = parsed_data[? "y"];
+					var _index = parsed_data[? "t"];
+				
+					repeat(_r)
+					{
+						var _c = instance_create_layer(_x, _y, "Instances", efct_treat_to_player);
+						_c.target = noone; //auto travels to the core
+						_c.image_index = _index;
+					}
+				}
+			}
 		}
 	}
 }

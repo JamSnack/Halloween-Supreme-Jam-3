@@ -11,3 +11,7 @@ despawn_timer = despawn_timer_set;
 idle_sprite = sprite_index;
 walk_sprite = sprite_index;
 run_sprite = sprite_index;
+
+damage_animation = 0;
+
+use_anim_index = true;

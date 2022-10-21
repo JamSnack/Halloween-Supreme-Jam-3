@@ -1,13 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-//Color swapping shader
-shader_set(shd_colorSwap);
-shader_set_uniform_f_array(global.uniform_defaultPalette, );
-shader_set_uniform_f_array(global.uniform_newPalette, );
- 
+// Inherit the parent event
 event_inherited();
- 
-shader_reset();
 
-
+//draw healthbar
+if (hp < max_hp)
+	draw_healthbar(x - 8, y + 6, x + 8, y + 9, (hp/max_hp)*100, c_black, c_red, c_green, 0, true, false);
+	
+//Draw action state
+draw_text(x, y+12, string(action_state));

@@ -22,7 +22,9 @@ draw_x = lerp(draw_x, x, interpolation_rate);
 draw_y = lerp(draw_y, y, interpolation_rate);
 
 //Pass anim_index into image_index
-image_index = anim_index;
+if (use_anim_index)
+	image_index = anim_index;
+//else image_index += 5/60;
 
 //Manage despawn timer
 if (despawn_timer > 0)
@@ -31,4 +33,11 @@ if (despawn_timer > 0)
 	
 	if (despawn_timer <= 0)
 		instance_destroy();
-}	
+}
+
+//Damage animation
+if (damage_animation > 0)
+	damage_animation -= 0.1;
+	
+//Depth
+depth = -y;
