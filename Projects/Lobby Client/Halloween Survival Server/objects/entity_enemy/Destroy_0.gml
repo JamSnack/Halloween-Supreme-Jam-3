@@ -5,4 +5,5 @@ _d[? "cmd"] = "enemy_destroy";
 _d[? "e_id"] = enemy_id;
 _d[? "k_id"] = killer_id;
 _d[? "candy"] = held_treat;
+_d[? "amt"] = held_treat_amt;
 send_data(_d);

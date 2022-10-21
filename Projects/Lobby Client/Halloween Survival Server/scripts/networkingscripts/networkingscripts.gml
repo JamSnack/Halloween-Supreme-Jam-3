@@ -126,8 +126,8 @@ function handle_data(data)
 						var _y_dir = parsed_data[? "v"];
 						
 						//init potential movement speed this step:
-						var x_speed = _x_dir + (_x_dir*_sprinting*2);
-						var y_speed = _y_dir + (_y_dir*_sprinting*2);
+						var x_speed = _x_dir*1.5 + (_x_dir*_sprinting*1.5);
+						var y_speed = _y_dir*1.5 + (_y_dir*_sprinting*1.5);
 						
 						//check for collision, setting speed to 0 if colliding
 						if (blocks_exist)
@@ -300,7 +300,7 @@ function handle_data(data)
 				var _index = parsed_data[? "type"];
 				_type = entity_block;
 				
-				if (instance_exists(entity_core) && entity_core.builds_stored[_index] > 0)
+				if (instance_exists(entity_core) && entity_core.candies_stored[_index] > 0)
 				{					
 					//select correct object
 					switch (_index)
@@ -315,10 +315,10 @@ function handle_data(data)
 						instance_create_layer(_x, _y, "Instances", _type);
 						
 						//remove a build from core
-						entity_core.builds_stored[_index] -= 1;
+						entity_core.candies_stored[_index] -= 1;
 					
 						//update players
-						networking_update_core_builds_at_index(_index);
+						networking_update_core_candies_at_index(_index);
 					}
 					
 				}
@@ -351,6 +351,13 @@ function handle_data(data)
 					{
 						send_enemy_to_client();	
 					}
+				}
+				
+				//Send core information
+				if (instance_exists(entity_core))
+				{
+					for (var _i = 0; _i < array_length(entity_core.candies_stored); _i++)
+						networking_update_core_candies_at_index(_i);
 				}
 			}
 			break;

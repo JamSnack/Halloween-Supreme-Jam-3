@@ -22,29 +22,44 @@ function damage(attack)
 	//death check
 	if (hp <= 0)
 	{
-		dead = true;
-		x = 500;
-		y = 2100;
-		
-		//Check to see if all players have died
-		with ( entity_player )
+		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
-			if (dead == false)
-				break;
-			else
+			var _col = collision_point(CENTER_X - 100, CENTER_Y, entity_block, false, true);
+			
+			if (_col != noone)
+				with (_col) instance_destroy();
+			
+			x = CENTER_X - 100;
+			y = CENTER_Y;
+			entity_core.player_revives -= 1;
+			global.game_stage -= 1;
+		}
+		else
+		{
+			dead = true;
+			x = 500;
+			y = 2100;
+		
+			//Check to see if all players have died, ending the round
+			with ( entity_player )
 			{
-				//reset/go to intermission
-				global.game_stage = 1;
+				if (dead == false)
+					break;
+				else
+				{
+					//reset/go to intermission
+					global.game_stage = 1;
 				
-				//cleanup
-				with (entity_enemy)
-					instance_destroy();
+					//cleanup
+					with (entity_enemy)
+						instance_destroy();
 					
-				with (entity_block)
-					instance_destroy();
+					with (entity_block)
+						instance_destroy();
 					
-				//Reset stats
-				max_hp = 10;
+					//Reset stats
+					max_hp = 10;
+				}
 			}
 		}
 		

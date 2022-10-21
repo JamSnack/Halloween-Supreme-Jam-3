@@ -44,7 +44,7 @@ if (instance_exists(entity_player))
 }
 
 //Convert candies into blocks
-if (block_production <= 0)
+/*if (block_production <= 0)
 {
 	block_production = block_production_time;
 	
@@ -75,4 +75,4 @@ if (block_production <= 0)
 		networking_update_core_builds_at_index(BUILD.glass);
 	}
 }
-else block_production--;
+else block_production--;*/

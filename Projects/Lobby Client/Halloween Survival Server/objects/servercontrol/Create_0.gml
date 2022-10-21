@@ -45,7 +45,7 @@ enum TARGET_TYPE
 
 //Game Stage
 //global.game_state = "INTERMISSION";
-global.game_stage = 5;
+global.game_stage = 1;
 global.game_timer = 30;
 bosses_alive = 0;
 
