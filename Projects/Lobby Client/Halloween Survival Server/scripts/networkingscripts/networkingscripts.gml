@@ -340,7 +340,8 @@ function handle_data(data)
 				{
 					with(entity_block)
 					{
-						send_new_block_to_player();	
+						send_new_block_to_player();
+						//update_block();
 					}
 				}
 				
@@ -349,10 +350,15 @@ function handle_data(data)
 				{
 					with(entity_enemy)
 					{
-						send_enemy_to_client();	
+						send_enemy_to_client();
+						//moved = true;
 					}
 				}
-				
+			}
+			break;
+			
+			case "request_core_update":
+			{
 				//Send core information
 				if (instance_exists(entity_core))
 				{
