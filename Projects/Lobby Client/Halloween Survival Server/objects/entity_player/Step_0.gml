@@ -29,3 +29,12 @@ y = dead ? clamp(y, 2010, 2250) : clamp(y, 0, 2000);
 //correct xscale
 if (image_xscale == 0) image_xscale = 1;
 if (image_yscale == 0) image_yscale = 1;
+
+//regen
+if (regen_delay <= 0 && hp < max_hp)
+{
+	damage(-1);
+	regen_delay = room_speed*10;
+}
+else if (regen_delay > 0)
+	regen_delay--;

@@ -14,10 +14,15 @@ player_inventory = array_create(global.inventory_size, 0);
 candy_array = array_create(CANDY.last, 0);
 has_candy = false;
 
+regen_delay = room_speed*10;
+
 function damage(attack)
 {
 	//deal damage
 	hp -= attack;
+	
+	//regen delay reset
+	regen_delay = room_speed*20;
 	
 	//death check
 	if (hp <= 0)
@@ -71,7 +76,7 @@ function damage(attack)
 	var _d = ds_map_create();
 	_d[? "cmd"] = "player_hp";
 	_d[? "hp"] = hp;
-	_d[? "mhp"] = max_hp;
+	_d[? "mhp"] = max_hp*STAT_HP;
 	_d[? "p_id"] = p_id;
 	send_data(_d);
 }

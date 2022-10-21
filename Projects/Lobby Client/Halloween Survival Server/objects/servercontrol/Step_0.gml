@@ -98,7 +98,7 @@ if (global.game_timer <= 0)
 	//respawn core
 	if (!instance_exists(entity_core))
 	{
-		instance_create_layer(CENTER_X, CENTER_Y, "Instances", entity_core);
+		instance_create_layer(floor(CENTER_X/32)*32 + 16, floor(CENTER_Y/32)*32 + 16, "Instances", entity_core);
 		global.game_stage = floor((global.game_stage)/2); //if the players got cored, drastically decrease game_stage
 	}
 	

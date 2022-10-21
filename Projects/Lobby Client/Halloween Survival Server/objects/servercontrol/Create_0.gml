@@ -45,28 +45,30 @@ enum TARGET_TYPE
 
 //Game Stage
 //global.game_state = "INTERMISSION";
-global.game_stage = 1;
+global.game_stage = -5;
 global.game_timer = 30;
 bosses_alive = 0;
 
 function spawn_enemy()
 {
-	for (var _i = 0; _i < instance_number(entity_player); _i++)
+	if (global.game_stage >= 3)
 	{
-		//Hostile generic enemies
-		repeat( irandom(2) + min(6, global.game_stage div 5) )
-			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_generic_enemy() );
+		for (var _i = 0; _i < instance_number(entity_player); _i++)
+		{
+			//Hostile generic enemies
+			repeat( irandom(2) + min(6, global.game_stage div 5) )
+				instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_generic_enemy() );
+		}
+	
+	
+	
+		//Keep boss count up
+		if (bosses_alive < global.game_stage div 10)
+		{
+			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_boss() );
+			bosses_alive += 1;	
+		}
 	}
-	
-	
-	
-	//Keep boss count up
-	if (bosses_alive < global.game_stage div 10)
-	{
-		instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_boss() );
-		bosses_alive += 1;	
-	}
-
 }
 
 global.next_id = 1;

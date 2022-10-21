@@ -10,7 +10,7 @@ event_inherited();
 builds_stored = array_create(BUILD.last, 0);
 
 //candies
-candies_stored = array_create(CANDY.last, 1000);
+candies_stored = array_create(CANDY.last, 0);
 
 //stats
 range = 128; //keeps track of players in range

@@ -7,6 +7,6 @@
 #macro WORLD_HEIGHT 2000
 
 //Popular equations:
-#macro STAT_HP ceil(100*(candies_stored[CANDY.red]*0.001))
-#macro STAT_SPEED ceil(2*(candies_stored[CANDY.green]*0.001))
-#macro STAT_ATTACK ceil(50*(candies_stored[CANDY.blue]*0.001))
+#macro STAT_HP ceil(100*(entity_core.candies_stored[CANDY.red]*0.001))
+#macro STAT_SPEED ceil(2*(entity_core.candies_stored[CANDY.green]*0.001))
+#macro STAT_ATTACK ceil(50*(entity_core.candies_stored[CANDY.blue]*0.001))
