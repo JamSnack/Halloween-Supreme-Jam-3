@@ -4,6 +4,7 @@
     {"id":{"name":"__rousr_functions","path":"scripts/__rousr_functions/__rousr_functions.yy",},"order":1,},
     {"id":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"order":1,},
     {"id":{"name":"__imguigml_internal_functions","path":"scripts/__imguigml_internal_functions/__imguigml_internal_functions.yy",},"order":0,},
+    {"id":{"name":"shd_colorSwap","path":"shaders/shd_colorSwap/shd_colorSwap.yy",},"order":0,},
     {"id":{"name":"extImGuiGML","path":"extensions/extImGuiGML/extImGuiGML.yy",},"order":3,},
     {"id":{"name":"imguigml_config","path":"scripts/imguigml_config/imguigml_config.yy",},"order":5,},
     {"id":{"name":"spr_player_idle_import","path":"sprites/spr_player_idle_import/spr_player_idle_import.yy",},"order":5,},
