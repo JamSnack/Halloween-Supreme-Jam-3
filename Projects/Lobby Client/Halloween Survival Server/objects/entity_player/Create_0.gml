@@ -128,6 +128,9 @@ xp_needed = 25;
 
 function add_xp(amt)
 {
+	if (amt == undefined)
+		return;
+	
 	var _leveled = false;
 	
 	//add to xp
@@ -168,6 +171,7 @@ function add_xp(amt)
 	{
 		var _d = ds_map_create()
 		_d[? "cmd"] = "xp";
+		_d[? "p_id"] = p_id;
 		_d[? "a"] = amt;
 		_d[? "x"] = x - 2;
 		_d[? "y"] = y - 36;

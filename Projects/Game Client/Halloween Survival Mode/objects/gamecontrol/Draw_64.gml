@@ -29,6 +29,18 @@ draw_text(4, 450, _chat);
 draw_text(4, 450+200, _chat_text);
 
 draw_set_alpha(1);
+
+//Draw XP bar
+draw_set_color(c_black);
+draw_rectangle(0, GUI_HEIGHT - 10, GUI_WIDTH, GUI_HEIGHT, false);
+draw_set_color(c_white);
+if (xp_draw != xp) then draw_rectangle(0, GUI_HEIGHT - 10, GUI_WIDTH * (xp/xp_needed), GUI_HEIGHT, false);
+draw_set_color(c_purple);
+draw_rectangle(0, GUI_HEIGHT - 10, GUI_WIDTH * (xp_draw/xp_needed), GUI_HEIGHT, false);
+draw_set_color(c_white);
+draw_text(GUI_WIDTH - 90, GUI_HEIGHT - 30, "Level: " + string(level));
+
+
 /*
 for (var i = 0; i < global.inventory_size; i++)
 {

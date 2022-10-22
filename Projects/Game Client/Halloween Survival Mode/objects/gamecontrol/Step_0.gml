@@ -64,3 +64,6 @@ else if (chat_key)
 }
 
 global.chat_alpha = approach(global.chat_alpha, global.chatting, 0.0025 + 0.09*global.chatting);
+
+//XP
+xp_draw = lerp(xp_draw, xp, 0.1);

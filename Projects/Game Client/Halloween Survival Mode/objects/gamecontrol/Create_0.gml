@@ -165,4 +165,10 @@ enum ENEMY
 	last
 }
 
+//CLIENT PLAYER STATS
+xp = 0;
+xp_needed = 25;
+level = 0;
+xp_draw = 0;
+
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

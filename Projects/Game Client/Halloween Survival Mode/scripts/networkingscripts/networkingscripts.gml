@@ -471,6 +471,9 @@ function handle_data(data)
 				var _i = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", efct_pop_message);
 				_i.text = "+"+string(parsed_data[? "a"]);
 				_i.color = c_fuchsia;
+				
+				if (global.player_id == parsed_data[? "p_id"])
+					xp += parsed_data[? "a"];
 			}
 			break;
 			
@@ -484,6 +487,7 @@ function handle_data(data)
 				{
 					xp = parsed_data[? "xp"];
 					xp_needed = parsed_data[? "xp_need"];
+					level = parsed_data[? "l"];
 				}
 			}
 			break;
