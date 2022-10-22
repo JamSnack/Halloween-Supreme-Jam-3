@@ -24,7 +24,3 @@ action_state = "SHOOT";
 
 //- Selected Block
 selected_block = 0;
-
-//- effects
-
-
