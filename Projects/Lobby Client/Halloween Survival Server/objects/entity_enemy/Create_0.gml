@@ -35,6 +35,7 @@ function damage(amt, killer)
 	{
 		killer.candy_array[held_treat] += held_treat_amt;
 		killer.has_candy = true;
+		killer.add_xp(max_hp);
 		killer_id = killer.p_id;
 		instance_destroy();
 	}

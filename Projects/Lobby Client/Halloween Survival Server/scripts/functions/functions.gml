@@ -65,6 +65,11 @@ function scr_get_generic_enemy()
 {
 	if (global.game_stage < 25)
 		return choose(entity_fast_enemy, entity_jumpkin);
+		
+	
+	
+	//Default return case
+	return choose(entity_fast_enemy, entity_jumpkin);
 }
 
 function scr_get_boss()

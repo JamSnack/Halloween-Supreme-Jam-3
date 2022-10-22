@@ -100,7 +100,7 @@ function handle_data(data)
 				var _pn = parsed_data[? "p_n"];
 				//var _pi = parsed_data[? "p_i"];
 				
-				var _p = instance_create_layer(CENTER_X - 100, CENTER_Y, "instances", entity_player);
+				var _p = instance_create_layer(CENTER_X - 32, CENTER_Y, "instances", entity_player);
 				_p.p_id =_id;
 				_p.p_n = _pn;
 				
@@ -126,7 +126,7 @@ function handle_data(data)
 						var _y_dir = parsed_data[? "v"];
 						
 						//init potential movement speed this step:
-						var _stat_speed = (instance_exists(entity_core) ? STAT_SPEED : 0)
+						var _stat_speed = stat_movement_speed;
 						
 						var x_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_x_dir;
 						var y_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_y_dir;
@@ -286,12 +286,19 @@ function handle_data(data)
 			
 			case "request_shoot":
 			{
-				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", entity_player_projectile);
-				_s.direction = parsed_data[? "dir"];
-				_s.speed = 4;
+				if (instance_exists(entity_player))
+				{
+					var _x = parsed_data[? "x"];
+					var _y = parsed_data[? "y"]
 				
-				parsed_data[? "cmd"] = "player_shoot";
-				send_data(parsed_data);
+					var _s = instance_create_layer(_x, _y, "Instances", entity_player_projectile);
+					_s.direction = parsed_data[? "dir"];
+					_s.speed = 4;
+					_s.attack_damage = instance_nearest(_x, _y, entity_player).stat_attack_damage;
+				
+					parsed_data[? "cmd"] = "player_shoot";
+					send_data(parsed_data);
+				}
 			}
 			break;
 			

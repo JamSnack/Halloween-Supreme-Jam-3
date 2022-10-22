@@ -3,11 +3,9 @@ p_id = 0; //which player owns this object; pass player_id into this object on in
 p_n = ""; //The playername of this object
 moved = false; //If the player's position has changed since the last heartbeat
 dead = false; //whether or not this player is dead
-max_hp = 10;
-hp = max_hp;
 
-death_timer_reset = room_speed*600;
-death_timer = death_timer_reset;
+//death_timer_reset = room_speed*600;
+//death_timer = death_timer_reset;
 
 player_inventory = array_create(global.inventory_size, 0);
 
@@ -33,12 +31,12 @@ function damage(attack)
 		//Revive player or restart the round
 		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
-			var _col = collision_point(CENTER_X - 100, CENTER_Y, entity_block, false, true);
+			var _col = collision_point(CENTER_X - 32, CENTER_Y, entity_block, false, true);
 			
 			if (_col != noone)
 				with (_col) instance_destroy();
 			
-			x = CENTER_X - 100;
+			x = CENTER_X - 32;
 			y = CENTER_Y;
 			entity_core.player_revives -= 1;
 			global.game_stage -= 1;
@@ -83,4 +81,96 @@ function damage(attack)
 	_d[? "mhp"] = max_hp;
 	_d[? "p_id"] = p_id;
 	send_data(_d);
+}
+
+
+//Init stats
+max_hp = 10;
+hp = max_hp;
+
+skill_hp = 0;
+skill_attack = 0;
+skill_speed = 0;
+
+stat_attack_damage = 0;
+stat_movement_speed = 0;
+
+
+//Init levelups
+function update_stats()
+{
+	if (instance_exists(entity_core))
+	{
+		var temp_heal = max_hp;
+		max_hp = 10 + STAT_HP + skill_hp;
+		hp = max(hp, hp + max_hp-temp_heal);
+		
+		stat_attack_damage = skill_attack + STAT_ATTACK;
+		stat_movement_speed = skill_speed + STAT_SPEED;
+	}
+	else 
+	{
+		var temp_heal = max_hp;
+		max_hp = 10 + skill_hp;
+		hp = max(hp, hp + max_hp-temp_heal);
+		
+		stat_attack_damage = skill_attack;
+		stat_movement_speed = skill_speed;
+	}
+	
+	
+}	
+
+
+level = 0;
+xp = 0;
+xp_needed = 25;
+
+function add_xp(amt)
+{
+	var _leveled = false;
+	
+	//add to xp
+	xp += amt;
+	
+	//check for level ups: level up and reset if necessary
+	while (xp >= xp_needed)
+	{
+		xp -= xp_needed;
+		level++;
+		
+		//Add to stats
+		update_stats();
+		
+		//level effects!
+		_leveled = true;
+		
+		//reset
+		xp_needed += xp_needed;
+	}
+	
+	//effects
+	if (_leveled)
+	{
+		send_chat(p_n + " has reached level " + string(level) + "!");
+		
+		var _d = ds_map_create()
+		_d[? "cmd"] = "level";
+		_d[? "p_id"] = p_id;
+		_d[? "l"] = level;
+		_d[? "xp"] = xp;
+		_d[? "xp_need"] = xp_needed;
+		_d[? "x"] = x - 2;
+		_d[? "y"] = y - 36;
+		send_data(_d);
+	}
+	else
+	{
+		var _d = ds_map_create()
+		_d[? "cmd"] = "xp";
+		_d[? "a"] = amt;
+		_d[? "x"] = x - 2;
+		_d[? "y"] = y - 36;
+		send_data(_d);
+	}
 }

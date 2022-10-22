@@ -465,6 +465,28 @@ function handle_data(data)
 					}
 				}
 			}
+			
+			case "xp":
+			{
+				var _i = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", efct_pop_message);
+				_i.text = "+"+string(parsed_data[? "a"]);
+				_i.color = c_fuchsia;
+			}
+			break;
+			
+			case "level":
+			{
+				var _i = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", efct_pop_message);
+				_i.text = "Level Up! " + string(parsed_data[? "l"]);
+				_i.color = c_lime;
+				
+				if (parsed_data[? "p_id"] = global.player_id)
+				{
+					xp = parsed_data[? "xp"];
+					xp_needed = parsed_data[? "xp_need"];
+				}
+			}
+			break;
 		}
 	}
 }

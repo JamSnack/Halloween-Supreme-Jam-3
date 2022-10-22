@@ -33,3 +33,12 @@ function networking_update_core_candies_at_index(_index)
 	_d[? "amt"] = entity_core.candies_stored[_index];
 	send_data(_d);
 }
+
+function send_chat(text)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "chat";
+	_d[? "t"] = text;
+	_d[? "n"] = "";
+	send_data(_d);
+}

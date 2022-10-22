@@ -71,3 +71,8 @@ function scr_select_enemy_sprites(_index)
 		break;
 	}
 }
+
+function create_pop_message(x, y, text, color)
+{
+	
+}

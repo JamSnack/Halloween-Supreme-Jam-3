@@ -63,13 +63,13 @@ global.display_height = display_get_gui_height();
 draw_set_font(fnt_default);
 
 //Initialize player stuff
-global.inventory_size = 0;
+/*global.inventory_size = 0;
 inventory_slot_selected = 0; //index of the currently selected slot
 inventory_is_open = false;
 inventory_anim_value = 0;
 
 //The physical inventory this client has access to.
-/*client_inventory = 
+client_inventory = 
 {
 	inven : array_create(global.inventory_size, 0),
 	add : function(item_id)
@@ -128,6 +128,7 @@ global.game_timer = 0;
 
 //animation cuvres
 global.pop_curve = animcurve_get_channel(ac_pop, 0);
+global.fade_curve = animcurve_get_channel(ac_pop, 1);
 
 //enums
 //cloned from server counterparts
