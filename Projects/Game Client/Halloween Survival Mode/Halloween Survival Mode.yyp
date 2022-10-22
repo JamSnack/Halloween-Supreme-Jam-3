@@ -59,6 +59,7 @@
     {"id":{"name":"efct_treat_to_player","path":"objects/efct_treat_to_player/efct_treat_to_player.yy",},"order":13,},
     {"id":{"name":"imguigml_wrapper","path":"scripts/imguigml_wrapper/imguigml_wrapper.yy",},"order":3,},
     {"id":{"name":"camera","path":"objects/camera/camera.yy",},"order":4,},
+    {"id":{"name":"shd_swapColor","path":"shaders/shd_swapColor/shd_swapColor.yy",},"order":0,},
     {"id":{"name":"rm_world","path":"rooms/rm_world/rm_world.yy",},"order":1,},
     {"id":{"name":"rm_zero","path":"rooms/rm_zero/rm_zero.yy",},"order":0,},
   ],

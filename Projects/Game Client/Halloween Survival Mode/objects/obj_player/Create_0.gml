@@ -26,6 +26,5 @@ action_state = "SHOOT";
 selected_block = 0;
 
 //- effects
-has_collected_effect_candy = false;
-has_received_candy_from_server = false;
+
 
