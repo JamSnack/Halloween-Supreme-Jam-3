@@ -171,4 +171,11 @@ xp_needed = 25;
 level = 0;
 xp_draw = 0;
 
+stat_movespeed = 0;
+stat_attack_speed = 0;
+stat_attack = 0;
+stat_hp = 0;
+
+draw_character_sheet = 0;
+draw_character_sheet_target = 0;
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

@@ -17,20 +17,25 @@ if (instance_exists(entity_player))
 				{
 					if (_p.candy_array[j] > 0)
 					{
-						candies_stored[j] += _p.candy_array[j];
+						var player_treats = _p.candy_array[j];
+						
+						candies_stored[j] += player_treats;
 
 						//send effect
 						var _d = ds_map_create();
 						_d[? "cmd"] = "effect_player_candy_to_core";
 						_d[? "x"] = _p.x;
 						_d[? "y"] = _p.y;
-						_d[? "amt"] = ceil(_p.candy_array[j]/2);
+						_d[? "amt"] = ceil(player_treats/2);
 						_d[? "t"] = j;
 						send_data(_d);
 					
 						//send new candies
 						networking_update_core_candies_at_index(j);
 					
+						//Award xp
+						_p.add_xp(player_treats*2);
+						
 						//reset
 						_p.candy_array[j] = 0;
 					}
@@ -40,7 +45,7 @@ if (instance_exists(entity_player))
 				_p.has_candy = false;
 				
 				//Apply max_hp
-				_p.update_stats();
+				//_p.update_stats();
 			}
 		}
 	}
