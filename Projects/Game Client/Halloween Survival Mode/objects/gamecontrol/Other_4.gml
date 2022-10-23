@@ -8,9 +8,9 @@ if (room == rm_world)
 	_p.p_id = global.player_id;
 	
 	global.use_effects = true;
+	
+	//request world update
+	var _d = ds_map_create();
+	_d[? "cmd"] = "request_world_update";
+	send_data(_d);
 }
-
-//request world update
-var _d = ds_map_create();
-_d[? "cmd"] = "request_world_update";
-send_data(_d);

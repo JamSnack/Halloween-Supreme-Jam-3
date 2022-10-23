@@ -1,12 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_player",
-    "path": "sprites/spr_player/spr_player.yy",
+    "name": "spr_hbox_projectile",
+    "path": "sprites/spr_hbox_projectile/spr_hbox_projectile.yy",
   },
   "solid": false,
   "visible": true,
   "managed": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_hbox_projectile",
+    "path": "sprites/spr_hbox_projectile/spr_hbox_projectile.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "ENTITY",

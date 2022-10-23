@@ -293,6 +293,7 @@ function handle_data(data)
 				
 					var _s = instance_create_layer(_x, _y, "Instances", entity_player_projectile);
 					_s.direction = parsed_data[? "dir"];
+					_s.image_angle = _s.direction; //for collision purposes
 					_s.speed = 4;
 					_s.attack_damage = instance_nearest(_x, _y, entity_player).stat_attack_damage;
 				
@@ -350,7 +351,6 @@ function handle_data(data)
 					with(entity_block)
 					{
 						send_new_block_to_player();
-						//update_block();
 					}
 				}
 				
@@ -358,10 +358,7 @@ function handle_data(data)
 				if (instance_exists(entity_enemy))
 				{
 					with(entity_enemy)
-					{
 						send_enemy_to_client();
-						//moved = true;
-					}
 				}
 			}
 			break;

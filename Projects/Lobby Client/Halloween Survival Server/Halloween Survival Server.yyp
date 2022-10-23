@@ -15,6 +15,7 @@
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":0,},
     {"id":{"name":"ENTITY_NODE","path":"objects/ENTITY_NODE/ENTITY_NODE.yy",},"order":6,},
     {"id":{"name":"imguigml_read_me","path":"scripts/imguigml_read_me/imguigml_read_me.yy",},"order":3,},
+    {"id":{"name":"spr_hbox_projectile","path":"sprites/spr_hbox_projectile/spr_hbox_projectile.yy",},"order":5,},
     {"id":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"order":1,},
     {"id":{"name":"entity_item","path":"objects/entity_item/entity_item.yy",},"order":3,},
     {"id":{"name":"NetworkingScripts","path":"scripts/NetworkingScripts/NetworkingScripts.yy",},"order":0,},

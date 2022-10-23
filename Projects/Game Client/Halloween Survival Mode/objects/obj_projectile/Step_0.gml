@@ -20,9 +20,7 @@ if (instance_exists(obj_block_entity))
 //- enemy collision
 if (instance_exists(obj_enemy_entity))
 {
-	var col = collision_point(x, y, obj_enemy_entity, false, true);
-	
-	if (col != noone)
+	if (place_meeting(x, y, obj_enemy_entity))
 		colliding_with_block = true;
 }
 

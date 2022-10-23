@@ -13,7 +13,7 @@ draw_sprite(spr_ui_health_vial_sillhouette, 0, 0, 0);
 //apply sprite overlay
 gpu_set_colorwriteenable(1, 1, 1, 0);
 
-draw_sprite(spr_ui_health_vial_jam_filling, 0, 0, (1-hp/max_hp)*100);
+draw_sprite(spr_ui_health_vial_jam_filling, 0, 0, health_jam_animation);
 
 gpu_set_colorwriteenable(1, 1, 1, 1);
 

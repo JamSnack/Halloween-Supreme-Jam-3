@@ -216,15 +216,27 @@ function handle_data(data)
 			
 			case "create_enemy":
 			{
+				var _e_id = parsed_data[? "e_id"];
+				
+				//does an enemy with this id already exist?
+				if (instance_exists(obj_enemy_entity))
+				{
+					with (obj_enemy_entity)
+					{
+						if (enemy_id == _e_id)
+							return;
+					}
+				}
+				
 				var _e = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_enemy_entity)
 				_e.max_hp = parsed_data[? "mhp"];
 				_e.hp = parsed_data[? "hp"];
-				_e.enemy_id = parsed_data[? "e_id"];
+				_e.enemy_id = _e_id;
 				
 				with (_e)
 					scr_select_enemy_sprites(parsed_data[? "o_i"]);
 				
-				show_debug_message("Create Enemy");
+				//show_debug_message("Create Enemy");
 			}
 			break;
 			
@@ -313,6 +325,32 @@ function handle_data(data)
 			
 			case "tile_place":
 			{
+				var _t_id = parsed_data[? "t_id"];
+				
+				//does an effect in-flight with this id already exist?
+				if (global.use_effects)
+				{
+					if (instance_exists(obj_block_entity))
+					{
+						with (obj_block_entity)
+						{
+							if (_t_id == tile_id)
+								return;
+						}
+					}
+				}
+				
+				//Does a currently placed tile with this ID exist?
+				if (instance_exists(efct_treat_to_player))
+				{
+					with (efct_treat_to_player)
+					{
+						if (_t_id == object_id)
+							return;
+					}
+				}
+				
+				//Continue...
 				var _type = parsed_data[? "type"];
 				
 				switch (_type)
@@ -331,7 +369,7 @@ function handle_data(data)
 					_t.sprite_index = object_get_sprite(_type);
 					_t.hp = parsed_data[? "hp"];
 					_t.max_hp = parsed_data[? "mhp"];
-					_t.object_id = parsed_data[? "t_id"];
+					_t.object_id = _t_id;
 					_t.target_x = parsed_data[? "x"];
 					_t.target_y = parsed_data[? "y"];
 				}

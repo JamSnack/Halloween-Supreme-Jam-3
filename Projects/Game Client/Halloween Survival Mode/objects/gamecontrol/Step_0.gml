@@ -86,7 +86,7 @@ if (draw_character_sheet == 1)
 	
 	for (var _s = 0; _s < STATS.last; _s++)
 	{	
-		if (mouse_check_button(mb_left) && point_in_rectangle(px, py, _x1, _y1 + _s*40, _x1+9, _y1 + 9 + _s*40))
+		if (!global.chatting && mouse_check_button_released(mb_left) && point_in_rectangle(px, py, _x1, _y1 + _s*40, _x1+9, _y1 + 9 + _s*40))
 		{
 			var _d = ds_map_create();
 			_d[? "cmd"] = "request_skill_up";

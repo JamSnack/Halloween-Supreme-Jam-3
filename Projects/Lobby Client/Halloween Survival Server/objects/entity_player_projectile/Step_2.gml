@@ -5,7 +5,7 @@ if (instance_exists(entity_enemy))
 {
 	var nearest_enemy = instance_nearest(x, y, entity_enemy);
 
-	if (distance_to_point(nearest_enemy.x, nearest_enemy.y) < 8)
+	if (place_meeting(x, y, entity_enemy))
 	{
 		with (nearest_enemy)
 			nearest_enemy.damage(1 + other.attack_damage, other.parent_player);

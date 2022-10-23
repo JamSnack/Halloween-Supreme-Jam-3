@@ -129,3 +129,6 @@ if (key_block || key_door || key_glass)
 	else if (key_glass)
 		selected_block = 2;
 }
+
+//health jam animation
+health_jam_animation = lerp(health_jam_animation, (1-hp/max_hp)*100, 0.1);

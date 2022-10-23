@@ -21,6 +21,7 @@ hp = max_hp;
 
 // -- visuals
 health_surface = 0;
+health_jam_animation = 0;
 
 shoot_delay = 0;
 action_state = "SHOOT";
