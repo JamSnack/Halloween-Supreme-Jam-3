@@ -50,29 +50,46 @@ function damage(attack)
 		else
 		{
 			dead = true;
-			x = 500;
-			y = 2100;
+			x = CENTER_X;
+			y = CENTER_Y;
+			
+			var _reset_game = true;
 		
 			//Check to see if all players have died, ending the round
 			with ( entity_player )
 			{
 				if (dead == false)
-					break;
-				else
 				{
-					//reset/go to intermission
-					global.game_stage = 1;
-				
-					//cleanup
-					with (entity_enemy)
-						instance_destroy();
-					
-					with (entity_block)
-						instance_destroy();
-					
-					//Reset stats
-					max_hp = 10;
+					_reset_game = false;
+					break;
 				}
+			}
+			
+			if (_reset_game)
+			{
+				//reset/go to intermission
+				global.game_stage = 0;
+				
+				//cleanup
+				with (entity_enemy)
+					instance_destroy();
+					
+				with (entity_block)
+					instance_destroy();
+					
+				//Reset stats
+				with (entity_player)
+				{
+					init_stats_and_level();
+					update_stats();
+					dead = false;
+					x = CENTER_X - 32;
+					y = CENTER_Y;
+				}
+				
+				//server announcements
+				send_chat("The Trick or Treaters have been defeated by Grevil the Galling.");
+				send_chat("Reseting game world...");
 			}
 		}
 		
@@ -94,14 +111,23 @@ function damage(attack)
 
 
 //Init stats
-max_hp = 10;
-hp = max_hp;
+function init_stats_and_level()
+{
+	max_hp = 10;
+	hp = max_hp;
 
-player_skills = array_create(STATS.last, 0);
+	player_skills = array_create(STATS.last, 0);
 
-stat_attack_damage = 0;
-stat_movement_speed = 0;
+	stat_attack_damage = 0;
+	stat_movement_speed = 0;
 
+	level = 0;
+	xp = 0;
+	xp_needed = 21;
+	skill_points = 0;
+}
+
+init_stats_and_level();
 
 //Init levelups
 function update_stats()
@@ -126,12 +152,6 @@ function update_stats()
 	
 	
 }	
-
-
-level = 0;
-xp = 0;
-xp_needed = 21;
-skill_points = 0;
 
 function add_xp(amt)
 {

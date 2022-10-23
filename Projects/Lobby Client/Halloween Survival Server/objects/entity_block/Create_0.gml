@@ -26,10 +26,17 @@ function update_block()
 
 function damage(amt)
 {
+	//remove hp
 	hp -= amt;
 	
 	if (hp <= 0)
 		instance_destroy();
 	else
 		update_block();
+		
+	//halt spawn regen
+	regen_hp = false;
 }
+
+//Initial placement
+regen_hp = true;

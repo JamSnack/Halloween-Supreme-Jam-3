@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_enemy",
-    "path": "sprites/spr_enemy/spr_enemy.yy",
+    "name": "spr_player",
+    "path": "sprites/spr_player/spr_player.yy",
   },
   "solid": false,
   "visible": true,
@@ -33,6 +33,7 @@
   "overriddenProperties": [
     {"propertyId":{"name":"max_hp","path":"objects/entity_block/entity_block.yy",},"objectId":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"value":"25","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"type","path":"objects/entity_block/entity_block.yy",},"objectId":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"value":"BUILD.last","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hp","path":"objects/entity_block/entity_block.yy",},"objectId":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"value":"25","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Blocks",

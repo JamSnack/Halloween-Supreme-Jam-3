@@ -380,7 +380,7 @@ function handle_data(data)
 				{
 					var _c = collision_point(parsed_data[? "x"], parsed_data[? "y"], entity_block, false, true);
 					
-					if (_c != noone)
+					if (_c != noone && _c.object_index != entity_core)
 						with (_c) { instance_destroy(); }
 				}
 			}

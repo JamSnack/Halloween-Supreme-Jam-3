@@ -1,4 +1,6 @@
 /// @description Init and create lobby
+randomize();
+
 
 //Init variables
 global.lobby_id = -1;
@@ -118,3 +120,7 @@ enum STATS
 	attack_speed,
 	last
 }
+
+//core
+global.core_x = floor(CENTER_X/32)*32 + 16;
+global.core_y = floor(CENTER_Y/32)*32 + 16;

@@ -23,8 +23,8 @@ if (instance_exists(entity_item))
 */
 
 //boundaries
-x = clamp(x, 0, 2000);
-y = dead ? clamp(y, 2010, 2250) : clamp(y, 0, 2000);
+x = dead ? global.core_x : clamp(x, 0, WORLD_WIDTH);
+y = dead ? global.core_y : clamp(y, 0, WORLD_HEIGHT);
 
 //correct xscale
 if (image_xscale == 0) image_xscale = 1;

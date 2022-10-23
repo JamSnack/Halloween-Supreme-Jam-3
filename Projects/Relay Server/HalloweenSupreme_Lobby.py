@@ -89,8 +89,9 @@ class Lobby:
     
      # Handling Messages From Clients
     def handle(self, client):
+        break_client = False
+
         while True:
-            break_client = False
 
             message_length = 0
             header = b''

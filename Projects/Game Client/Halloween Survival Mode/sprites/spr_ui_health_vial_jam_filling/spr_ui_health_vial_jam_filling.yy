@@ -27,6 +27,9 @@
     {"compositeImage":{"FrameId":{"name":"46e1a338-1896-43d4-990a-324fe4f865e0","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"46e1a338-1896-43d4-990a-324fe4f865e0","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"LayerId":{"name":"8cddc21b-e41f-4c0e-ab0c-8fd51619a8d7","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_ui_health_vial_jam_filling","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"resourceVersion":"1.0","name":"46e1a338-1896-43d4-990a-324fe4f865e0","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"6962882e-63a9-48e2-83d0-5b0e274c3993","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"6962882e-63a9-48e2-83d0-5b0e274c3993","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"LayerId":{"name":"8cddc21b-e41f-4c0e-ab0c-8fd51619a8d7","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_ui_health_vial_jam_filling","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"resourceVersion":"1.0","name":"6962882e-63a9-48e2-83d0-5b0e274c3993","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_ui_health_vial_jam_filling","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},
@@ -36,12 +39,13 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 1.0,
+    "length": 2.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"bab44b2c-1048-438e-a303-cbe017db7119","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"46e1a338-1896-43d4-990a-324fe4f865e0","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"b25a90a3-e9b7-4b80-8d7a-769b47ba23dd","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"6962882e-63a9-48e2-83d0-5b0e274c3993","path":"sprites/spr_ui_health_vial_jam_filling/spr_ui_health_vial_jam_filling.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
