@@ -130,5 +130,9 @@ if (key_block || key_door || key_glass)
 		selected_block = 2;
 }
 
+//Animate
+animate_building = lerp(animate_building, (action_state == "BUILD"), 0.12);
+
+
 //health jam animation
 health_jam_animation = lerp(health_jam_animation, (1-hp/max_hp)*100, 0.1);

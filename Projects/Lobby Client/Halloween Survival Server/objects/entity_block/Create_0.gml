@@ -40,3 +40,4 @@ function damage(amt)
 
 //Initial placement
 regen_hp = true;
+update_block_during_regen_delay = 60;

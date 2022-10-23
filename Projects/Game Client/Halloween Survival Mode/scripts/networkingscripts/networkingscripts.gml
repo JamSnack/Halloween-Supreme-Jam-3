@@ -330,22 +330,22 @@ function handle_data(data)
 				//does an effect in-flight with this id already exist?
 				if (global.use_effects)
 				{
-					if (instance_exists(obj_block_entity))
+					if (instance_exists(efct_place_tile))
 					{
-						with (obj_block_entity)
+						with (efct_place_tile)
 						{
-							if (_t_id == tile_id)
+							if (_t_id == object_id)
 								return;
 						}
 					}
 				}
 				
 				//Does a currently placed tile with this ID exist?
-				if (instance_exists(efct_treat_to_player))
+				if (instance_exists(obj_block_entity))
 				{
-					with (efct_treat_to_player)
+					with (obj_block_entity)
 					{
-						if (_t_id == object_id)
+						if (_t_id == tile_id)
 							return;
 					}
 				}
