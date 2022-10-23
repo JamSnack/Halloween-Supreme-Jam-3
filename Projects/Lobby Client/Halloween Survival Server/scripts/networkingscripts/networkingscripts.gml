@@ -310,6 +310,9 @@ function handle_data(data)
 				var _index = parsed_data[? "type"];
 				_type = entity_block;
 				
+				if  (instance_exists(entity_player) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_player, false, true)) || ( instance_exists(entity_player) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_enemy, false, true) )
+					return;
+				
 				if (instance_exists(entity_core) && entity_core.candies_stored[_index] > 0)
 				{					
 					//select correct object
