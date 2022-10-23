@@ -14,7 +14,7 @@ candies_stored = array_create(CANDY.last, 0);
 
 //stats
 range = 128; //keeps track of players in range
-block_production_time = 1*room_speed;
+//block_production_time = 1*room_speed;
 //block_production = block_production_time;
 
 player_revives = 12;

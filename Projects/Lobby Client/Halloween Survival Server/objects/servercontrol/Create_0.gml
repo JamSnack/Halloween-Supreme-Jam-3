@@ -56,7 +56,7 @@ function spawn_enemy()
 		for (var _i = 0; _i < instance_number(entity_player); _i++)
 		{
 			//Hostile generic enemies
-			repeat( irandom(2) + min(6, global.game_stage div 5) )
+			repeat( irandom(1) + min(6, global.game_stage div 8) )
 				instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_generic_enemy() );
 		}
 	

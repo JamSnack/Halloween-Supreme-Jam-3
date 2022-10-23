@@ -19,6 +19,9 @@ idle_sprite = spr_player_idle;
 max_hp = 10;
 hp = max_hp;
 
+// -- visuals
+health_surface = 0;
+
 shoot_delay = 0;
 action_state = "SHOOT";
 

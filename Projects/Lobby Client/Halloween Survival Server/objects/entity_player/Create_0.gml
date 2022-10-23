@@ -102,7 +102,7 @@ function update_stats()
 	max_hp = 10 + player_skills[STATS.hp];
 	hp = max(hp, hp + max_hp-temp_heal);
 		
-	stat_attack_damage = player_skills[STATS.attack];
+	stat_attack_damage = player_skills[STATS.attack]/2;
 	stat_movement_speed = player_skills[STATS.movespeed]*0.01;
 	
 	//Apply bonuses

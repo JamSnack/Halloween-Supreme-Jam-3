@@ -79,7 +79,7 @@ else if (mouse_wheel_down())
 if (global.game_timer <= 0)
 {
 	//Intermission is over!
-	global.game_timer = room_speed*(48+irandom(20));
+	global.game_timer = room_speed*(30+irandom(20));
 	
 	//respawn players
 	if (instance_exists(entity_player))
@@ -117,7 +117,7 @@ if (global.game_timer <= 0)
 	}
 	
 	//passively increase game_stage
-	global.game_stage++;
+	global.game_stage += 1 + irandom_range(1, instance_number(entity_player)) - 1;
 }
 else
 {	
