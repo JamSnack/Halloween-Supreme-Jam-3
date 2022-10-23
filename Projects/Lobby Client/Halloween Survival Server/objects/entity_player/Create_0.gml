@@ -188,6 +188,8 @@ function send_stats()
 	_d[? "cmd"] = "update_stats";
 	_d[? "p_id"] = p_id;
 	_d[? "skps"] = skill_points;
+	_d[? "mhp"] = max_hp;
+	_d[? "hp"] = hp;
 	
 	//stats go into map
 	for (var _i = 0; _i < STATS.last; _i++)

@@ -59,11 +59,8 @@ if (draw_character_sheet > 0)
 		draw_text_transformed(_x - 230*_alpha, _y - 20*_alpha + _s*_alpha*40, str, _alpha, _alpha, 0);
 		
 		//draw button
-		draw_sprite(spr_ui_character_sheet_button, 0, _x - 245*_alpha, _y -10*_alpha + _s*_alpha*40);
-		
-		var _x1 = GUI_WIDTH/2 - 245;
-		var _y1 = GUI_HEIGHT/2 -10 + 40*_s;
-		draw_rectangle(_x1, _y1, _x1 + 9, _y1 + 9, false);
+		if (skillpoints > 0)
+			draw_sprite(spr_ui_character_sheet_button, 0, _x - 245*_alpha, _y -10*_alpha + _s*_alpha*40);
 	}
 }
 
@@ -94,6 +91,9 @@ draw_set_color(c_purple);
 draw_rectangle(0, GUI_HEIGHT - 10, GUI_WIDTH * (xp_draw/xp_needed), GUI_HEIGHT, false);
 draw_set_color(c_white);
 draw_text(GUI_WIDTH - 80, GUI_HEIGHT - 30, "Lv. " + string(level));
+
+if (skillpoints > 0)
+	draw_text(10, GUI_HEIGHT - 30, string(skillpoints) + " skill points available. Press 'G' to open your character sheet.");
 
 
 /*

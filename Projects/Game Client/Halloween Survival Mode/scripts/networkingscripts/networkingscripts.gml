@@ -497,6 +497,8 @@ function handle_data(data)
 				if (global.player_id == parsed_data[? "p_id"])
 				{
 					skillpoints = parsed_data[? "skps"];
+					obj_player.max_hp = parsed_data[? "mhp"];
+					obj_player.hp = parsed_data[? "hp"];
 					
 					for (var _i = 0; _i < array_length(player_stats); _i++)
 					{
