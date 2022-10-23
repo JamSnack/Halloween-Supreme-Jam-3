@@ -45,13 +45,13 @@ enum TARGET_TYPE
 
 //Game Stage
 //global.game_state = "INTERMISSION";
-global.game_stage = -5;
+global.game_stage = 0;
 global.game_timer = 30;
 bosses_alive = 0;
 
 function spawn_enemy()
 {
-	if (global.game_stage >= 3)
+	if (global.game_stage >= 0)
 	{
 		for (var _i = 0; _i < instance_number(entity_player); _i++)
 		{
@@ -91,6 +91,9 @@ enum CANDY
 	red,
 	green,
 	blue,
+	white,
+	black,
+	magic,
 	last
 }
 

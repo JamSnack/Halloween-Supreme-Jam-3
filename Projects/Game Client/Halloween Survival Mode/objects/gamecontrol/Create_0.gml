@@ -150,6 +150,9 @@ enum CANDY
 	red,
 	green,
 	blue,
+	white,
+	black,
+	magic,
 	last
 }
 

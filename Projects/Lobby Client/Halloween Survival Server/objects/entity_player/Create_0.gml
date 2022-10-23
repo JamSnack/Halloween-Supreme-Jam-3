@@ -78,6 +78,9 @@ function damage(attack)
 		
 		//set hp to max_hp
 		hp = max_hp;
+		
+		//update player pos
+		moved = true;
 	}
 		
 	//send results
