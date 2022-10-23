@@ -550,6 +550,12 @@ function handle_data(data)
 				show_debug_message("updated stats");
 			}
 			break;
+			
+			case "core_revives":
+			{
+				global.revives_remaining = parsed_data[? "r"];
+			}
+			break;
 		}
 	}
 }

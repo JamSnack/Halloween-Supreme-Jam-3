@@ -125,6 +125,7 @@ client_inventory =
 */
 //Game state
 global.game_timer = 0;
+global.revives_remaining = 12;
 
 //animation cuvres
 global.pop_curve = animcurve_get_channel(ac_pop, 0);

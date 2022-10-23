@@ -40,6 +40,12 @@ function damage(attack)
 			y = CENTER_Y;
 			entity_core.player_revives -= 1;
 			global.game_stage -= 1;
+			
+			//update core revives
+			var _d = ds_map_create();
+			_d[? "cmd"] = "core_revives";
+			_d[? "r"] = entity_core.player_revives;
+			send_data(_d);
 		}
 		else
 		{

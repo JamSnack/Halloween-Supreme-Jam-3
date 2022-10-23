@@ -75,9 +75,11 @@ if (draw_contents > 0)
 		draw_text_transformed(x + x_offset + 40*_scale, y + 41*_scale + i*10*_scale + y_offset, string(candies_stored[i]), _scale, _scale, 0);
 	
 	//draw stats
-	draw_text_transformed(x + x_offset + 79*_scale, y + y_offset + 152*_scale, string(STAT_SPEED), _scale, _scale, 0);
+	draw_text_transformed(x + x_offset + 80*_scale, y + y_offset + 153*_scale, string(STAT_SPEED), _scale, _scale, 0);
 	draw_text_transformed(x + x_offset + 80*_scale, y + y_offset + 162*_scale, string(STAT_HP), _scale, _scale, 0);
 	draw_text_transformed(x + x_offset + 80*_scale, y + y_offset + 172*_scale, string(STAT_ATTACK), _scale, _scale, 0);
+	
+	draw_text_transformed(x + x_offset + 80*_scale, y + y_offset + 232*_scale, string(global.revives_remaining), _scale, _scale, 0);
 }
 
 
