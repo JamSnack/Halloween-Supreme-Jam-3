@@ -415,6 +415,30 @@ function handle_data(data)
 				}
 			}
 			break;
+			
+			case "request_skill_up":
+			{
+				var pl_id = parsed_data[? "pl_id"];
+				
+				with (entity_player)
+				{
+					if (p_id == pl_id)
+					{
+						show_debug_message("request skill up received");
+						if (skill_points > 0)
+						{
+							player_skills[parsed_data[? "index"]]++;
+							skill_points--;
+							
+							update_stats();
+							send_stats();
+						}
+						
+						break;
+					}
+				}
+			}
+			break;
 		}
 	}
 }

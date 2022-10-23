@@ -73,3 +73,26 @@ if (keyboard_check_released(ord("G")))
 	draw_character_sheet_target = !draw_character_sheet_target;
 	
 draw_character_sheet = approach(draw_character_sheet, draw_character_sheet_target, 0.1);
+
+//ALLOCATE SKILLPOINTS
+var px = device_mouse_x_to_gui(0);
+var py = device_mouse_y_to_gui(0);
+
+if (draw_character_sheet == 1)
+{
+	var _x1 = GUI_WIDTH/2 - 245;
+	var _y1 = GUI_HEIGHT/2 -10;
+	//show_debug_message(string(point_in_rectangle(px, py, _x1, _y1, _x1+9, _y1+9)));
+	
+	for (var _s = 0; _s < STATS.last; _s++)
+	{	
+		if (mouse_check_button(mb_left) && point_in_rectangle(px, py, _x1, _y1 + _s*40, _x1+9, _y1 + 9 + _s*40))
+		{
+			var _d = ds_map_create();
+			_d[? "cmd"] = "request_skill_up";
+			_d[? "index"] = _s;
+			_d[? "pl_id"] = global.player_id;
+			send_data(_d);
+		}
+	}	
+}

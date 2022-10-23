@@ -34,7 +34,7 @@ chat_overlay = {
 			text = string_delete(text, 1, _c);
 		}
 		
-		global.chat_alpha = 1.0;
+		global.chat_alpha = 2.0;
 	},
 	clear_text : function clear_text() { text = "" },
 	chat_text : "",
@@ -166,15 +166,22 @@ enum ENEMY
 }
 
 //CLIENT PLAYER STATS
+enum STATS
+{
+	hp,
+	movespeed,
+	attack,
+	attack_speed,
+	last
+}
+
+player_stats = array_create(STATS.last, 0);
+
 xp = 0;
 xp_needed = 25;
 level = 0;
 xp_draw = 0;
-
-stat_movespeed = 0;
-stat_attack_speed = 0;
-stat_attack = 0;
-stat_hp = 0;
+skillpoints = 0;
 
 draw_character_sheet = 0;
 draw_character_sheet_target = 0;

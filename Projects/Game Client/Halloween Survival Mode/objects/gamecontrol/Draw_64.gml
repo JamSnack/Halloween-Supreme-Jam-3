@@ -23,32 +23,48 @@ if (draw_character_sheet > 0)
 	//Draw level
 	draw_text_transformed(_x + 120*_alpha, _y - 200*_alpha, "Level: " + string(level), _alpha, _alpha, 0);
 	
+	//Draw skillpoints
+	draw_text_transformed(_x + 120*_alpha, _y - 130*_alpha, "Skillpoints: " + string(skillpoints), _alpha, _alpha, 0);
+	
 	//Draw Stats
 	draw_set_halign(fa_left);
-	var s_hp = "HP: ";
-	var s_at = "Attack: ";
-	var s_ats = "Attack Speed: ";
-	var s_s = "Speed: ";
 	
-	if (instance_exists(obj_core))
+	for (var _s = 0; _s < array_length(player_stats); _s++)
 	{
-		s_hp += string(stat_hp) + " + (" + string(STAT_HP) + ")";
-		s_at += string(stat_attack) + " + (" + string(STAT_ATTACK) + ")";
-		s_ats += string(stat_attack_speed) + " + (" + ")";
-		s_s += string(stat_movespeed) + " + (" + string(STAT_SPEED) + ")";
+		var str = "";
+		
+		switch (_s)
+		{
+			case STATS.hp: { str = "HP: "; } break;
+			case STATS.movespeed: { str = "Speed: "; } break;
+			case STATS.attack: { str = "Attack: "; } break;
+			case STATS.attack_speed: { str = "Attack Speed: "; } break;
+		}
+		
+		//- main string
+		str += string(player_stats[_s]);
+		
+		//- bonus stats
+		if (instance_exists(obj_core))
+		{
+			switch (_s)
+			{
+				case STATS.hp: { str += " + (" + string(STAT_HP) + ")"; } break;
+				case STATS.movespeed: { str += " + (" + string(STAT_SPEED) + ")"; } break;
+				case STATS.attack: { str += " + (" + string(STAT_ATTACK) + ")"; } break;
+			}
+		}
+		
+		//draw stat
+		draw_text_transformed(_x - 230*_alpha, _y - 20*_alpha + _s*_alpha*40, str, _alpha, _alpha, 0);
+		
+		//draw button
+		draw_sprite(spr_ui_character_sheet_button, 0, _x - 245*_alpha, _y -10*_alpha + _s*_alpha*40);
+		
+		var _x1 = GUI_WIDTH/2 - 245;
+		var _y1 = GUI_HEIGHT/2 -10 + 40*_s;
+		draw_rectangle(_x1, _y1, _x1 + 9, _y1 + 9, false);
 	}
-	else 
-	{
-		s_hp += string(stat_hp);
-		s_at += string(stat_attack);
-		s_ats += string(stat_attack_speed);
-		s_s += string(stat_movespeed);
-	}
-	
-	draw_text_transformed(_x - 230*_alpha, _y - 20*_alpha, s_hp, _alpha, _alpha, 0);
-	draw_text_transformed(_x - 230*_alpha, _y + 10*_alpha, s_at, _alpha, _alpha, 0);
-	draw_text_transformed(_x - 230*_alpha, _y + 50*_alpha, s_ats, _alpha, _alpha, 0);
-	draw_text_transformed(_x - 230*_alpha, _y + 90*_alpha, s_s, _alpha, _alpha, 0);
 }
 
 //reset

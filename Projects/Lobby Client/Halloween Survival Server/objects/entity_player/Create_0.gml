@@ -88,9 +88,7 @@ function damage(attack)
 max_hp = 10;
 hp = max_hp;
 
-skill_hp = 0;
-skill_attack = 0;
-skill_speed = 0;
+player_skills = array_create(STATS.last, 0);
 
 stat_attack_damage = 0;
 stat_movement_speed = 0;
@@ -99,23 +97,22 @@ stat_movement_speed = 0;
 //Init levelups
 function update_stats()
 {
+	//Update stats
+	var temp_heal = max_hp;
+	max_hp = 10 + player_skills[STATS.hp];
+	hp = max(hp, hp + max_hp-temp_heal);
+		
+	stat_attack_damage = player_skills[STATS.attack];
+	stat_movement_speed = player_skills[STATS.movespeed]*0.01;
+	
+	//Apply bonuses
+	//- core bonus:
 	if (instance_exists(entity_core))
 	{
-		var temp_heal = max_hp;
-		max_hp = 10 + STAT_HP + skill_hp;
-		hp = max(hp, hp + max_hp-temp_heal);
-		
-		stat_attack_damage = skill_attack + STAT_ATTACK;
-		stat_movement_speed = skill_speed + STAT_SPEED;
-	}
-	else 
-	{
-		var temp_heal = max_hp;
-		max_hp = 10 + skill_hp;
-		hp = max(hp, hp + max_hp-temp_heal);
-		
-		stat_attack_damage = skill_attack;
-		stat_movement_speed = skill_speed;
+		//hp
+		max_hp += STAT_HP;
+		stat_attack_damage += STAT_ATTACK;
+		stat_movement_speed += STAT_SPEED;
 	}
 	
 	
@@ -124,7 +121,8 @@ function update_stats()
 
 level = 0;
 xp = 0;
-xp_needed = 25;
+xp_needed = 21;
+skill_points = 0;
 
 function add_xp(amt)
 {
@@ -141,6 +139,7 @@ function add_xp(amt)
 	{
 		xp -= xp_needed;
 		level++;
+		skill_points++;
 		
 		//Add to stats
 		update_stats();
@@ -149,7 +148,7 @@ function add_xp(amt)
 		_leveled = true;
 		
 		//reset
-		xp_needed += xp_needed;
+		xp_needed += xp_needed + ceil(xp_needed*0.33);
 	}
 	
 	//effects
@@ -165,7 +164,11 @@ function add_xp(amt)
 		_d[? "xp_need"] = xp_needed;
 		_d[? "x"] = x - 2;
 		_d[? "y"] = y - 36;
+		_d[? "skps"] = skill_points;
 		send_data(_d);
+		
+		//Update stats
+		send_stats();
 	}
 	else
 	{
@@ -177,4 +180,20 @@ function add_xp(amt)
 		_d[? "y"] = y - 36;
 		send_data(_d);
 	}
+}
+
+function send_stats()
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "update_stats";
+	_d[? "p_id"] = p_id;
+	_d[? "skps"] = skill_points;
+	
+	//stats go into map
+	for (var _i = 0; _i < STATS.last; _i++)
+		_d[? string(_i)] = player_skills[_i];	
+	
+	send_data(_d);
+	
+	show_debug_message("sending stats");
 }

@@ -265,7 +265,7 @@ function handle_data(data)
 				}
 			}
 			break;
-			
+			/*
 			case "item_pickup":
 			{
 				var pl_id = parsed_data[? "p_id"];
@@ -274,7 +274,7 @@ function handle_data(data)
 					if (!client_inventory.is_full())
 						client_inventory.add(parsed_data[? "index"]);
 			}
-			break;
+			break;*/
 			
 			case "enemy_destroy":
 			{
@@ -489,6 +489,22 @@ function handle_data(data)
 					xp_needed = parsed_data[? "xp_need"];
 					level = parsed_data[? "l"];
 				}
+			}
+			break;
+			
+			case "update_stats":
+			{
+				if (global.player_id == parsed_data[? "p_id"])
+				{
+					skillpoints = parsed_data[? "skps"];
+					
+					for (var _i = 0; _i < array_length(player_stats); _i++)
+					{
+						player_stats[_i] = parsed_data[? string(_i)];
+					}
+				}
+				
+				show_debug_message("updated stats");
 			}
 			break;
 		}

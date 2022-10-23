@@ -46,6 +46,10 @@ else
 	draw_surface(surface_candy_pile, x - _size, y - _size);	
 }
 
+
+//Draw Core tile sprite
+event_inherited();
+
 //Draw MENU
 draw_set_font(fnt_menu_numbers);
 
@@ -53,9 +57,9 @@ if (draw_contents > 0)
 {	
 	//var h_size = 128;
 	//var v_size = 128;
-	var _scale = 1.25*draw_contents;
+	var _scale = 2*draw_contents;
 	var x_offset = -128*_scale;
-	var y_offset = (-154 - 128)*_scale;
+	var y_offset = (-80 - 128)*_scale;
 	
 	draw_sprite_ext(spr_ui_hq_menu, 0, x + x_offset, y + y_offset, _scale, _scale, 0, c_white, 1);
 	
@@ -63,7 +67,7 @@ if (draw_contents > 0)
 	for (var i = 0; i < 3; i++)
 	{
 		var _x = x - 19*_scale + (35*i)*_scale;
-		draw_text_transformed(_x, y - 92*_scale, string(candies_stored[i]), _scale, _scale, 0);
+		draw_text_transformed(_x, y - 17*_scale, string(candies_stored[i]), _scale, _scale, 0);
 	}
 	
 	//draw treat amounts
@@ -75,8 +79,5 @@ if (draw_contents > 0)
 	draw_text_transformed(x + x_offset + 80*_scale, y + y_offset + 162*_scale, string(STAT_HP), _scale, _scale, 0);
 	draw_text_transformed(x + x_offset + 80*_scale, y + y_offset + 172*_scale, string(STAT_ATTACK), _scale, _scale, 0);
 }
-
-//Draw Core tile sprite
-event_inherited();
 
 

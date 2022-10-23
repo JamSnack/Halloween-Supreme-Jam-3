@@ -44,7 +44,7 @@ if (instance_exists(obj_item_entity))
 */
 
 //shooting gun
-if (mouse_left && shoot_delay <= 0 && !global.chatting)
+if (mouse_left && shoot_delay <= player_stats[STATS.attack_speed] && !global.chatting)
 {
 	switch (action_state)
 	{

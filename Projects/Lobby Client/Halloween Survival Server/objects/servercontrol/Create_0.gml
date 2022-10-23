@@ -106,3 +106,12 @@ enum ENEMY
 	weed,
 	last
 }
+
+enum STATS
+{
+	hp,
+	movespeed,
+	attack,
+	attack_speed,
+	last
+}
