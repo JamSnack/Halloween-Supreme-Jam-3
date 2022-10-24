@@ -72,7 +72,7 @@ function spawn_enemy()
 		}
 		
 		//golden jumpkin?
-		if (irandom(50) >= 5)
+		if (irandom(50) == 5)
 		{
 			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", entity_gold_jumpkin );
 		}
