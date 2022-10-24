@@ -69,6 +69,11 @@ draw_set_halign(fa_left);
 
 //Draw chat
 draw_set_font(fnt_menu_text);
+draw_set_alpha(global.chat_alpha/2 - 0.1);
+
+//bkg
+draw_rectangle_color(0, 448, string_width(chat_overlay.text)+4, 450+264, c_black, c_black, c_black, c_black, false);
+
 draw_set_alpha(global.chat_alpha);
 
 var _chat = chat_overlay.text + "\n-----------------\n";
@@ -78,7 +83,7 @@ if (_chat_text = "")
 	_chat_text = "|"
 
 draw_text(4, 450, _chat);
-draw_text(4, 450+200, _chat_text);
+draw_text(4, 450+250, _chat_text);
 
 draw_set_alpha(1);
 

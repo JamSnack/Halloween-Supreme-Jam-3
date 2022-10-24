@@ -20,7 +20,7 @@ function damage(attack)
 	hp -= attack;
 	
 	//regen delay reset
-	regen_delay = room_speed*20;
+	regen_delay = room_speed*10;
 	
 	//death check
 	if (hp <= 0)
@@ -31,13 +31,13 @@ function damage(attack)
 		//Revive player or restart the round
 		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
-			var _col = collision_point(CENTER_X - 32, CENTER_Y, entity_block, false, true);
+			var _col = collision_point(CENTER_X - 16, CENTER_Y + 16, entity_block, false, true);
 			
 			if (_col != noone)
 				with (_col) instance_destroy();
 			
-			x = CENTER_X - 32;
-			y = CENTER_Y;
+			x = CENTER_X - 16;
+			y = CENTER_Y + 16;
 			entity_core.player_revives -= 1;
 			global.game_stage -= 1;
 			

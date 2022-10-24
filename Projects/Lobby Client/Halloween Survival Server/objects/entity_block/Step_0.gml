@@ -2,7 +2,7 @@
 // You can write your code in this editor
 if (regen_hp && hp < max_hp)
 {
-	hp += 0.01;
+	hp += 0.02;
 	
 	if (update_block_during_regen_delay <= 0)
 	{
