@@ -51,6 +51,23 @@ if (instance_exists(entity_player))
 	}
 }
 
+//Base regen
+if (base_regen_delay <= 0)
+{
+	if (instance_exists(entity_block))
+	{
+		with(instance_find(entity_block, tile_seeing))
+			regen_hp = true;
+		
+		tile_seeing++;
+		
+		if (tile_seeing > instance_number(entity_block) - 1)
+			tile_seeing = 0;
+	}
+	
+	base_regen_delay = room_speed*2;
+}
+
 //Convert candies into blocks
 /*if (block_production <= 0)
 {

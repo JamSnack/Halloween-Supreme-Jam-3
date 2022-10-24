@@ -63,8 +63,10 @@ function scr_move_toward_point(target_x, target_y, move_speed)
 
 function scr_get_generic_enemy()
 {
-	if (global.game_stage < 25)
+	if (global.game_stage < 20)
 		return choose(entity_fast_enemy, entity_jumpkin);
+	else if (global.game_stage > 20)
+		return choose(entity_fast_enemy, entity_fast_enemy, entity_jumpkin, entity_jumpkin, entity_zombie, entity_troopie);
 		
 	
 	

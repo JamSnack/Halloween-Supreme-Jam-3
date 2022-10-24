@@ -166,6 +166,9 @@ enum ENEMY
 	pigyamo,
 	pumpkin,
 	weed,
+	gold_jumpkin,
+	troopie,
+	scarecrow,
 	last
 }
 

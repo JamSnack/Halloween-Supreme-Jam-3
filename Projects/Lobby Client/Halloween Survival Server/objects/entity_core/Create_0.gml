@@ -18,3 +18,7 @@ range = 128; //keeps track of players in range
 //block_production = block_production_time;
 
 player_revives = 12;
+
+//Regen
+base_regen_delay = room_speed*2;
+tile_seeing = 0;

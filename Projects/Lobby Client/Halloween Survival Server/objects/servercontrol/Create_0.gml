@@ -42,33 +42,39 @@ alarm[0] = 10;
 enum TARGET_TYPE
 {
 	normal,
+	scramble,
 	none
 }
 
 //Game Stage
 //global.game_state = "INTERMISSION";
-global.game_stage = 0;
+global.game_stage = -3;
 global.game_timer = 30;
 bosses_alive = 0;
+next_wave_spawn_horde = false;
 
 function spawn_enemy()
 {
 	if (global.game_stage >= 0)
 	{
 		for (var _i = 0; _i < instance_number(entity_player); _i++)
-		{
+		{		
 			//Hostile generic enemies
-			repeat( irandom(1) + min(6, global.game_stage div 8) )
+			repeat( 1 + min(6, global.game_stage div 8) )
 				instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_generic_enemy() );
 		}
-	
-	
 	
 		//Keep boss count up
 		if (bosses_alive < global.game_stage div 10)
 		{
 			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_boss() );
-			bosses_alive += 1;	
+			bosses_alive += 1;
+		}
+		
+		//golden jumpkin?
+		if (!instance_exists(entity_gold_jumpkin) && irandom(50) == 5)
+		{
+			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", entity_gold_jumpkin );
 		}
 	}
 }
@@ -109,6 +115,9 @@ enum ENEMY
 	pigyamo,
 	pumpkin,
 	weed,
+	gold_jumpkin,
+	troopie,
+	scarecrow,
 	last
 }
 

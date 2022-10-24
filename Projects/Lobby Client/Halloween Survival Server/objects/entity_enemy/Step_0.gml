@@ -17,6 +17,19 @@ switch (targeting_type)
 		}
 	}
 	break;
+	
+	case TARGET_TYPE.scramble:
+	{
+		//Mindlessly wander
+		scr_move_toward_point(target_x, target_y, move_speed);
+		
+		if (irandom(60) == 6)
+		{
+			target_x = irandom_range(500, WORLD_WIDTH - 500);
+			target_y = irandom_range(500, WORLD_HEIGHT - 500);
+		}
+	}
+	break;
 }
 
 //Damage things

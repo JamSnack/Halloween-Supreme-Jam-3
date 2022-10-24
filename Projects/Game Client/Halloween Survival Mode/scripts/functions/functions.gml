@@ -69,10 +69,48 @@ function scr_select_enemy_sprites(_index)
 			despawn_timer = -1;
 		}
 		break;
+		
+		case ENEMY.gold_jumpkin:
+		{
+			walk_sprite = spr_gold_jumpkin;
+			run_sprite = spr_gold_jumpkin;
+			idle_sprite = spr_gold_jumpkin;
+			use_anim_index = true;
+		}
+		break;
+		
+		case ENEMY.troopie:
+		{
+			walk_sprite = spr_troopie;
+			run_sprite = spr_troopie;
+			idle_sprite = spr_troopie;
+			use_anim_index = true;
+		}
+		break;
+		
+		case ENEMY.zombie:
+		{
+			walk_sprite = spr_zombie;
+			run_sprite = spr_zombie;
+			idle_sprite = spr_zombie;
+			use_anim_index = true;
+		}
+		break;
+		
+		case ENEMY.scarecrow:
+		{
+			walk_sprite = spr_scarecrow;
+			run_sprite = spr_scarecrow;
+			idle_sprite = spr_scarecrow;
+			use_anim_index = true;
+		}
+		break;
 	}
 }
 
+/*
 function create_pop_message(x, y, text, color)
 {
 	
 }
+*/
