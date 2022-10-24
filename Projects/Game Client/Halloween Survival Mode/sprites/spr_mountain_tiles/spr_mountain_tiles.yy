@@ -7,7 +7,7 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 26,
+  "bbox_left": 62,
   "bbox_right": 191,
   "bbox_top": 0,
   "bbox_bottom": 95,
@@ -21,15 +21,15 @@
     "path": "texturegroups/Default",
   },
   "swatchColours": null,
-  "gridX": 32,
-  "gridY": 16,
+  "gridX": 0,
+  "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"1f5b2233-ebce-47e7-8f99-55bba5b25e03","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"1f5b2233-ebce-47e7-8f99-55bba5b25e03","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},"LayerId":{"name":"914c48dc-ed66-478d-9967-1ba76c2bf496","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_grass_tiles","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},"resourceVersion":"1.0","name":"1f5b2233-ebce-47e7-8f99-55bba5b25e03","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"a4f593c9-dd83-4004-8bdb-e2409fd68f0f","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"a4f593c9-dd83-4004-8bdb-e2409fd68f0f","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},"LayerId":{"name":"856fdee6-4389-47bd-9818-8f67bb2b7701","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_mountain_tiles","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},"resourceVersion":"1.0","name":"a4f593c9-dd83-4004-8bdb-e2409fd68f0f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_grass_tiles","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},
+    "spriteId": {"name":"spr_mountain_tiles","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"fff36ff9-fda0-40fd-a895-91e70f0c0b07","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1f5b2233-ebce-47e7-8f99-55bba5b25e03","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"1f105a12-6969-407d-9423-996cb90070fe","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"a4f593c9-dd83-4004-8bdb-e2409fd68f0f","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_grass_tiles","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},
+    "parent": {"name":"spr_mountain_tiles","path":"sprites/spr_mountain_tiles/spr_mountain_tiles.yy",},
     "resourceVersion": "1.4",
-    "name": "spr_grass_tiles",
+    "name": "spr_mountain_tiles",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"914c48dc-ed66-478d-9967-1ba76c2bf496","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"856fdee6-4389-47bd-9818-8f67bb2b7701","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Tile Sets.yy",
   },
   "resourceVersion": "1.0",
-  "name": "spr_grass_tiles",
+  "name": "spr_mountain_tiles",
   "tags": [],
   "resourceType": "GMSprite",
 }
