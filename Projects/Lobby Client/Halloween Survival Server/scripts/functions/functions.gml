@@ -109,9 +109,5 @@ function scr_death_message(playername)
 		default: { playername += " has died."; }
 	}
 	
-	var _d = ds_map_create();
-	_d[? "cmd"] = "chat";
-	_d[? "t"] = playername;
-	_d[? "n"] = "";
-	send_data(_d);
+	send_announcement(playername);
 }

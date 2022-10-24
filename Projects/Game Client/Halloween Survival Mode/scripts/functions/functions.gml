@@ -105,6 +105,24 @@ function scr_select_enemy_sprites(_index)
 			use_anim_index = true;
 		}
 		break;
+		
+		case ENEMY.poultrygeist:
+		{
+			walk_sprite = spr_poultrygeist;
+			run_sprite = spr_poultrygeist;
+			idle_sprite = spr_poultrygeist;
+			use_anim_index = true;
+		}
+		break;
+		
+		case ENEMY.tender_spirirt:
+		{
+			walk_sprite = spr_tender_spirit;
+			run_sprite = spr_tender_spirit;
+			idle_sprite = spr_tender_spirit;
+			use_anim_index = true;
+		}
+		break;
 	}
 }
 

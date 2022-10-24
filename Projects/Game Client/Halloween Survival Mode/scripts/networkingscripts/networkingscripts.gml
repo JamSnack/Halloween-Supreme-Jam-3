@@ -129,6 +129,12 @@ function handle_data(data)
 			}
 			break;
 			
+			case "announcement":
+			{
+				chat_overlay.append(parsed_data[? "t"]);
+			}
+			break;
+			
 			case "player_disconnected":
 			{
 				var pl_id = parsed_data[? "p_id"];

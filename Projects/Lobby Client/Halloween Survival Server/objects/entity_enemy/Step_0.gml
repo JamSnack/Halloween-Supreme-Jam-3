@@ -30,6 +30,19 @@ switch (targeting_type)
 		}
 	}
 	break;
+	
+	case TARGET_TYPE.boss_scramble:
+	{
+		//Move around origin point.
+		if (irandom(15) == 5)
+		{
+			target_x = irandom_range(origin_x - 120, origin_x + 120);
+			target_y = irandom_range(origin_y - 120, origin_y + 120);
+		}
+		
+		scr_move_toward_point(target_x, target_y, move_speed);
+	}
+	break;
 }
 
 //Damage things

@@ -169,6 +169,8 @@ enum ENEMY
 	gold_jumpkin,
 	troopie,
 	scarecrow,
+	poultrygeist,
+	tender_spirirt,
 	last
 }
 

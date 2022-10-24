@@ -294,7 +294,7 @@ function handle_data(data)
 					var _s = instance_create_layer(_x, _y, "Instances", entity_player_projectile);
 					_s.direction = parsed_data[? "dir"];
 					_s.image_angle = _s.direction; //for collision purposes
-					_s.speed = 4;
+					_s.speed = 5;
 					_s.attack_damage = instance_nearest(_x, _y, entity_player).stat_attack_damage;
 				
 					parsed_data[? "cmd"] = "player_shoot";

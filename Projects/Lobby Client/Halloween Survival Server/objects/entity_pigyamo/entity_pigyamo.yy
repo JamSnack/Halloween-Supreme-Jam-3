@@ -36,6 +36,8 @@
     {"propertyId":{"name":"attack_range","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"20","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"player_damage","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"8","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"held_treat_amt_min","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"8","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hp","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"max_hp","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"held_treat_amt","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"irandom_range(held_treat_amt_min, held_treat_amt_max);","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Enemies",

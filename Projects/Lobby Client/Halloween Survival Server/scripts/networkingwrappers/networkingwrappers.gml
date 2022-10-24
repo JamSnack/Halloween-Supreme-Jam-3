@@ -43,6 +43,14 @@ function send_chat(text)
 	send_data(_d);
 }
 
+function send_announcement(text)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "announcement";
+	_d[? "t"] = text;
+	send_data(_d);
+}
+
 function send_damage(x, y, amount)
 {
 	var _d = ds_map_create();

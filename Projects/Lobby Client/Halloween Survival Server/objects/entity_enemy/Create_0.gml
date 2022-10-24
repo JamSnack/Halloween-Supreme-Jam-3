@@ -48,3 +48,6 @@ function damage(amt, killer)
 
 killer_id = -4;
 move_delay = 2;
+
+origin_x = x;
+origin_y = y;

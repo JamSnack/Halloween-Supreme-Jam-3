@@ -43,6 +43,7 @@ enum TARGET_TYPE
 {
 	normal,
 	scramble,
+	boss_scramble,
 	none
 }
 
@@ -51,7 +52,7 @@ enum TARGET_TYPE
 global.game_stage = -3;
 global.game_timer = 30;
 bosses_alive = 0;
-next_wave_spawn_horde = false;
+//next_wave_spawn_horde = false;
 
 function spawn_enemy()
 {	
@@ -73,10 +74,20 @@ function spawn_enemy()
 		
 		//golden jumpkin?
 		if (irandom(50) == 5)
-		{
 			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", entity_gold_jumpkin );
-		}
+			
+		//Archfiends
+		/*if (global.game_stage == 12)
+		{
+			
+		}*/
 	}
+}
+
+function on_game_start()
+{
+	instance_create_layer( CENTER_X - 200, CENTER_Y - 100, "Instances", entity_poultrygeist );
+	send_announcement("An Archfiend has appeared in the Glade.");
 }
 
 global.next_id = 1;
@@ -118,6 +129,8 @@ enum ENEMY
 	gold_jumpkin,
 	troopie,
 	scarecrow,
+	poultrygeist,
+	tender_spirit,
 	last
 }
 

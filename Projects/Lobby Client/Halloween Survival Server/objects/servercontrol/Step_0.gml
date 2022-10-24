@@ -100,11 +100,12 @@ if (global.game_timer <= 0)
 	{
 		instance_create_layer(global.core_x, global.core_y, "Instances", entity_core);
 		global.game_stage = floor((global.game_stage)/2); //if the players got cored, drastically decrease game_stage
+		
+		on_game_start();
 	}
 	
 	//spawn mobs
 	spawn_enemy();
-	
 	
 	//Fill the world with nodes
 	repeat (35 - instance_number(ENTITY_NODE))

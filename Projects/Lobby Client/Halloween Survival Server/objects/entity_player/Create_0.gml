@@ -88,8 +88,8 @@ function damage(attack)
 				}
 				
 				//server announcements
-				send_chat("The Trick or Treaters have been defeated by Grevil the Galling.");
-				send_chat("Reseting game world...");
+				send_announcement("The Trick or Treaters have been defeated by Grevil the Galling.");
+				send_announcement("Reseting game world...");
 			}
 		}
 		
@@ -138,7 +138,7 @@ function update_stats()
 {
 	//Update stats
 	var temp_heal = max_hp;
-	max_hp = 10 + player_skills[STATS.hp];
+	max_hp = 10 + player_skills[STATS.hp]*2;
 	hp = max(hp, hp + max_hp-temp_heal);
 		
 	stat_attack_damage = player_skills[STATS.attack]/2;
@@ -187,7 +187,7 @@ function add_xp(amt)
 	//effects
 	if (_leveled)
 	{
-		send_chat(p_n + " has reached level " + string(level) + "!");
+		send_announcement(p_n + " has reached level " + string(level) + "!");
 		
 		var _d = ds_map_create()
 		_d[? "cmd"] = "level";
