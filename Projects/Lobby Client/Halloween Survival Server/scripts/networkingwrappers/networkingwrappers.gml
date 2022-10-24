@@ -42,3 +42,13 @@ function send_chat(text)
 	_d[? "n"] = "";
 	send_data(_d);
 }
+
+function send_damage(x, y, amount)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "damage";
+	_d[? "d"] = amount;
+	_d[? "x"] = x;
+	_d[? "y"] = y;
+	send_data(_d);
+}

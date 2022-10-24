@@ -14,8 +14,10 @@ if (point_distance(x, y, target_x, target_y) <= 60)
 	send_data(_d);
 }
 
-x_speed = approach(x_speed, sign(target_x - x)*20, 10);
-y_speed = approach(y_speed, sign(target_y - y)*20, 10);
+rate += 1;
+
+x_speed = approach(x_speed, sign(target_x - x)*rate, rate);
+y_speed = approach(y_speed, sign(target_y - y)*rate, rate);
 
 x += x_speed;
 y += y_speed;

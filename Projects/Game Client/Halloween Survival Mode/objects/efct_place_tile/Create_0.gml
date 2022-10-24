@@ -9,3 +9,5 @@ object = -4;
 object_id = 0;
 max_hp = 1;
 hp = 1;
+
+rate = 0;

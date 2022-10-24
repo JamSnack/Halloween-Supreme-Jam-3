@@ -107,10 +107,10 @@ if (global.game_timer <= 0)
 	
 	
 	//Fill the world with nodes
-	repeat (30 - instance_number(ENTITY_NODE))
+	repeat (35 - instance_number(ENTITY_NODE))
 	{
-		var _x = irandom_range(32, WORLD_WIDTH-32);
-		var _y = irandom_range(32, WORLD_HEIGHT-32)
+		var _x = irandom_range(3032, 5000-32);
+		var _y = irandom_range(3032, 5000-32)
 			
 		if (collision_point(_x, _y, entity_block, false, true) == noone)
 			instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	

@@ -40,6 +40,10 @@ function damage(amt, killer)
 		instance_destroy();
 	}
 	else update_enemy();
+	
+	//effects
+	if (amt > -1)
+		send_damage(x + random_range(-26, 26), y + random_range(-26, 26), amt);
 }
 
 killer_id = -4;

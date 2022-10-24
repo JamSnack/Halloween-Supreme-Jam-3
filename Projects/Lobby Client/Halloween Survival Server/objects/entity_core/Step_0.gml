@@ -65,7 +65,7 @@ if (base_regen_delay <= 0)
 			tile_seeing = 0;
 	}
 	
-	base_regen_delay = room_speed*2;
+	base_regen_delay = 20;
 }
 
 //Convert candies into blocks

@@ -5,8 +5,8 @@
 #macro GUI_HEIGHT display_get_gui_height()
 #macro MOUSE_X_IN_WORLD floor(mouse_x/32)*32 + 16
 #macro MOUSE_Y_IN_WORLD floor(mouse_y/32)*32 + 16
-#macro CENTER_X 1000
-#macro CENTER_Y 1000
+#macro CENTER_X 4000
+#macro CENTER_Y 4000
 
 //Popular equations:
 #macro STAT_HP ceil(100*(obj_core.candies_stored[CANDY.red]*0.001))

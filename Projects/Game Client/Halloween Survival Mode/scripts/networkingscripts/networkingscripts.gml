@@ -508,9 +508,7 @@ function handle_data(data)
 			{
 				if (parsed_data[? "a"] != undefined)
 				{
-					var _i = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", efct_pop_message);
-					_i.text = "+"+string(parsed_data[? "a"]);
-					_i.color = c_fuchsia;
+					create_pop_message(parsed_data[? "x"], parsed_data[? "y"], "+" + string(parsed_data[? "a"]), c_fuchsia);
 				
 					if (global.player_id == parsed_data[? "p_id"])
 						xp += parsed_data[? "a"];
@@ -520,9 +518,7 @@ function handle_data(data)
 			
 			case "level":
 			{
-				var _i = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", efct_pop_message);
-				_i.text = "Level Up! " + string(parsed_data[? "l"]);
-				_i.color = c_lime;
+				create_pop_message(parsed_data[? "x"], parsed_data[? "y"], "Level " + string(parsed_data[? "l"]) + "!", c_lime);
 				
 				if (parsed_data[? "p_id"] = global.player_id)
 				{
@@ -532,6 +528,11 @@ function handle_data(data)
 				}
 			}
 			break;
+			
+			case "damage":
+			{
+				create_pop_message(parsed_data[? "x"], parsed_data[? "y"], string(parsed_data[? "d"]), c_red);
+			}
 			
 			case "update_stats":
 			{

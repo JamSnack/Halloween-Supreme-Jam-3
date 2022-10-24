@@ -36,6 +36,10 @@ function damage(amt)
 		
 	//halt spawn regen
 	regen_hp = false;
+	
+	//effects
+	if (amt > -1)
+		send_damage(x + random_range(-26, 26), y + random_range(-26, 26), amt);
 }
 
 //Initial placement

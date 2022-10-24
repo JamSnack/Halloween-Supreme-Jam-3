@@ -107,6 +107,10 @@ function damage(attack)
 	_d[? "mhp"] = max_hp;
 	_d[? "p_id"] = p_id;
 	send_data(_d);
+	
+	//effects
+	if (attack > -1)
+		send_damage(x + random_range(-26, 26), y + random_range(-26, 26), attack);
 }
 
 

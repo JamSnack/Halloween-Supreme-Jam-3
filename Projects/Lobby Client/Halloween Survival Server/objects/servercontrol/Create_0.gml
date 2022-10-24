@@ -54,7 +54,7 @@ bosses_alive = 0;
 next_wave_spawn_horde = false;
 
 function spawn_enemy()
-{
+{	
 	if (global.game_stage >= 0)
 	{
 		for (var _i = 0; _i < instance_number(entity_player); _i++)

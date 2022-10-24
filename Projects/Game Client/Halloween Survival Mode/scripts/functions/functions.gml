@@ -108,9 +108,10 @@ function scr_select_enemy_sprites(_index)
 	}
 }
 
-/*
+
 function create_pop_message(x, y, text, color)
 {
-	
+	var _i = instance_create_layer(x, y, "Instances", efct_pop_message);
+	_i.text = string(text);
+	_i.color = color;
 }
-*/
