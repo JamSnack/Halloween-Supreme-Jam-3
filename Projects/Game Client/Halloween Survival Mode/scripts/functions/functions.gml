@@ -123,6 +123,15 @@ function scr_select_enemy_sprites(_index)
 			use_anim_index = true;
 		}
 		break;
+		
+		case ENEMY.skeleton_crab:
+		{
+			walk_sprite = spr_skeleton_crab;
+			run_sprite = spr_skeleton_crab;
+			idle_sprite = spr_skeleton_crab;
+			use_anim_index = true;
+		}
+		break;
 	}
 }
 

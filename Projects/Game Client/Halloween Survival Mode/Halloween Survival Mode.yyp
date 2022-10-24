@@ -62,6 +62,7 @@
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},"order":0,},
     {"id":{"name":"spr_greenthin","path":"sprites/spr_greenthin/spr_greenthin.yy",},"order":0,},
     {"id":{"name":"obj_item_entity","path":"objects/obj_item_entity/obj_item_entity.yy",},"order":6,},
+    {"id":{"name":"spr_skeleton_crab","path":"sprites/spr_skeleton_crab/spr_skeleton_crab.yy",},"order":11,},
     {"id":{"name":"ts_mountains","path":"tilesets/ts_mountains/ts_mountains.yy",},"order":6,},
     {"id":{"name":"spr_player_walk_import","path":"sprites/spr_player_walk_import/spr_player_walk_import.yy",},"order":1,},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},"order":3,},

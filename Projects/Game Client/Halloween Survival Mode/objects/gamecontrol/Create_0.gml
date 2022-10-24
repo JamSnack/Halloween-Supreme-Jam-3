@@ -171,6 +171,7 @@ enum ENEMY
 	scarecrow,
 	poultrygeist,
 	tender_spirirt,
+	skeleton_crab,
 	last
 }
 

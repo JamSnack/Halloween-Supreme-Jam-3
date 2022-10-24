@@ -23,6 +23,7 @@
     {"id":{"name":"hbox_64","path":"sprites/hbox_64/hbox_64.yy",},"order":6,},
     {"id":{"name":"entity_gold_jumpkin","path":"objects/entity_gold_jumpkin/entity_gold_jumpkin.yy",},"order":7,},
     {"id":{"name":"imguigml_wrapper_widget","path":"scripts/imguigml_wrapper_widget/imguigml_wrapper_widget.yy",},"order":4,},
+    {"id":{"name":"spr_skeleton_crab","path":"sprites/spr_skeleton_crab/spr_skeleton_crab.yy",},"order":7,},
     {"id":{"name":"NetworkingWrappers","path":"scripts/NetworkingWrappers/NetworkingWrappers.yy",},"order":1,},
     {"id":{"name":"entity_fast_enemy","path":"objects/entity_fast_enemy/entity_fast_enemy.yy",},"order":1,},
     {"id":{"name":"entity_core","path":"objects/entity_core/entity_core.yy",},"order":3,},
