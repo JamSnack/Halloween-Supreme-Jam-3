@@ -7,6 +7,7 @@ if (imguigml_ready())
 		var _s = 300;
 		imguigml_set_next_window_pos(global.display_width/2 - _s/2, 80);
 		imguigml_set_next_window_size(_s, 300);
+		
 		imguigml_begin("Multiplayer");
 		
 		imguigml_text("Enter Username:");
@@ -26,6 +27,11 @@ if (imguigml_ready())
 		var l_text = (global.lobby_id == -1) ? "No lobby entered." : string(global.lobby_id);
 		
 		imguigml_text("Lobby ID: " + l_text);
+		
+		//execute lobby
+		if (imguigml_button("Host Lobby"))
+			execute_lobby();
+		
 		imguigml_end();
 	}
 }

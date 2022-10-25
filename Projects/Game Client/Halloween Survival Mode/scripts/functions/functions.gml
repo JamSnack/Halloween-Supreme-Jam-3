@@ -142,3 +142,10 @@ function create_pop_message(x, y, text, color)
 	_i.text = string(text);
 	_i.color = color;
 }
+
+function execute_lobby()
+{
+	var _f = working_directory + "Lobby\\Halloween Survival Server.exe"
+	show_message(_f + "\nExists: "+ string( file_exists(_f) ) );
+	execute_shell_simple(_f);
+}
