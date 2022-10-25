@@ -15,7 +15,7 @@ run_sprite = spr_player_run;
 idle_sprite = spr_player_idle;
 
 skin_light = array_create(3, 2);
-skin_dark = array_create(3, 255);
+skin_dark = array_create(3, 12);
 shirt_light = array_create(3, 2);
 shirt_dark = array_create(3, 2);
 pants_light = array_create(3, 2);

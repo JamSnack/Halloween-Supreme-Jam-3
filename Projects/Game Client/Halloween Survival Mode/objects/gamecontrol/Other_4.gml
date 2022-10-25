@@ -13,4 +13,9 @@ if (room == rm_world)
 	var _d = ds_map_create();
 	_d[? "cmd"] = "request_world_update";
 	send_data(_d);
+	
+	//request player colors
+	var _d = ds_map_create();
+	_d[? "cmd"] = "request_player_colors";
+	send_data(_d);
 }

@@ -74,7 +74,12 @@ function handle_data(data)
 	{
 		switch parsed_data[? "cmd"]
 		{	
-			case "lobby_connect_success": { global.lobby_id = parsed_data[? "l_id"]; global.player_id = parsed_data[? "plr_id"]; } break;
+			case "lobby_connect_success": 
+			{ 
+				global.lobby_id = parsed_data[? "l_id"]; 
+				global.player_id = parsed_data[? "plr_id"];
+			} 
+			break;
 			case "player_pos":
 			{
 				var pl_id =  parsed_data[? "p_id"];

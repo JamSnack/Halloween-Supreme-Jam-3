@@ -1,9 +1,15 @@
 /// @description Draw GUI
 
-shader_set(shd_swapColors);
-scr_shader_swapColors_set_uniforms(REPLACE_SHIRT_LIGHT_ID, REPLACE_SHIRT_DARK_ID, REPLACE_SKIN_LIGHT_ID, REPLACE_SKIN_DARK_ID, REPLACE_PANTS_LIGHT_ID, REPLACE_PANTS_DARK_ID);
-draw_sprite(spr_player_run, current_time/100, 60, 60);
-shader_reset();
+if (room == rm_zero)
+{
+	shader_set(shd_swapColors);
+	scr_shader_swapColors_set_uniforms(REPLACE_SHIRT_LIGHT_ID, REPLACE_SHIRT_DARK_ID, REPLACE_SKIN_LIGHT_ID, REPLACE_SKIN_DARK_ID, REPLACE_PANTS_LIGHT_ID, REPLACE_PANTS_DARK_ID);
+	draw_sprite_ext(spr_player_run, current_time/100, 250, 250, 4, 4, 0, c_white, 1);
+	shader_reset();
+	
+	draw_set_font(fnt_default);
+	draw_text(35, 450, "Shirt Color:                  Pants Color:                  Skin Color: ");
+}
 
 //Draw Character Sheet
 if (draw_character_sheet > 0)

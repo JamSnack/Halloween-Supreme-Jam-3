@@ -108,11 +108,6 @@ function handle_data(data)
 				
 				//Bounce to clients
 				send_data(parsed_data);
-				
-				//request colors
-				var _d = ds_map_create();
-				_d[? "cmd"] = "request_player_colors";
-				send_data(_d);
 			}
 			break;
 			
@@ -493,6 +488,12 @@ function handle_data(data)
 						break;
 					}
 				}
+			}
+			break;
+			
+			case "request_player_colors":
+			{
+				send_data(parsed_data);
 			}
 			break;
 		}

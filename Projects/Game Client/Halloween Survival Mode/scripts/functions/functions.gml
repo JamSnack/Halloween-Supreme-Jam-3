@@ -195,3 +195,47 @@ function scr_shader_swapColors_set_uniforms(shirt_light, shirt_dark, skin_light,
 	shader_set_uniform_f_array(global.uniform_replace_pants_light, pants_light);
 	shader_set_uniform_f_array(global.uniform_replace_pants_dark, pants_dark);	
 }
+
+function scr_apply_hsv_color_to_skin(hue, sat, val, part)
+{
+	color = make_color_hsv(hue, sat, val);
+	
+	switch (part)
+	{
+		case "shirt":
+		{
+			REPLACE_SHIRT_LIGHT_ID[0] = color_get_red(color)/255;
+			REPLACE_SHIRT_LIGHT_ID[1] = color_get_green(color)/255;
+			REPLACE_SHIRT_LIGHT_ID[2] = color_get_blue(color)/255;
+	
+			REPLACE_SHIRT_DARK_ID[0] = -0.25 + color_get_red(color)/255;
+			REPLACE_SHIRT_DARK_ID[1] = -0.25 + color_get_green(color)/255;
+			REPLACE_SHIRT_DARK_ID[2] = -0.25 + color_get_blue(color)/255;
+		}
+		break;
+		
+		case "pants":
+		{
+			REPLACE_PANTS_LIGHT_ID[0] = color_get_red(color)/255;
+			REPLACE_PANTS_LIGHT_ID[1] = color_get_green(color)/255;
+			REPLACE_PANTS_LIGHT_ID[2] = color_get_blue(color)/255;
+	
+			REPLACE_PANTS_DARK_ID[0] = -0.15 + color_get_red(color)/255;
+			REPLACE_PANTS_DARK_ID[1] = -0.15 + color_get_green(color)/255;
+			REPLACE_PANTS_DARK_ID[2] = -0.15 + color_get_blue(color)/255;
+		}
+		break;
+		
+		case "skin":
+		{
+			REPLACE_SKIN_LIGHT_ID[0] = color_get_red(color)/255;
+			REPLACE_SKIN_LIGHT_ID[1] = color_get_green(color)/255;
+			REPLACE_SKIN_LIGHT_ID[2] = color_get_blue(color)/255;
+	
+			REPLACE_SKIN_DARK_ID[0] = -0.15 + color_get_red(color)/255;
+			REPLACE_SKIN_DARK_ID[1] = -0.15 + color_get_green(color)/255;
+			REPLACE_SKIN_DARK_ID[2] = -0.15 + color_get_blue(color)/255;
+		}
+		break;
+	}
+}

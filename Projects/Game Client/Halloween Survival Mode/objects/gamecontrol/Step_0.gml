@@ -43,11 +43,6 @@ if (global.lobby_id != -1 && room == rm_zero)
 	chat_overlay.append("Welcome to Treat Squad, " + string(global.player_name) + "!\nWorld: "+string(global.lobby_id));
 }
 
-if (room == rm_zero)
-{
-	global.chatting = false;
-}
-
 //Chatting
 var chat_key = keyboard_check_released(vk_enter);
 	
@@ -118,3 +113,11 @@ if (instance_exists(obj_enemy_entity))
 	else cursor_text = "";
 }
 else cursor_text = "";
+
+//keep things in menu stable
+if (room == rm_zero)
+{
+	global.chatting = false;
+	draw_character_sheet = 0;
+	draw_character_sheet_target = 0;
+}

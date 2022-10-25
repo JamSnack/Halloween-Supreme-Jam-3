@@ -32,27 +32,27 @@ function networking_send_player_colors()
 		{
 			case 0: 
 			case 1:
-			case 2: { _d[? _c] = SKIN_LIGHT_ID[_index]; } break;
+			case 2: { _d[? _c] = REPLACE_SKIN_LIGHT_ID[_index]; } break;
 								
 			case 3: 
 			case 4:
-			case 5: { _d[? _c] = SKIN_DARK_ID[_index]; } break;
+			case 5: { _d[? _c] = REPLACE_SKIN_DARK_ID[_index]; } break;
 								
 			case 6: 
 			case 7:
-			case 8: { _d[? _c] = SHIRT_LIGHT_ID[_index]; } break;
+			case 8: { _d[? _c] = REPLACE_SHIRT_LIGHT_ID[_index]; } break;
 								
 			case 9: 
 			case 10:
-			case 11: { _d[? _c] = SHIRT_DARK_ID[_index]; } break;
+			case 11: { _d[? _c] = REPLACE_SHIRT_DARK_ID[_index]; } break;
 								
 			case 12: 
 			case 13:
-			case 14: { _d[? _c] = PANTS_LIGHT_ID[_index]; } break;
+			case 14: { _d[? _c] = REPLACE_PANTS_LIGHT_ID[_index]; } break;
 								
 			case 15: 
 			case 16:
-			case 17: { _d[? _c] = PANTS_DARK_ID[_index]; } break;
+			case 17: { _d[? _c] = REPLACE_PANTS_DARK_ID[_index]; } break;
 		}
 	}
 	
