@@ -68,6 +68,7 @@ if (base_regen_delay <= 0)
 	
 	base_regen_delay = 10;
 }
+else base_regen_delay--;
 
 //Convert candies into blocks
 /*if (block_production <= 0)

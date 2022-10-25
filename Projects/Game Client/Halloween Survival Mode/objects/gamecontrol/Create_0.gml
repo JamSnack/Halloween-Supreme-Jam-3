@@ -196,4 +196,6 @@ skillpoints = 0;
 
 draw_character_sheet = 0;
 draw_character_sheet_target = 0;
+
+cursor_text = "";
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

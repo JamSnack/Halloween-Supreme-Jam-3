@@ -30,7 +30,7 @@
   ],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"move_speed","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"2.3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"move_speed","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"max_hp","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"60","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"enemy_index","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"ENEMY.skeleton_crab_minion","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"torque","path":"objects/entity_enemy/entity_enemy.yy",},"objectId":{"name":"entity_enemy","path":"objects/entity_enemy/entity_enemy.yy",},"value":"0.05","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},

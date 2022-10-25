@@ -1,6 +1,5 @@
 /// @description Draw GUI
 
-//Draw Inventory
 //Draw Character Sheet
 if (draw_character_sheet > 0)
 {
@@ -64,11 +63,15 @@ if (draw_character_sheet > 0)
 	}
 }
 
+//Draw cursor text
+draw_set_halign(fa_center);
+draw_set_font(fnt_menu_text);
+draw_text(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0)+20, cursor_text);
+
 //reset
 draw_set_halign(fa_left);
 
 //Draw chat
-draw_set_font(fnt_menu_text);
 draw_set_alpha(global.chat_alpha/2 - 0.1);
 
 //bkg
@@ -99,8 +102,6 @@ draw_text(GUI_WIDTH - 80, GUI_HEIGHT - 30, "Lv. " + string(level));
 
 if (skillpoints > 0)
 	draw_text(10, GUI_HEIGHT - 30, string(skillpoints) + " skill points available. Press 'G' to open your character sheet.");
-
-
 /*
 for (var i = 0; i < global.inventory_size; i++)
 {

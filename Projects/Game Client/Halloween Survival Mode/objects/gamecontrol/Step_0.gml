@@ -43,6 +43,9 @@ if (global.lobby_id != -1 && room == rm_zero)
 	chat_overlay.append("Welcome to Treat Squad, " + string(global.player_name) + "!\nWorld: "+string(global.lobby_id));
 }
 
+if (room == rm_zero)
+	global.chatting = false;
+
 //Chatting
 var chat_key = keyboard_check_released(vk_enter);
 	
@@ -102,3 +105,14 @@ if (draw_character_sheet == 1)
 		}
 	}	
 }
+
+//Mob naming
+if (instance_exists(obj_enemy_entity))
+{
+	var _e = instance_nearest(mouse_x, mouse_y, obj_enemy_entity);
+
+	if (point_in_rectangle(mouse_x, mouse_y, _e.bbox_left, _e.bbox_top, _e.bbox_right, _e.bbox_bottom))
+		cursor_text = scr_get_enemy_name(_e.enemy_image_data) + "\n" + string(_e.hp) + "/" + string(_e.max_hp);
+	else cursor_text = "";
+}
+else cursor_text = "";

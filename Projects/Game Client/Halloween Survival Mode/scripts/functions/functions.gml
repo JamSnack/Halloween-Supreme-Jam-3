@@ -144,6 +144,26 @@ function scr_select_enemy_sprites(_index)
 	}
 }
 
+function scr_get_enemy_name(_index)
+{
+	switch (_index)
+	{
+		case ENEMY.greenthin: { return "Greenthin"; } break;
+		case ENEMY.jumpkin: { return "Jumpkin"; } break;
+		case ENEMY.pigyamo: { return "Pigyamo"; } break;
+		case ENEMY.weed: { return "Weed"; } break;
+		case ENEMY.pumpkin: { return "Pumpkin"; } break;
+		case ENEMY.gold_jumpkin: { return "Golden Jumpkin"; } break;
+		case ENEMY.troopie: { return "Troopie"; } break;
+		case ENEMY.zombie: { return "Zombie"; } break;
+		case ENEMY.scarecrow: { return "Scarecrow"; } break;
+		case ENEMY.poultrygeist: { return "Poultrygeist"; } break;
+		case ENEMY.tender_spirirt: { return "Tender Spirit"; } break;
+		case ENEMY.skeleton_crab: { return "Skeleton Crab"; } break; 
+		case ENEMY.skeleton_crab_minion: { return "Crab Minion"; } break;
+	}
+}
+
 
 function create_pop_message(x, y, text, color)
 {

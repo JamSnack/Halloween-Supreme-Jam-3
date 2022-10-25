@@ -145,11 +145,11 @@ function update_stats()
 {
 	//Update stats
 	var temp_heal = max_hp;
-	max_hp = 10 + player_skills[STATS.hp]*2;
+	max_hp = 10 + player_skills[STATS.hp]*5;
 	hp = max(hp, hp + max_hp-temp_heal);
 		
 	stat_attack_damage = player_skills[STATS.attack]/2;
-	stat_movement_speed = player_skills[STATS.movespeed]*0.01;
+	stat_movement_speed = player_skills[STATS.movespeed]*0.33;
 	
 	//Apply bonuses
 	//- core bonus:

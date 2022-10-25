@@ -238,9 +238,10 @@ function handle_data(data)
 				_e.max_hp = parsed_data[? "mhp"];
 				_e.hp = parsed_data[? "hp"];
 				_e.enemy_id = _e_id;
+				_e.enemy_image_data = parsed_data[? "o_i"];
 				
 				with (_e)
-					scr_select_enemy_sprites(parsed_data[? "o_i"]);
+					scr_select_enemy_sprites(enemy_image_data);
 				
 				//show_debug_message("Create Enemy");
 			}
