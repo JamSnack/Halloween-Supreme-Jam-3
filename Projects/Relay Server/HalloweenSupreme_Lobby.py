@@ -148,7 +148,12 @@ class Lobby:
                 index = self.clients.index(client)
                 self.removeClient(index)
                 client.close()
-                print("Client removed from lobby: "+str(self.id))
+
+                if (client == self.lobby_host):
+                    print("Lobby "+str(self.id) + " has failed.")
+                else:
+                    print("Client removed from lobby: "+str(self.id))
+                    
                 break
 
     def spawn_thread(self, client):
