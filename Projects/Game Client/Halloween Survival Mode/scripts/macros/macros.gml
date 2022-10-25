@@ -28,7 +28,7 @@ Pants tone:
 990004 - dark
 */
 
-globalvar colors, colors2, colors3, colors4, colors5, colors6, replace_colors, replace_colors2, replace_colors3, replace_colors4, replace_colors5;
+globalvar colors, colors2, colors3, colors4, colors5, colors6, replace_colors, replace_colors2, replace_colors3, replace_colors4, replace_colors5, replace_colors6;
 colors = array_create(3, 0);
 colors2 = array_create(3, 0);
 colors3 = array_create(3, 0);
@@ -76,34 +76,39 @@ replace_colors4 = array_create(3, 0);
 replace_colors5 = array_create(3, 0);
 replace_colors6 = array_create(3, 0);
 
-replace_colors[0] = 0;
-replace_colors[1] = 255;
-replace_colors[2] = 0;
+randomize();
+var r1 = irandom(255)/255;
+var r2 = irandom(255)/255;
+var r3 = irandom(255)/255;
+
+replace_colors[0] = r1;
+replace_colors[1] = r2;
+replace_colors[2] = r3;
 #macro REPLACE_SHIRT_LIGHT_ID replace_colors
 
-replace_colors2[0] = 0;
-replace_colors2[1] = 255;
-replace_colors2[2] = 0;
+replace_colors2[0] = r1-0.25;
+replace_colors2[1] = r2-0.25;
+replace_colors2[2] = r3-0.25;
 #macro REPLACE_SHIRT_DARK_ID replace_colors2
 
-replace_colors3[0] = 0;
-replace_colors3[1] = 255;
-replace_colors3[2] = 0;
+replace_colors3[0] = 255/255;
+replace_colors3[1] = 202/255;
+replace_colors3[2] = 176/255;
 #macro REPLACE_SKIN_LIGHT_ID replace_colors3
 
-replace_colors4[0] = 0;
-replace_colors4[1] = 255;
-replace_colors4[2] = 0;
+replace_colors4[0] = 250/255;
+replace_colors4[1] = 173/255;
+replace_colors4[2] = 129/255;
 #macro REPLACE_SKIN_DARK_ID replace_colors4
 
-replace_colors5[0] = 0;
-replace_colors5[1] = 255;
-replace_colors5[2] = 0;
+replace_colors5[0] = 158/255;
+replace_colors5[1] = 31/255;
+replace_colors5[2] = 35/255;
 #macro REPLACE_PANTS_LIGHT_ID replace_colors5
 
-replace_colors6[0] = 0;
-replace_colors6[1] = 255;
-replace_colors6[2] = 0;
+replace_colors6[0] = 153/255;
+replace_colors6[1] = 0;
+replace_colors6[2] = 4/255;
 #macro REPLACE_PANTS_DARK_ID replace_colors6
 
 global.uniform_shirt_light = shader_get_uniform(shd_swapColors, "shirt_light");

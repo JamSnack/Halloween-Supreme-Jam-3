@@ -29,7 +29,6 @@ chat_overlay = {
 		
 		if (string_height(text) > 140)
 		{
-			show_debug_message("test");
 			var _c = string_pos("\n", text);
 			text = string_delete(text, 1, _c);
 		}
@@ -198,4 +197,6 @@ draw_character_sheet = 0;
 draw_character_sheet_target = 0;
 
 cursor_text = "";
+
+
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

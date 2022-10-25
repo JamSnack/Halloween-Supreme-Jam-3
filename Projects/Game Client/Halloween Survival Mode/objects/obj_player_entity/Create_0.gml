@@ -13,3 +13,10 @@ interpolation_rate = 0.3;
 walk_sprite = spr_player_walk;
 run_sprite = spr_player_run;
 idle_sprite = spr_player_idle;
+
+skin_light = array_create(3, 2);
+skin_dark = array_create(3, 255);
+shirt_light = array_create(3, 2);
+shirt_dark = array_create(3, 2);
+pants_light = array_create(3, 2);
+pants_dark = array_create(3, 2);

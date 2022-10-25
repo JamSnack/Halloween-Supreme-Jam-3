@@ -178,3 +178,20 @@ function execute_lobby()
 	//show_message(_f + "\nExists: "+ string( file_exists(_f) ) );
 	execute_shell_simple(_f);
 }
+
+function scr_shader_swapColors_set_uniforms(shirt_light, shirt_dark, skin_light, skin_dark, pants_light, pants_dark)
+{
+	shader_set_uniform_f_array(global.uniform_shirt_light, SHIRT_LIGHT_ID);
+	shader_set_uniform_f_array(global.uniform_shirt_dark, SHIRT_DARK_ID);
+	shader_set_uniform_f_array(global.uniform_skin_light, SKIN_LIGHT_ID);
+	shader_set_uniform_f_array(global.uniform_skin_dark, SKIN_DARK_ID);
+	shader_set_uniform_f_array(global.uniform_pants_light, PANTS_LIGHT_ID);
+	shader_set_uniform_f_array(global.uniform_pants_dark, PANTS_DARK_ID);
+		
+	shader_set_uniform_f_array(global.uniform_replace_shirt_light, shirt_light);
+	shader_set_uniform_f_array(global.uniform_replace_shirt_dark, shirt_dark);
+	shader_set_uniform_f_array(global.uniform_replace_skin_light, skin_light);
+	shader_set_uniform_f_array(global.uniform_replace_skin_dark, skin_dark);
+	shader_set_uniform_f_array(global.uniform_replace_pants_light, pants_light);
+	shader_set_uniform_f_array(global.uniform_replace_pants_dark, pants_dark);	
+}

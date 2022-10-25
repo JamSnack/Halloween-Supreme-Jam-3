@@ -236,3 +236,11 @@ function send_stats()
 	
 	show_debug_message("sending stats");
 }
+
+//cached skins
+skin_light = array_create(3, 0);
+skin_dark = array_create(3, 0);
+pants_light = array_create(3, 0);
+pants_dark = array_create(3, 0);
+shirt_light = array_create(3, 0);
+shirt_dark = array_create(3, 0);

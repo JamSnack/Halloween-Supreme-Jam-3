@@ -27,8 +27,23 @@ void main()
 	if( all( greaterThanEqual(pixel, vec4(shirt_light - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(shirt_light + eps, 1.0)) ) )        
         pixel = vec4(replace_shirt_light, 1.0);
 			
-	if( all( greaterThanEqual(pixel, vec4(shirt_dark - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(shirt_dark + eps, 1.0)) ) )        
+	else if( all( greaterThanEqual(pixel, vec4(shirt_dark - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(shirt_dark + eps, 1.0)) ) )        
 	    pixel = vec4(replace_shirt_dark, 1.0);    
+		
+	//PANTS
+	else if( all( greaterThanEqual(pixel, vec4(pants_light - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(pants_light + eps, 1.0)) ) )        
+        pixel = vec4(replace_pants_light, 1.0);
+			
+	else if( all( greaterThanEqual(pixel, vec4(pants_dark - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(pants_dark + eps, 1.0)) ) )        
+	    pixel = vec4(replace_pants_dark, 1.0);    
+	
+	//SKIN
+	else if( all( greaterThanEqual(pixel, vec4(skin_light - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(skin_light + eps, 1.0)) ) )        
+        pixel = vec4(replace_skin_light, 1.0);
+			
+	else if( all( greaterThanEqual(pixel, vec4(skin_dark - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(skin_dark + eps, 1.0)) ) )        
+	    pixel = vec4(replace_skin_dark, 1.0);    
+
 
     //Pixel of color 2? Different in all cases?
     /*if( all( greaterThanEqual(pixel, vec4(color2 - eps, 1.0)) ) && all( lessThanEqual(pixel, vec4(color2 + eps, 1.0)) ) )        

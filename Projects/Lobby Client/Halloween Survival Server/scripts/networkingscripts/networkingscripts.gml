@@ -103,11 +103,16 @@ function handle_data(data)
 				var _p = instance_create_layer(CENTER_X - 32, CENTER_Y, "instances", entity_player);
 				_p.p_id =_id;
 				_p.p_n = _pn;
-				
+					
 				debug_log.append(_pn + " connected: " + string(_id));
 				
 				//Bounce to clients
 				send_data(parsed_data);
+				
+				//request colors
+				var _d = ds_map_create();
+				_d[? "cmd"] = "request_player_colors";
+				send_data(_d);
 			}
 			break;
 			
@@ -431,6 +436,60 @@ function handle_data(data)
 							send_stats();
 						}
 						
+						break;
+					}
+				}
+			}
+			break;
+			
+			case "player_colors":
+			{
+				var pl_id = parsed_data[? "p_id"];
+				with (entity_player)
+				{
+					if (pl_id == p_id)
+					{
+						show_debug_message("received player colors");
+						for (var _i = 0; _i < 6*3; _i++)
+						{
+							var _c = parsed_data[? "c"+string(_i)];
+							var _index = _i mod 3;
+							
+							show_debug_message("color is: " + string(_c));
+							
+							switch (_i)
+							{
+								case 0: 
+								case 1:
+								case 2: { skin_light[_index] = _c; } break;
+								
+								case 3: 
+								case 4:
+								case 5: { skin_dark[_index] = _c; } break;
+								
+								case 6: 
+								case 7:
+								case 8: { shirt_light[_index] = _c; } break;
+								
+								case 9: 
+								case 10:
+								case 11: { shirt_dark[_index] = _c; } break;
+								
+								case 12: 
+								case 13:
+								case 14: { pants_light[_index] = _c; } break;
+								
+								case 15: 
+								case 16:
+								case 17: { pants_dark[_index] = _c; } break;
+							}
+						}
+						
+						show_debug_message("sending player colors");
+							
+						//bounce to clients
+						send_data(parsed_data);
+							
 						break;
 					}
 				}

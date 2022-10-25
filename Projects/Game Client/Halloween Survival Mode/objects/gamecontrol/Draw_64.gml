@@ -1,11 +1,7 @@
 /// @description Draw GUI
 
 shader_set(shd_swapColors);
-shader_set_uniform_f_array(global.uniform_shirt_light, SHIRT_LIGHT_ID);
-shader_set_uniform_f_array(global.uniform_shirt_dark, SHIRT_DARK_ID);
-shader_set_uniform_f_array(shader_get_uniform(shd_swapColors, "replace_shirt_light"), REPLACE_SHIRT_LIGHT_ID);
-shader_set_uniform_f_array(shader_get_uniform(shd_swapColors, "replace_shirt_dark"), REPLACE_SHIRT_LIGHT_ID);
-//show_debug_message(string(SKIN_DARK_ID[1]) + " | " + string(SKIN_LIGHT_ID[1]));
+scr_shader_swapColors_set_uniforms(REPLACE_SHIRT_LIGHT_ID, REPLACE_SHIRT_DARK_ID, REPLACE_SKIN_LIGHT_ID, REPLACE_SKIN_DARK_ID, REPLACE_PANTS_LIGHT_ID, REPLACE_PANTS_DARK_ID);
 draw_sprite(spr_player_run, current_time/100, 60, 60);
 shader_reset();
 

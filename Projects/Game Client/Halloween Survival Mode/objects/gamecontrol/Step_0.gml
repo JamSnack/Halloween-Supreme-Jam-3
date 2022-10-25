@@ -44,7 +44,9 @@ if (global.lobby_id != -1 && room == rm_zero)
 }
 
 if (room == rm_zero)
+{
 	global.chatting = false;
+}
 
 //Chatting
 var chat_key = keyboard_check_released(vk_enter);
