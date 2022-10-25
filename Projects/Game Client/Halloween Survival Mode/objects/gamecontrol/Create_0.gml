@@ -27,7 +27,7 @@ chat_overlay = {
 	{
 		text = text + "\n" + new_text;
 		
-		if (string_height(text) > 140)
+		if (string_height(text) > 145)
 		{
 			var _c = string_pos("\n", text);
 			text = string_delete(text, 1, _c);
@@ -173,6 +173,14 @@ enum ENEMY
 	skeleton_crab,
 	skeleton_crab_minion,
 	last
+}
+
+enum PROJECTILE
+{
+	normal,
+	egg,
+	wave,
+	last	
 }
 
 //CLIENT PLAYER STATS

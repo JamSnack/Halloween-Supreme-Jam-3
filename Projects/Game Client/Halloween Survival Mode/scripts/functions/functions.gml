@@ -9,6 +9,16 @@ function approach(value, target, rate)
 	    return max(argument0 - argument2, argument1);	
 }
 
+function scr_select_projectile_sprites(_index)
+{
+	switch (_index)
+	{
+		case PROJECTILE.egg: { return spr_projectile_egg; } break;
+		case PROJECTILE.wave: { return spr_projectile_wave; } break;
+		default: { return spr_projectile; } break;
+	}
+}
+
 function scr_select_enemy_sprites(_index)
 {
 	switch (_index)

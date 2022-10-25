@@ -130,4 +130,6 @@ function scr_create_enemy_projectile(x, y, target_x, target_y, speed, object)
 	_d[? "y"] = y;
 	//_d[? "ind"] = object;
 	send_data(_d);
+	
+	return _i;
 }

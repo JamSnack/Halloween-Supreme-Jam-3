@@ -148,6 +148,14 @@ enum STATS
 	last
 }
 
+enum PROJECTILE
+{
+	normal,
+	egg,
+	wave,
+	last	
+}
+
 //core
 global.core_x = floor(CENTER_X/32)*32 + 16;
 global.core_y = floor(CENTER_Y/32)*32 + 16;

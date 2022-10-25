@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_hbox_projectile",
-    "path": "sprites/spr_hbox_projectile/spr_hbox_projectile.yy",
+    "name": "spr_enemy",
+    "path": "sprites/spr_enemy/spr_enemy.yy",
   },
   "solid": false,
   "visible": true,
@@ -32,14 +32,14 @@
   "overriddenProperties": [
     {"propertyId":{"name":"attack_damage","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"9","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"block_damage","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"image_data","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"PROJECTILE.egg","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"image_data","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"PROJECTILE.wave","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Objects",
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "entity_enemy_projectile_egg",
+  "name": "entity_enemy_projectile_wave",
   "tags": [],
   "resourceType": "GMObject",
 }

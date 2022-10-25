@@ -467,6 +467,7 @@ function handle_data(data)
 				_s.image_angle = _s.direction;
 				_s.speed = parsed_data[? "s"];
 				_s.proj_id = parsed_data[? "id"];
+				_s.sprite_index = scr_select_projectile_sprites(parsed_data[? "indx"]);
 			}
 			break;
 			

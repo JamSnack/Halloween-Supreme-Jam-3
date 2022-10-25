@@ -25,6 +25,7 @@
     {"id":{"name":"entity_skeleton_crab","path":"objects/entity_skeleton_crab/entity_skeleton_crab.yy",},"order":13,},
     {"id":{"name":"entity_gold_jumpkin","path":"objects/entity_gold_jumpkin/entity_gold_jumpkin.yy",},"order":7,},
     {"id":{"name":"imguigml_wrapper_widget","path":"scripts/imguigml_wrapper_widget/imguigml_wrapper_widget.yy",},"order":4,},
+    {"id":{"name":"entity_enemy_projectile_wave","path":"objects/entity_enemy_projectile_wave/entity_enemy_projectile_wave.yy",},"order":12,},
     {"id":{"name":"spr_skeleton_crab","path":"sprites/spr_skeleton_crab/spr_skeleton_crab.yy",},"order":7,},
     {"id":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"order":10,},
     {"id":{"name":"NetworkingWrappers","path":"scripts/NetworkingWrappers/NetworkingWrappers.yy",},"order":1,},
