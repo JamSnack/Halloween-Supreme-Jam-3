@@ -5,7 +5,7 @@
     "path": "folders/Shaders.yy",
   },
   "resourceVersion": "1.0",
-  "name": "shd_swapColor",
+  "name": "shd_swapColors",
   "tags": [],
   "resourceType": "GMShader",
 }
