@@ -132,6 +132,15 @@ function scr_select_enemy_sprites(_index)
 			use_anim_index = true;
 		}
 		break;
+		
+		case ENEMY.skeleton_crab_minion:
+		{
+			walk_sprite = spr_skeleton_crab_minion;
+			run_sprite = spr_skeleton_crab_minion;
+			idle_sprite = spr_skeleton_crab_minion;
+			use_anim_index = true;
+		}
+		break;
 	}
 }
 

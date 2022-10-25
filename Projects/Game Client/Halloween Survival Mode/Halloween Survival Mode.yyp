@@ -75,6 +75,7 @@
     {"id":{"name":"ts_marsh","path":"tilesets/ts_marsh/ts_marsh.yy",},"order":12,},
     {"id":{"name":"obj_false_block","path":"objects/obj_false_block/obj_false_block.yy",},"order":14,},
     {"id":{"name":"spr_poultrygeist","path":"sprites/spr_poultrygeist/spr_poultrygeist.yy",},"order":9,},
+    {"id":{"name":"spr_skeleton_crab_minion","path":"sprites/spr_skeleton_crab_minion/spr_skeleton_crab_minion.yy",},"order":12,},
     {"id":{"name":"efct_place_tile","path":"objects/efct_place_tile/efct_place_tile.yy",},"order":0,},
     {"id":{"name":"spr_projectile","path":"sprites/spr_projectile/spr_projectile.yy",},"order":9,},
     {"id":{"name":"spr_ui_health_vial","path":"sprites/spr_ui_health_vial/spr_ui_health_vial.yy",},"order":3,},

@@ -62,7 +62,7 @@ function spawn_enemy()
 		for (var _i = 0; _i < instance_number(entity_player); _i++)
 		{		
 			//Hostile generic enemies
-			repeat( 1 + min(6, global.game_stage div 8) )
+			repeat( 1 + min(6, global.game_stage div 30) )
 				instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", scr_get_generic_enemy() );
 		}
 	
@@ -74,7 +74,7 @@ function spawn_enemy()
 		}
 		
 		//golden jumpkin?
-		if (irandom(45) == 5)
+		if (irandom(40) == 5)
 			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", entity_gold_jumpkin );
 			
 		//Archfiends
@@ -89,7 +89,8 @@ function spawn_enemy()
 
 function on_game_start()
 {
-	
+	instance_create_layer( CENTER_X-200, CENTER_Y-200, "Instances", entity_skeleton_crab );
+	send_announcement("An Archfiend has appeared near the Ocean!");
 }
 
 global.next_id = 1;
@@ -134,6 +135,7 @@ enum ENEMY
 	poultrygeist,
 	tender_spirit,
 	skeleton_crab,
+	skeleton_crab_minion,
 	last
 }
 
