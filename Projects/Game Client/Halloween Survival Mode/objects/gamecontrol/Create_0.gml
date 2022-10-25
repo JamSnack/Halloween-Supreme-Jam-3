@@ -27,7 +27,7 @@ chat_overlay = {
 	{
 		text = text + "\n" + new_text;
 		
-		if (string_height(text) > 190)
+		if (string_height(text) > 140)
 		{
 			show_debug_message("test");
 			var _c = string_pos("\n", text);
@@ -125,7 +125,7 @@ client_inventory =
 */
 //Game state
 global.game_timer = 0;
-global.revives_remaining = 12;
+global.revives_remaining = 25;
 
 //animation cuvres
 global.pop_curve = animcurve_get_channel(ac_pop, 0);

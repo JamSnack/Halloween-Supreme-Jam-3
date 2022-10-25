@@ -52,6 +52,7 @@ enum TARGET_TYPE
 global.game_stage = -3;
 global.game_timer = 30;
 bosses_alive = 0;
+boss_stage = 0;
 //next_wave_spawn_horde = false;
 
 function spawn_enemy()
@@ -77,10 +78,11 @@ function spawn_enemy()
 			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", entity_gold_jumpkin );
 			
 		//Archfiends
-		if (global.game_stage == 7)
+		if (global.game_stage >= 1 && boss_stage == 0)
 		{
 			instance_create_layer( 450, irandom_range(630, 4500), "Instances", entity_poultrygeist );
 			send_announcement("An Archfiend has appeared in the Mountains!");
+			boss_stage += 1;
 		}
 	}
 }

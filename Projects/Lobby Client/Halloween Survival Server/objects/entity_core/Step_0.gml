@@ -62,7 +62,7 @@ if (base_regen_delay <= 0)
 		
 		tile_seeing++;
 		
-		if (tile_seeing > instance_number(entity_block) - 1)
+		if (tile_seeing >= instance_number(entity_block) - 1)
 			tile_seeing = 0;
 	}
 	

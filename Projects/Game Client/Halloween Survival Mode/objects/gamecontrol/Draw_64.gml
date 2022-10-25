@@ -72,7 +72,7 @@ draw_set_font(fnt_menu_text);
 draw_set_alpha(global.chat_alpha/2 - 0.1);
 
 //bkg
-draw_rectangle_color(0, 448, string_width(chat_overlay.text)+4, 450+264, c_black, c_black, c_black, c_black, false);
+draw_rectangle_color(0, 448, max(string_width(chat_overlay.text), 200) + 4, 450+264, c_black, c_black, c_black, c_black, false);
 
 draw_set_alpha(global.chat_alpha);
 

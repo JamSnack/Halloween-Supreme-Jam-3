@@ -161,7 +161,7 @@ function update_stats()
 		stat_movement_speed += STAT_SPEED;
 	}
 	
-	
+	send_stats();
 }	
 
 function add_xp(amt)
@@ -206,9 +206,6 @@ function add_xp(amt)
 		_d[? "y"] = y - 36;
 		_d[? "skps"] = skill_points;
 		send_data(_d);
-		
-		//Update stats
-		send_stats();
 	}
 	else
 	{

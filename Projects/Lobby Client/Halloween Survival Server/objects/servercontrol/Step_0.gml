@@ -118,7 +118,7 @@ if (global.game_timer <= 0)
 	}
 	
 	//passively increase game_stage
-	global.game_stage += 1 + irandom_range(1, instance_number(entity_player)) - 1;
+	global.game_stage += 1;
 }
 else
 {	

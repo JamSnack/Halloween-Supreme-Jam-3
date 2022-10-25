@@ -67,11 +67,13 @@ function scr_get_generic_enemy()
 		return choose(entity_fast_enemy, entity_jumpkin);
 	else if (global.game_stage > 20)
 		return choose(entity_fast_enemy, entity_fast_enemy, entity_jumpkin, entity_jumpkin, entity_zombie, entity_troopie);
+	else if (global.game_stage > 40)
+		return choose(entity_fast_enemy, entity_jumpkin, entity_zombie, entity_troopie, entity_scarecrow);
 		
 	
 	
 	//Default return case
-	return choose(entity_fast_enemy, entity_jumpkin);
+	return choose(entity_fast_enemy, entity_jumpkin, entity_troopie, entity_zombie, entity_scarecrow, entity_tender_spirit);
 }
 
 function scr_get_boss()

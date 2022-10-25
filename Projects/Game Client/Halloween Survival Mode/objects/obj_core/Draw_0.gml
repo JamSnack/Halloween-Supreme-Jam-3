@@ -8,21 +8,20 @@ if (!surface_exists(surface_candy_pile))
 	surface_candy_pile = surface_create(_size*_size, _size*_size);
 	surface_set_target(surface_candy_pile);
 	
-	var _x = 2;
-	var _y = 2;
-	var _r = 1;
-	
 	for (var _c = 0; _c < array_length(candies_stored); _c++)
 	{
+		var _x = 20*_c;
+		var _y = 30*_c;
+		var _r = 1*_c;
+		
 		for (var _t = 0; _t < candies_stored[_c]; _t++)
 		{
 			//too much sugar!
-			if (_t > 250)
+			if (_t > 100)
 				break;
 			
 			draw_sprite_ext(spr_shadow, 0, _x, _y + 2, 0.5, 0.5, _r, c_white, 1);
 			draw_sprite_ext(spr_treats, _c, _x, _y, 0.5, 0.5, _r, c_white, 1);
-			
 			
 			_x += 41+_t;
 			_y += 36+_c;
