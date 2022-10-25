@@ -111,3 +111,21 @@ function scr_death_message(playername)
 	
 	send_announcement(playername);
 }
+
+function scr_create_enemy_projectile(x, y, target_x, target_y, speed, object)
+{
+	var _i = instance_create_layer(x, y, "Instances", object);
+	_i.speed = speed;
+	_i.direction = point_direction(x, y, target_x, target_y);
+	_i.image_angle = _i.direction;
+	
+	//Send projectile to players
+	var _d = ds_map_create();
+	_d[? "cmd"] = "enemy_shoot";
+	_d[? "d"] = _i.direction;
+	_d[? "s"] = speed;
+	_d[? "x"] = x;
+	_d[? "y"] = y;
+	//_d[? "ind"] = object;
+	send_data(_d);
+}

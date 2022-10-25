@@ -131,7 +131,7 @@ function handle_data(data)
 			
 			case "announcement":
 			{
-				chat_overlay.append(parsed_data[? "t"]);
+				chat_overlay.append(">" + parsed_data[? "t"]);
 			}
 			break;
 			
@@ -450,7 +450,43 @@ function handle_data(data)
 				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_projectile);
 				_s.direction = parsed_data[? "dir"];
 				_s.image_angle = _s.direction;
-				_s.speed = 4;
+				_s.speed = 5;
+			}
+			break;
+
+			case "projectile_shoot":
+			{
+				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_projectile);
+				_s.direction = parsed_data[? "d"];
+				_s.image_angle = _s.direction;
+				_s.speed = parsed_data[? "s"];
+				_s.proj_id = parsed_data[? "id"];
+			}
+			break;
+			
+			case "projectile_destroy":
+			{
+				if (instance_exists(obj_projectile))
+				{
+					var pr_id = parsed_data[? "id"];
+					with (obj_projectile)
+					{
+						if (pr_id == proj_id)
+						{
+							instance_destroy();
+							break;	
+						}
+					}
+				}
+			}
+			break;
+			
+			case "enemy_shoot":
+			{
+				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_enemy_projectile);
+				_s.direction = parsed_data[? "d"];
+				_s.image_angle = _s.direction;
+				_s.speed = parsed_data[? "s"];
 			}
 			break;
 			

@@ -60,3 +60,16 @@ function send_damage(x, y, amount)
 	_d[? "y"] = y;
 	send_data(_d);
 }
+
+function networking_send_new_projectile(x, y, direction, speed, image_data, id)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "projectile_shoot";
+	_d[? "x"] = x;
+	_d[? "y"] = y;
+	_d[? "d"] = direction;
+	_d[? "s"] = speed;
+	_d[? "indx"] = image_data;
+	_d[? "id"] = id;
+	send_data(_d);
+}

@@ -28,6 +28,13 @@ function damage(attack)
 		//death message
 		scr_death_message(p_n);
 		
+		//remove treats
+		for (var _c = 0; _c < CANDY.last; _c++)
+		{
+			candy_array[_c] = 0;
+			has_candy = false;
+		}
+		
 		//Revive player or restart the round
 		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
@@ -181,7 +188,7 @@ function add_xp(amt)
 		_leveled = true;
 		
 		//reset
-		xp_needed += xp_needed + ceil(xp_needed*0.33);
+		xp_needed += ceil(xp_needed*0.78);
 	}
 	
 	//effects

@@ -73,21 +73,21 @@ function spawn_enemy()
 		}
 		
 		//golden jumpkin?
-		if (irandom(50) == 5)
+		if (irandom(45) == 5)
 			instance_create_layer( choose(-32, WORLD_WIDTH+32), choose(-32, WORLD_HEIGHT+32), "Instances", entity_gold_jumpkin );
 			
 		//Archfiends
-		/*if (global.game_stage == 12)
+		if (global.game_stage == 7)
 		{
-			
-		}*/
+			instance_create_layer( 450, irandom_range(630, 4500), "Instances", entity_poultrygeist );
+			send_announcement("An Archfiend has appeared in the Mountains!");
+		}
 	}
 }
 
 function on_game_start()
 {
-	instance_create_layer( CENTER_X - 200, CENTER_Y - 100, "Instances", entity_poultrygeist );
-	send_announcement("An Archfiend has appeared in the Glade.");
+	
 }
 
 global.next_id = 1;

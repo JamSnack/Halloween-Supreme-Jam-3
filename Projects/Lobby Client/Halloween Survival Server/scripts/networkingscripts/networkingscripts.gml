@@ -296,9 +296,6 @@ function handle_data(data)
 					_s.image_angle = _s.direction; //for collision purposes
 					_s.speed = 5;
 					_s.attack_damage = instance_nearest(_x, _y, entity_player).stat_attack_damage;
-				
-					parsed_data[? "cmd"] = "player_shoot";
-					send_data(parsed_data);
 				}
 			}
 			break;

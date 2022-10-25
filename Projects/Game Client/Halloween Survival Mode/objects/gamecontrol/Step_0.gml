@@ -69,7 +69,7 @@ global.chat_alpha = approach(global.chat_alpha, global.chatting, 0.0025 + 0.09*g
 xp_draw = lerp(xp_draw, xp, 0.1);
 
 //Character Sheet
-if (keyboard_check_released(ord("G")))
+if (!global.chatting && keyboard_check_released(ord("G")))
 	draw_character_sheet_target = !draw_character_sheet_target;
 	
 draw_character_sheet = approach(draw_character_sheet, draw_character_sheet_target, 0.1);

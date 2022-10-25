@@ -44,6 +44,7 @@
     {"id":{"name":"ts_water","path":"tilesets/ts_water/ts_water.yy",},"order":10,},
     {"id":{"name":"spr_building","path":"sprites/spr_building/spr_building.yy",},"order":6,},
     {"id":{"name":"spr_zombie","path":"sprites/spr_zombie/spr_zombie.yy",},"order":7,},
+    {"id":{"name":"obj_enemy_projectile","path":"objects/obj_enemy_projectile/obj_enemy_projectile.yy",},"order":16,},
     {"id":{"name":"spr_gold_jumpkin","path":"sprites/spr_gold_jumpkin/spr_gold_jumpkin.yy",},"order":6,},
     {"id":{"name":"NetworkingScripts","path":"scripts/NetworkingScripts/NetworkingScripts.yy",},"order":0,},
     {"id":{"name":"spr_glass_block","path":"sprites/spr_glass_block/spr_glass_block.yy",},"order":2,},

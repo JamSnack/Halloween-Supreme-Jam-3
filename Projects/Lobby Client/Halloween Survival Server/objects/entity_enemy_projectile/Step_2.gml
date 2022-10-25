@@ -4,14 +4,14 @@ if (lifetime == 0)
 
 lifetime++;
 
-if (instance_exists(entity_enemy))
+if (instance_exists(entity_player))
 {
-	var nearest_enemy = instance_nearest(x, y, entity_enemy);
+	var nearest_player = instance_nearest(x, y, entity_player);
 
-	if (place_meeting(x, y, entity_enemy))
+	if (place_meeting(x, y, entity_player))
 	{
-		with (nearest_enemy)
-			nearest_enemy.damage(1 + other.attack_damage, other.parent_player);
+		with (nearest_player)
+			nearest_player.damage(1 + other.attack_damage);
 			
 		instance_destroy();
 	}
@@ -25,8 +25,8 @@ if (instance_exists(entity_block))
 	
 	if (col != noone)
 	{
-		if (col.object_index != entity_block_glass)
-			colliding_with_block = true;
+		col.damage(block_damage);
+		instance_destroy();
 	}
 }
 

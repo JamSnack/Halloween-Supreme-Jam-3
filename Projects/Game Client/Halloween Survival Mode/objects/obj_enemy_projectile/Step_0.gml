@@ -4,7 +4,6 @@ lifetime--;
 
 //Collision
 //- block collision
-/*
 var colliding_with_block = false;
 
 if (instance_exists(obj_block_entity))
@@ -19,12 +18,18 @@ if (instance_exists(obj_block_entity))
 }
 
 //- enemy collision
-if (instance_exists(obj_enemy_entity))
+if (instance_exists(obj_player_entity))
 {
-	if (place_meeting(x, y, obj_enemy_entity))
+	if (place_meeting(x, y, obj_player_entity))
 		colliding_with_block = true;
 }
-*/
+
+if (instance_exists(obj_player))
+{
+	if (place_meeting(x, y, obj_player))
+		colliding_with_block = true;
+}
+
 //Kill
-if (lifetime <= 0)
+if (lifetime <= 0 || colliding_with_block)
 	instance_destroy();
