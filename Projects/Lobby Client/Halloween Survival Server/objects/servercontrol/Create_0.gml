@@ -84,13 +84,19 @@ function spawn_enemy()
 			send_announcement("An Archfiend has appeared in the Mountains!");
 			boss_stage += 1;
 		}
+		else if (global.game_stage >= 35 && boss_stage == 1)
+		{
+			instance_create_layer( 610, 7420, "Instances", entity_skeleton_crab );
+			send_announcement("An Archfiend has appeared near the Ocean!");
+			boss_stage += 1;
+		}
 	}
 }
 
 function on_game_start()
 {
-	instance_create_layer( CENTER_X-200, CENTER_Y-200, "Instances", entity_skeleton_crab );
-	send_announcement("An Archfiend has appeared near the Ocean!");
+    //instance_create_layer( 610, 7420, "Instances", entity_skeleton_crab );
+	//send_announcement("An Archfiend has appeared near the Ocean!");
 }
 
 global.next_id = 1;
