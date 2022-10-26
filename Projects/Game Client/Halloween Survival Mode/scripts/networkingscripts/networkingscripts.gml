@@ -337,7 +337,7 @@ function handle_data(data)
 			
 			case "tile_place":
 			{
-				if (parsed_data[? "p_id"] == noone || parsed_data[? "p_id"] != global.player_id)
+				if (parsed_data[? "p_id"] == -1 || parsed_data[? "p_id"] != global.player_id)
 					return;
 				
 				var _t_id = parsed_data[? "t_id"];
