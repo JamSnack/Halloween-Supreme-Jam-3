@@ -7,7 +7,7 @@ var y_speed = max(draw_y - y, y - draw_y);
 if (draw_x != x && x_speed > _range || draw_y != y && y_speed > _range)
 {
 	//calculate if speed is great enough to be running
-	if (x_speed > 2 || y_speed > 2)
+	if (x_speed > 4 || y_speed > 4)
 		sprite_index = run_sprite;
 	else
 		sprite_index = walk_sprite;	

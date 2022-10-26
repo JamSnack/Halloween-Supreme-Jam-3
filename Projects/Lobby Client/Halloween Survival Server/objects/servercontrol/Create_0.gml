@@ -22,9 +22,9 @@ debug_log =
 		text += "[" + string(TIME) + "]: " + string(_str) + "\n"; 
 		
 		if (-string_height(text) < -800)
-		{
 			serverControl.debug_scroll -= 64;
-		}
+			
+		draw_enable_drawevent(true);
 		
 	}
 }

@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"imguigml_defines","path":"scripts/imguigml_defines/imguigml_defines.yy",},"order":2,},
+    {"id":{"name":"handler_world_request","path":"objects/handler_world_request/handler_world_request.yy",},"order":13,},
     {"id":{"name":"spr_hbox_greenthin","path":"sprites/spr_hbox_greenthin/spr_hbox_greenthin.yy",},"order":3,},
     {"id":{"name":"entity_block","path":"objects/entity_block/entity_block.yy",},"order":0,},
     {"id":{"name":"hbox_none","path":"sprites/hbox_none/hbox_none.yy",},"order":4,},

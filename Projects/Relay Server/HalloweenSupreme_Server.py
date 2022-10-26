@@ -87,8 +87,9 @@ def receive():
                 if (lobby.getId() == lobby_id):
                     lobby.addClient(client, client_name)
                     _success = True
-                elif (len(lobby.getClients()) == 0):
+                elif (len(lobby.getClients()) <= lobby.getMinimumClients()):
                     #The lobby is empty, destroy it.
+                    lobby.close_all_clients()
                     lobbies.remove(lobby)
                     print("Lobby removed: "+str(lobby.getId()))
 

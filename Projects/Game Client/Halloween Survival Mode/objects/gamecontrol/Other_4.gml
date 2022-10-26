@@ -12,6 +12,7 @@ if (room == rm_world)
 	//request world update
 	var _d = ds_map_create();
 	_d[? "cmd"] = "request_world_update";
+	_d[? "p_id"] = global.player_id;
 	send_data(_d);
 	
 	//request player colors

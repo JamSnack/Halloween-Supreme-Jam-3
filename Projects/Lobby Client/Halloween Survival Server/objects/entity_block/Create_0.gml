@@ -1,6 +1,9 @@
 /// @description
-function send_new_block_to_player()
+function send_new_block_to_player(receiving_player)
 {
+	if (receiving_player == undefined)
+		receiving_player = noone;
+	
 	var _d = ds_map_create();
 	_d[? "cmd"] = "tile_place";
 	_d[? "x"] = x;
@@ -9,6 +12,7 @@ function send_new_block_to_player()
 	_d[? "mhp"] = max_hp;
 	_d[? "t_id"] = tile_id;
 	_d[? "type"] = type;
+	_d[? "p_id"] = receiving_player;
 	send_data(_d);
 }
 

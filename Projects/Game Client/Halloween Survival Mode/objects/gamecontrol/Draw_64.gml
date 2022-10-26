@@ -23,7 +23,13 @@ if (draw_character_sheet > 0)
 	draw_sprite_ext(spr_ui_character_sheet, 0, GUI_WIDTH/2, GUI_HEIGHT/2, _alpha, _alpha, 0, c_white, _alpha);
 	
 	//Draw player sprite
-	draw_sprite_ext(spr_player_idle, 0, _x - 152*_alpha, _y - 105*_alpha, 5*_alpha, 5*_alpha, 0, c_white, _alpha);
+	if (instance_exists(obj_player))
+	{
+		shader_set(shd_swapColors);
+		scr_shader_swapColors_set_uniforms(REPLACE_SHIRT_LIGHT_ID, REPLACE_SHIRT_DARK_ID, REPLACE_SKIN_LIGHT_ID, REPLACE_SKIN_DARK_ID, REPLACE_PANTS_LIGHT_ID, REPLACE_PANTS_DARK_ID);
+		draw_sprite_ext(obj_player.sprite_index, obj_player.image_index, _x - 152*_alpha, _y - 105*_alpha, 5*_alpha, 5*_alpha, 0, c_white, _alpha);
+		shader_reset();
+	}
 	
 	//Draw Name
 	draw_set_halign(fa_center);

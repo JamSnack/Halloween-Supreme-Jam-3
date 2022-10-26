@@ -344,15 +344,17 @@ function handle_data(data)
 				//This will probe each entity_player and cause them to send position packets, forcing them to exist in the new client's game.
 				with (entity_player)
 					moved = true;
-					
+				
+				var _i = instance_create_layer(x, y, "Instances", handler_world_request);
+				_i.receiving_player = parsed_data[? "p_id"];
 				//send the tile data to the new player
-				if (instance_exists(entity_block))
+				/*if (instance_exists(entity_block))
 				{
 					with(entity_block)
 					{
 						send_new_block_to_player();
 					}
-				}
+				}*/
 				
 				//send enemy data to the new player
 				if (instance_exists(entity_enemy))
