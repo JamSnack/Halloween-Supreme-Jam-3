@@ -464,7 +464,10 @@ function handle_data(data)
 
 			case "projectile_shoot":
 			{
-				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_projectile);
+				var _x = parsed_data[? "x"];
+				var _y = parsed_data[? "y"];
+				
+				var _s = instance_create_layer(_x, _y, "Instances", obj_projectile);
 				_s.direction = parsed_data[? "d"];
 				_s.image_angle = _s.direction;
 				_s.speed = parsed_data[? "s"];

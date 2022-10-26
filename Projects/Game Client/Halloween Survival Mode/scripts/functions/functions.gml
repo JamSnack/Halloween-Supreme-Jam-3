@@ -177,6 +177,15 @@ function scr_get_enemy_name(_index)
 
 function create_pop_message(x, y, text, color)
 {
+	var _cx = camera_get_view_x(camera_get_active());
+	var _cy = camera_get_view_y(camera_get_active());
+				
+	if (x > _cx && x < _cx + 1366)
+		return;
+					
+	if (y > _cy && y < _cy + 768)
+		return;
+		
 	var _i = instance_create_layer(x, y, "Instances", efct_pop_message);
 	_i.text = string(text);
 	_i.color = color;

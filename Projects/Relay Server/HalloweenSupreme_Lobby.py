@@ -15,13 +15,9 @@ class Lobby:
         self.lobby_host = None #the client who is hosting the lobby
         self.packet_size = packet_size
         self.next_player_id = 0 #Used to assign player ids
-        self.minimum_clients_needed_to_delete_lobby = 0 #How many clients this lobby needs to have before it is garbage collected
 
     def getId(self):
         return self.id
-
-    def getMinimumClients(self):
-        return self.minimum_clients_needed_to_delete_lobby
 
     def getClients(self):
         return self.clients
@@ -71,7 +67,6 @@ class Lobby:
             data = data.encode("utf_8")
             
             self.broadcast(data, client)
-            self.minimum_clients_needed_to_delete_lobby = 1
 
         #Add new client ID to a list in such a way that the indexes between client_ids and clients match.
         self.client_ids.append(self.next_player_id)
@@ -150,14 +145,14 @@ class Lobby:
 
             #Disconnect the client.
             if break_client:
+                index = self.clients.index(client)
+                self.removeClient(index)
+                client.close()
+
                 if (client == self.lobby_host):
                     print("Lobby "+str(self.id) + " has failed.")
                 else:
                     print("Client removed from lobby: "+str(self.id))
-
-                index = self.clients.index(client)
-                self.removeClient(index)
-                client.close()
                     
                 break
 
@@ -215,10 +210,6 @@ class Lobby:
             self.lobby_host.send(message)
         except:
             self.lobby_host.close()
-
-    def close_all_clients(self):
-        for c in self.clients:
-            c.close()
 
 
 
