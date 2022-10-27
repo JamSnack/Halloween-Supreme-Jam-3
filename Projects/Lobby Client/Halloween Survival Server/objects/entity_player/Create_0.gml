@@ -35,6 +35,8 @@ function damage(attack)
 			has_candy = false;
 		}
 		
+		send_held_candy();
+		
 		//Revive player or restart the round
 		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
@@ -235,6 +237,20 @@ function send_stats()
 	send_data(_d);
 	
 	show_debug_message("sending stats");
+}
+
+function send_held_candy()
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "update_held_candy";
+	_d[? "p_id"] = p_id;
+	
+	for (var _i = 0; _i < CANDY.last; _i++)
+	{
+		_d[? string(_i)] = candy_array[_i];	
+	}
+	
+	send_data(_d);
 }
 
 //cached skins

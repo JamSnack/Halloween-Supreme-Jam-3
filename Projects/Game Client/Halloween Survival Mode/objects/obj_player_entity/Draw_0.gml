@@ -16,3 +16,7 @@ shader_set(shd_swapColors);
 scr_shader_swapColors_set_uniforms(shirt_light, shirt_dark, skin_light, skin_dark, pants_light, pants_dark);
 event_inherited();
 shader_reset();
+
+//hp
+if (hp < max_hp)
+	draw_healthbar(draw_x - 8, draw_y - 1 + 2, draw_x + 8, draw_y + 1 + 2, (hp/max_hp)*100, c_black, c_red, c_green, 0, true, true);

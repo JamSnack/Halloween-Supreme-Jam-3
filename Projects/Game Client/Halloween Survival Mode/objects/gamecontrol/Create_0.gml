@@ -155,6 +155,8 @@ enum CANDY
 	last
 }
 
+global.held_candy = array_create(CANDY.last, 0);
+
 enum ENEMY
 {
 	generic_enemy,

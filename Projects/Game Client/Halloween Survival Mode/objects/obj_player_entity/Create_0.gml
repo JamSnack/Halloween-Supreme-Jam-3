@@ -20,3 +20,6 @@ shirt_light = array_create(3, 2);
 shirt_dark = array_create(3, 2);
 pants_light = array_create(3, 2);
 pants_dark = array_create(3, 2);
+
+hp = 0;
+max_hp = 10;

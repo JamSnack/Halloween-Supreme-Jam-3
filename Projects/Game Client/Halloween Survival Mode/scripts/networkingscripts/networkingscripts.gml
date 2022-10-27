@@ -669,6 +669,19 @@ function handle_data(data)
 				}
 			}
 			break;
+			
+			case "update_held_candy":
+			{
+				if (parsed_data[? "p_id"] == global.player_id)
+				{
+					for (var _i = 0; _i < CANDY.last; _i++)
+						global.held_candy[_i] = parsed_data[? string(_i)];
+						
+					//update_held_candy = true;
+						
+				}
+			}
+			break;
 
 		}
 	}

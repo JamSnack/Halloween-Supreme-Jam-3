@@ -42,6 +42,7 @@ if (instance_exists(entity_player))
 				}
 				
 				//reset
+				_p.send_held_candy();
 				_p.has_candy = false;
 				
 				//apply stats

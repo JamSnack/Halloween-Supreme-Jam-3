@@ -119,6 +119,17 @@ draw_text(GUI_WIDTH - 80, GUI_HEIGHT - 30, "Lv. " + string(level));
 
 if (skillpoints > 0)
 	draw_text(10, GUI_HEIGHT - 30, string(skillpoints) + " skill points available. Press 'G' to open your character sheet.");
+	
+//Draw held candy
+for (var _i = 0; _i < CANDY.last; _i++)
+{
+	if (global.held_candy[_i] > 0)
+	{
+		draw_text(25, 145 + 16*_i, "x"+string(global.held_candy[_i]) );
+		draw_sprite(spr_treats, _i, 16, 150 + 16*_i);
+	}
+}
+
 /*
 for (var i = 0; i < global.inventory_size; i++)
 {
