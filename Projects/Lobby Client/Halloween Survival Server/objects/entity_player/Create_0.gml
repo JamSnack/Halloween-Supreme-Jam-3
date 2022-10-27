@@ -136,7 +136,7 @@ function init_stats_and_level()
 
 	level = 0;
 	xp = 0;
-	xp_needed = 21;
+	xp_needed = 25;
 	skill_points = 0;
 }
 
@@ -190,7 +190,7 @@ function add_xp(amt)
 		_leveled = true;
 		
 		//reset
-		xp_needed += ceil(xp_needed*0.78);
+		xp_needed += ceil(xp_needed*0.46);
 	}
 	
 	//effects
