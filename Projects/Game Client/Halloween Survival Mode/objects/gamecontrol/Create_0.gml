@@ -172,6 +172,7 @@ enum ENEMY
 	tender_spirirt,
 	skeleton_crab,
 	skeleton_crab_minion,
+	halloween_ham,
 	last
 }
 

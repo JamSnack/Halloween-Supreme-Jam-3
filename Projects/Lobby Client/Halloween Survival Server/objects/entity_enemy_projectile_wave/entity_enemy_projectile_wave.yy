@@ -31,7 +31,7 @@
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"attack_damage","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"9","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"block_damage","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"block_damage","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"image_data","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"objectId":{"name":"entity_enemy_projectile","path":"objects/entity_enemy_projectile/entity_enemy_projectile.yy",},"value":"PROJECTILE.wave","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {

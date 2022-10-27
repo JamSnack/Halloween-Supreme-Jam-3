@@ -10,6 +10,7 @@
     {"id":{"name":"imguigml_config","path":"scripts/imguigml_config/imguigml_config.yy",},"order":5,},
     {"id":{"name":"entity_pigyamo","path":"objects/entity_pigyamo/entity_pigyamo.yy",},"order":3,},
     {"id":{"name":"entity_pumpkin","path":"objects/entity_pumpkin/entity_pumpkin.yy",},"order":4,},
+    {"id":{"name":"entity_halloween_ham","path":"objects/entity_halloween_ham/entity_halloween_ham.yy",},"order":15,},
     {"id":{"name":"__imguigml_internal_functions","path":"scripts/__imguigml_internal_functions/__imguigml_internal_functions.yy",},"order":0,},
     {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},"order":1,},
     {"id":{"name":"entity_jumpkin","path":"objects/entity_jumpkin/entity_jumpkin.yy",},"order":2,},

@@ -43,6 +43,12 @@ switch (targeting_type)
 		scr_move_toward_point(target_x, target_y, move_speed);
 	}
 	break;
+	
+	case TARGET_TYPE.charge:
+	{
+		scr_move_toward_point(target_x, target_y, move_speed);
+	}
+	break;
 }
 
 //Damage things

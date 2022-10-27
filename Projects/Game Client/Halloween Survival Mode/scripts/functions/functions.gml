@@ -151,6 +151,15 @@ function scr_select_enemy_sprites(_index)
 			use_anim_index = true;
 		}
 		break;
+		
+		case ENEMY.halloween_ham:
+		{
+			walk_sprite = spr_halloween_ham;
+			run_sprite = spr_halloween_ham;
+			idle_sprite = spr_halloween_ham;
+			use_anim_index = true;
+		}
+		break;
 	}
 }
 
@@ -171,6 +180,7 @@ function scr_get_enemy_name(_index)
 		case ENEMY.tender_spirirt: { return "Tender Spirit"; } break;
 		case ENEMY.skeleton_crab: { return "Skeleton Crab"; } break; 
 		case ENEMY.skeleton_crab_minion: { return "Crab Minion"; } break;
+		case ENEMY.halloween_ham: { return "The Halloween Ham"; } break;
 	}
 }
 

@@ -44,6 +44,7 @@ enum TARGET_TYPE
 	normal,
 	scramble,
 	boss_scramble,
+	charge,
 	none
 }
 
@@ -95,8 +96,8 @@ function spawn_enemy()
 
 function on_game_start()
 {
-    //instance_create_layer( 610, 7420, "Instances", entity_skeleton_crab );
-	//send_announcement("An Archfiend has appeared near the Ocean!");
+    instance_create_layer( CENTER_X-200, CENTER_Y-200, "Instances", entity_halloween_ham );
+	send_announcement("An Archfiend has appeared in the Marsh!");
 }
 
 global.next_id = 1;
@@ -142,6 +143,7 @@ enum ENEMY
 	tender_spirit,
 	skeleton_crab,
 	skeleton_crab_minion,
+	halloween_ham,
 	last
 }
 

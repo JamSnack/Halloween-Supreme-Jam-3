@@ -81,6 +81,7 @@
     {"id":{"name":"efct_place_tile","path":"objects/efct_place_tile/efct_place_tile.yy",},"order":0,},
     {"id":{"name":"spr_projectile_egg","path":"sprites/spr_projectile_egg/spr_projectile_egg.yy",},"order":1,},
     {"id":{"name":"spr_projectile","path":"sprites/spr_projectile/spr_projectile.yy",},"order":0,},
+    {"id":{"name":"spr_halloween_ham","path":"sprites/spr_halloween_ham/spr_halloween_ham.yy",},"order":13,},
     {"id":{"name":"spr_color_picker","path":"sprites/spr_color_picker/spr_color_picker.yy",},"order":21,},
     {"id":{"name":"spr_ui_health_vial","path":"sprites/spr_ui_health_vial/spr_ui_health_vial.yy",},"order":3,},
     {"id":{"name":"spr_grass_tiles","path":"sprites/spr_grass_tiles/spr_grass_tiles.yy",},"order":1,},
