@@ -4,5 +4,6 @@
 instance_deactivate_object(obj_block_entity);
 
 instance_activate_region(x-1366/2, y-768/2, x+1366/2, y+768/2, true);
+instance_activate_object(obj_core);
 
 alarm[0] = 17;
