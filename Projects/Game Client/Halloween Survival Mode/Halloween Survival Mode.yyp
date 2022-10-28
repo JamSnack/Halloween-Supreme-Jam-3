@@ -40,6 +40,7 @@
     {"id":{"name":"spr_building_stuff","path":"sprites/spr_building_stuff/spr_building_stuff.yy",},"order":7,},
     {"id":{"name":"gameControl","path":"objects/gameControl/gameControl.yy",},"order":0,},
     {"id":{"name":"spr_arrow_indicator","path":"sprites/spr_arrow_indicator/spr_arrow_indicator.yy",},"order":8,},
+    {"id":{"name":"spr_ui_shooting_indicator","path":"sprites/spr_ui_shooting_indicator/spr_ui_shooting_indicator.yy",},"order":9,},
     {"id":{"name":"spr_wheat_tiles","path":"sprites/spr_wheat_tiles/spr_wheat_tiles.yy",},"order":2,},
     {"id":{"name":"imgui","path":"objects/imgui/imgui.yy",},"order":4,},
     {"id":{"name":"ts_water","path":"tilesets/ts_water/ts_water.yy",},"order":10,},

@@ -72,3 +72,5 @@ for (var _i = 0; _i < _a; _i++)
 		}
 	}
 }
+
+draw_sprite(spr_ui_shooting_indicator, 0, 700, -24 + 20*(1-animate_building));
