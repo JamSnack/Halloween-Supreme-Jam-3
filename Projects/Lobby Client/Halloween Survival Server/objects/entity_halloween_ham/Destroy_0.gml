@@ -5,6 +5,6 @@
 event_inherited();
 
 //Increase game_stage
-if (global.game_stage < 60)
-	global.game_stage = 60;
+if (global.game_stage < 100)
+	global.game_stage = 100;
 

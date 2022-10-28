@@ -7,12 +7,11 @@ event_inherited();
 //Tender Spirit Spawns
 if (tender_spirit_spawn_delay <= 0)
 {
-	if (!instance_exists(entity_skeleton_crab_minion) && instance_number(entity_skeleton_crab_minion) < 10)
+	if (instance_number(entity_ham_jumpkin) < 10)
 	{
-		repeat(3)
-			instance_create_layer(x + irandom_range(-32, 32), y + irandom_range(-32, 32), "Instances", entity_skeleton_crab_minion);
+		instance_create_layer(x + irandom_range(-32, 32), y + irandom_range(-32, 32), "Instances", entity_ham_jumpkin);
 		
-		tender_spirit_spawn_delay = room_speed*60;
+		tender_spirit_spawn_delay = room_speed*67;
 	}
 }
 else tender_spirit_spawn_delay--;
@@ -32,7 +31,7 @@ if (projectile_shoot_delay <= 0)
 			
 			projectile_shoot_delay = room_speed*(4 + irandom(10));
 			
-			if (irandom(2) == 1 && hp/max_hp <= 0.75)
+			if (choose(1,0) == 1 && hp/max_hp <= 0.90)
 			{
 				target_x = _p.x;
 				target_y = _p.y;
@@ -62,7 +61,7 @@ if (projectile_shoot_delay2 <= 0)
 	{
 			var _speed = 2;
 			
-			scr_create_enemy_projectile(x, y, x+1, y, 3, entity_enemy_projectile_egg);
+			scr_create_enemy_projectile(x, y, x+2, y, 3, entity_enemy_projectile_egg);
 			scr_create_enemy_projectile(x, y, x + lengthdir_x(2, 30), y + lengthdir_y(2, 30), _speed, entity_enemy_projectile);
 			scr_create_enemy_projectile(x, y, x + lengthdir_x(2, 60), y + lengthdir_y(2, 60), _speed, entity_enemy_projectile);
 			scr_create_enemy_projectile(x, y, x + lengthdir_x(2, 90), y + lengthdir_y(2, 90), _speed, entity_enemy_projectile);

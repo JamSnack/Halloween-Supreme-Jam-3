@@ -54,6 +54,7 @@
     {"id":{"name":"serverControl","path":"objects/serverControl/serverControl.yy",},"order":0,},
     {"id":{"name":"shd_imgui_depth","path":"shaders/shd_imgui_depth/shd_imgui_depth.yy",},"order":1,},
     {"id":{"name":"imgui","path":"objects/imgui/imgui.yy",},"order":4,},
+    {"id":{"name":"entity_ham_jumpkin","path":"objects/entity_ham_jumpkin/entity_ham_jumpkin.yy",},"order":16,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [

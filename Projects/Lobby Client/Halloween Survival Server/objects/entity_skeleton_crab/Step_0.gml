@@ -7,7 +7,7 @@ event_inherited();
 //Tender Spirit Spawns
 if (tender_spirit_spawn_delay <= 0)
 {
-	if (!instance_exists(entity_skeleton_crab_minion) && instance_number(entity_skeleton_crab_minion) < 10)
+	if (instance_number(entity_skeleton_crab_minion) < 10)
 	{
 		repeat(3)
 			instance_create_layer(x + irandom_range(-32, 32), y + irandom_range(-32, 32), "Instances", entity_skeleton_crab_minion);

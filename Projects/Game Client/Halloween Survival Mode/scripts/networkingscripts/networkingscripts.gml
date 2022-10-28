@@ -401,7 +401,20 @@ function handle_data(data)
 			{
 				var t_id = parsed_data[? "t_id"];
 				
-				if (instance_exists(obj_block_entity))
+				if (t_id == -2)
+				{
+					//This is a position-specific destroy
+					var _x = parsed_data[? "x"];
+					var _y = parsed_data[? "y"];
+					instance_activate_region(_x-1, _y-1, _x, _y, true);
+					
+					var _c = collision_point(_x, _y, obj_block_entity, false, true);
+					
+					if (_c != noone)
+						with (_c)
+							instance_destroy();
+				}
+				else if (instance_exists(obj_block_entity))
 				{
 					with(obj_block_entity)
 					{

@@ -175,6 +175,7 @@ enum ENEMY
 	skeleton_crab,
 	skeleton_crab_minion,
 	halloween_ham,
+	ham_jumpkin,
 	last
 }
 

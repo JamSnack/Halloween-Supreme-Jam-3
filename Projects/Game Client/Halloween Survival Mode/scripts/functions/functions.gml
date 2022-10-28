@@ -160,6 +160,15 @@ function scr_select_enemy_sprites(_index)
 			use_anim_index = true;
 		}
 		break;
+		
+		case ENEMY.ham_jumpkin:
+		{
+			walk_sprite = spr_ham_jumpkin;
+			run_sprite = spr_ham_jumpkin;
+			idle_sprite = spr_ham_jumpkin;
+			use_anim_index = true;
+		}
+		break;
 	}
 }
 
@@ -181,20 +190,21 @@ function scr_get_enemy_name(_index)
 		case ENEMY.skeleton_crab: { return "Skeleton Crab"; } break; 
 		case ENEMY.skeleton_crab_minion: { return "Crab Minion"; } break;
 		case ENEMY.halloween_ham: { return "The Halloween Ham"; } break;
+		case ENEMY.ham_jumpkin: { return "Ham-Flavoured Jumpkin"; } break;
 	}
 }
 
 
 function create_pop_message(x, y, text, color)
 {
-	var _cx = camera_get_view_x(camera_get_active());
-	var _cy = camera_get_view_y(camera_get_active());
-				
+	/*var _cx = camera_get_view_x(view_camera[0]);
+	var _cy = camera_get_view_y(view_camera[0]);
+			
 	if (x > _cx && x < _cx + 1366)
 		return;
 					
 	if (y > _cy && y < _cy + 768)
-		return;
+		return;*/
 		
 	var _i = instance_create_layer(x, y, "Instances", efct_pop_message);
 	_i.text = string(text);

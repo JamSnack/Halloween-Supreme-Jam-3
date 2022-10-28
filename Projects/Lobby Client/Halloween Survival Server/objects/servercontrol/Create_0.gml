@@ -91,13 +91,40 @@ function spawn_enemy()
 			send_announcement("An Archfiend has appeared near the Ocean!");
 			boss_stage += 1;
 		}
+		else if (global.game_stage >= 70 && boss_stage == 2)
+		{
+			instance_create_layer( 7000, 7159, "Instances", entity_halloween_ham );
+			send_announcement("An Archfiend has appeared in the Marsh!");
+			boss_stage += 1;
+		}
+		else if (global.game_stage >= 100 && boss_stage == 2)
+		{
+			send_announcement("[Grevil the Galling]: You Trick or Treaters will NEVER have your treats back!");
+			boss_stage += 1;	
+		}
+		else if (global.game_stage >= 100 && boss_stage == 3)
+		{
+			send_announcement("[Grevil the Galling]: My minions will defeat you!");
+			boss_stage += 1;
+		}
+		else if (global.game_stage >= 105 && boss_stage == 4)
+		{
+			send_announcement("[Grevil the Galling]: Prepare to face my wrath...");
+			boss_stage += 1;
+		}
+		else if (global.game_stage >= 106 && boss_stage == 5)
+		{
+			boss_stage += 1;
+		}
 	}
 }
 
 function on_game_start()
 {
-    instance_create_layer( CENTER_X-200, CENTER_Y-200, "Instances", entity_halloween_ham );
+	/*
+    instance_create_layer( 7000, 7159, "Instances", entity_halloween_ham );
 	send_announcement("An Archfiend has appeared in the Marsh!");
+	*/
 }
 
 global.next_id = 1;
@@ -144,6 +171,7 @@ enum ENEMY
 	skeleton_crab,
 	skeleton_crab_minion,
 	halloween_ham,
+	ham_jumpkin,
 	last
 }
 

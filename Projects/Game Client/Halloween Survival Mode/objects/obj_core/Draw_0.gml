@@ -20,9 +20,6 @@ if (!surface_exists(surface_candy_pile))
 			if (_t > 100)
 				break;
 			
-			draw_sprite_ext(spr_shadow, 0, _x, _y + 2, 0.5, 0.5, _r, c_white, 1);
-			draw_sprite_ext(spr_treats, _c, _x, _y, 0.5, 0.5, _r, c_white, 1);
-			
 			_x += 41+_t;
 			_y += 36+_c;
 			_r += 1+(_t+_c)*0.47;
@@ -32,6 +29,9 @@ if (!surface_exists(surface_candy_pile))
 				
 			while (_y > _size*2 - 4)
 				_y -= _size*2 - 4;
+				
+			draw_sprite_ext(spr_shadow, 0, _x, _y + 2, 0.5, 0.5, _r, c_white, 1);
+			draw_sprite_ext(spr_treats, _c, _x, _y, 0.5, 0.5, _r, c_white, 1);
 		}
 	}
 	
