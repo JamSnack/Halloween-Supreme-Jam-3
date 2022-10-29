@@ -43,7 +43,7 @@ if (projectile_shoot_delay2 <= 0)
 	{
 		var _p = instance_nearest(x, y, entity_player);
 		
-		if (distance_to_object(_p) < 32*7)
+		if (distance_to_object(_p) < 32*10)
 		{
 			var _speed = 2;
 			

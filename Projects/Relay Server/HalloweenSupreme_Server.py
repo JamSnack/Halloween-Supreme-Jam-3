@@ -103,6 +103,8 @@ def receive():
             lobbies.append(temp_lobby)
 
             next_id += 1
+            if (next_id > 9999):
+                next_id = 1000
 
             _success = True
 

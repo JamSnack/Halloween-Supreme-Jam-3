@@ -44,7 +44,9 @@ if (instance_exists(obj_item_entity))
 */
 
 //shooting gun
-if (mouse_left && shoot_delay <= gameControl.player_stats[STATS.attack_speed]*2 && !global.chatting && gameControl.draw_character_sheet == 0)
+var _stats_attack_speed = instance_exists(obj_core) ? gameControl.player_stats[STATS.attack_speed]*2 + STAT_ATTACK_SPEED : gameControl.player_stats[STATS.attack_speed]*2;
+
+if (mouse_left && shoot_delay <= (_stats_attack_speed) && !global.chatting && gameControl.draw_character_sheet == 0)
 {
 	switch (action_state)
 	{

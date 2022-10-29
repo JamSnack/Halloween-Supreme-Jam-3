@@ -68,7 +68,7 @@ function scr_get_generic_enemy()
 	else if (global.game_stage > 20)
 		return choose(entity_fast_enemy, entity_fast_enemy, entity_jumpkin, entity_jumpkin, entity_zombie, entity_troopie);
 	else if (global.game_stage > 40)
-		return choose(entity_fast_enemy, entity_jumpkin, entity_zombie, entity_troopie);
+		return choose(entity_zombie, entity_troopie);
 		
 	
 	
@@ -78,8 +78,10 @@ function scr_get_generic_enemy()
 
 function scr_get_boss()
 {
-	if (global.game_stage > 5)
+	if (global.game_stage < 20)
 		return entity_pigyamo;
+	else
+		return choose( entity_pigyamo, entity_ghost );
 }
 
 function scr_death_message(playername)

@@ -217,6 +217,26 @@ function scr_select_enemy_sprites(_index)
 			use_anim_index = true;
 		}
 		break;
+		
+		case ENEMY.ghost:
+		{
+			walk_sprite = spr_ghost;
+			run_sprite = spr_ghost;
+			idle_sprite = spr_ghost;
+			use_anim_index = true;
+		}
+		break;
+		
+		case ENEMY.gravestone:
+		{
+			walk_sprite = spr_gravestone;
+			run_sprite = spr_gravestone;
+			idle_sprite = spr_gravestone;
+			use_anim_index = true;
+			
+			despawn_timer = -1;
+		}
+		break;
 	}
 }
 
@@ -242,6 +262,9 @@ function scr_get_enemy_name(_index)
 		case ENEMY.ocean_node: { return "Ocean Node"; } break;
 		case ENEMY.rock: { return "Stone"; } break;
 		case ENEMY.star: { return "Star"; } break;
+		case ENEMY.ghost: { return "Ghost"; } break;
+		case ENEMY.imp: { return "Imp"; } break;
+		case ENEMY.gravestone: { return "Gravestone"; } break;
 	}
 }
 

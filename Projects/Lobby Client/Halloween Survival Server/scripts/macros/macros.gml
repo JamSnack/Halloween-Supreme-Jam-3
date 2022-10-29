@@ -10,4 +10,5 @@
 #macro STAT_HP ceil(100*(entity_core.candies_stored[CANDY.red]*0.001))
 #macro STAT_SPEED 2*(entity_core.candies_stored[CANDY.green]*0.001)
 #macro STAT_ATTACK ceil(50*(entity_core.candies_stored[CANDY.blue]*0.001))
-#macro STAT_PROJ_SPEED ceil(4*(entity_core.candies_stored[CANDY.black]*0.001))
+#macro STAT_PROJ_SPEED ceil(4*(entity_core.candies_stored[CANDY.white]*0.001))
+#macro STAT_ATTACK_SPEED ceil(4*(entity_core.candies_stored[CANDY.black]*0.001))

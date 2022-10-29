@@ -38,7 +38,10 @@ if (instance_exists(entity_player))
 						
 						//award lives
 						if (j == CANDY.magic)
+						{
 							player_revives += _p.candy_array[j];
+							send_core_revives();
+						}
 						
 						//reset
 						_p.candy_array[j] = 0;

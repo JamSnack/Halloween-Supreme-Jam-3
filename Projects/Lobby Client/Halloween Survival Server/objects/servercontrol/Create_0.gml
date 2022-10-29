@@ -49,10 +49,10 @@ enum TARGET_TYPE
 
 //Game Stage
 //global.game_state = "INTERMISSION";
-global.game_stage = 500;
+global.game_stage = 0;
 global.game_timer = 30;
 bosses_alive = 0;
-boss_stage = 4;
+boss_stage = 0;
 
 function spawn_enemy()
 {	
@@ -89,7 +89,7 @@ function spawn_enemy()
 			send_announcement("An Archfiend has appeared near the Ocean!");
 			boss_stage += 1;
 		}
-		else if (global.game_stage >= 70 && boss_stage == 2)
+		else if (global.game_stage >= 60 && boss_stage == 2)
 		{
 			instance_create_layer( 7000, 7159, "Instances", entity_halloween_ham );
 			send_announcement("An Archfiend has appeared in the Marsh!");
@@ -105,6 +105,9 @@ function spawn_enemy()
 		else if (global.game_stage >= 101 && boss_stage == 4)
 		{
 			send_announcement("[Grevil the Galling]: My treat champions will defeat you!");
+			send_announcement("An Archfiend has appeared in the Glade!");
+			send_announcement("An Archfiend has appeared in the Glade!");
+			send_announcement("An Archfiend has appeared in the Glade!");
 			instance_create_layer( CENTER_X,  CENTER_Y - 350, "Instances", entity_poultrygeist );
 			instance_create_layer( CENTER_X - 450, CENTER_Y + 450, "Instances", entity_skeleton_crab );
 			instance_create_layer( CENTER_X + 450, CENTER_Y + 450, "Instances", entity_halloween_ham );
@@ -134,7 +137,14 @@ function spawn_scarecrows(amt)
 
 function on_game_start()
 {
+	//scarecrows
 	spawn_scarecrows(25);
+	
+	//gravestones
+	repeat(50)
+		instance_create_layer(irandom_range(5800, 7800), irandom_range(32, 1128), "Instances", entity_gravestone);
+		
+	instance_create_layer(CENTER_X + 400, CENTER_Y + 400, "Instances", entity_ghost);
 }
 
 global.next_id = 1;
@@ -157,8 +167,8 @@ enum CANDY
 	red,
 	green,
 	blue,
-	white,
 	black,
+	white,
 	magic,
 	last
 }
@@ -185,6 +195,8 @@ enum ENEMY
 	ocean_node,
 	rock,
 	star,
+	ghost,
+	gravestone,
 	last
 }
 

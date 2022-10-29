@@ -68,6 +68,7 @@ if (draw_character_sheet > 0)
 				case STATS.hp: { str += " + (" + string(STAT_HP) + ")"; } break;
 				case STATS.movespeed: { str += " + (" + string(STAT_SPEED) + ")"; } break;
 				case STATS.attack: { str += " + (" + string(STAT_ATTACK) + ")"; } break;
+				case STATS.attack_speed: { str += " + (" + string(STAT_ATTACK_SPEED) + ")"; } break;
 			}
 		}
 		

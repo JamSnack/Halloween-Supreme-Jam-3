@@ -149,8 +149,8 @@ enum CANDY
 	red,
 	green,
 	blue,
-	white,
 	black,
+	white,
 	magic,
 	last
 }
@@ -179,6 +179,9 @@ enum ENEMY
 	ocean_node,
 	rock,
 	star,
+	ghost,
+	gravestone,
+	imp,
 	last
 }
 

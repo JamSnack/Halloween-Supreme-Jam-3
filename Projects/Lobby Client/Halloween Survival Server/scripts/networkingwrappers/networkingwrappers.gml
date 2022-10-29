@@ -74,3 +74,11 @@ function networking_send_new_projectile(x, y, direction, speed, image_data, id, 
 	_d[? "f"] = friction;
 	send_data(_d);
 }
+
+function send_core_revives()
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "core_revives";
+	_d[? "r"] = entity_core.player_revives;
+	send_data(_d);	
+}
