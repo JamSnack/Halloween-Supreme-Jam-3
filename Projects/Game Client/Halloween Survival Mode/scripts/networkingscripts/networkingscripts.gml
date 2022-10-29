@@ -503,15 +503,6 @@ function handle_data(data)
 			}
 			break;
 			
-			case "enemy_shoot":
-			{
-				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_enemy_projectile);
-				_s.direction = parsed_data[? "d"];
-				_s.image_angle = _s.direction;
-				_s.speed = parsed_data[? "s"];
-			}
-			break;
-			
 			case "player_hp":
 			{
 				var pl_id = parsed_data[? "p_id"];
