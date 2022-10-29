@@ -36,6 +36,10 @@ if (instance_exists(entity_player))
 						//Award xp
 						_p.add_xp(player_treats*2);
 						
+						//award lives
+						if (j == CANDY.magic)
+							player_revives += _p.candy_array[j];
+						
 						//reset
 						_p.candy_array[j] = 0;
 					}

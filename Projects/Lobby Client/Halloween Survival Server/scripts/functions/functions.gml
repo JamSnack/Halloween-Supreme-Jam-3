@@ -68,7 +68,7 @@ function scr_get_generic_enemy()
 	else if (global.game_stage > 20)
 		return choose(entity_fast_enemy, entity_fast_enemy, entity_jumpkin, entity_jumpkin, entity_zombie, entity_troopie);
 	else if (global.game_stage > 40)
-		return choose(entity_fast_enemy, entity_jumpkin, entity_zombie, entity_troopie, entity_scarecrow);
+		return choose(entity_fast_enemy, entity_jumpkin, entity_zombie, entity_troopie);
 		
 	
 	
@@ -120,16 +120,6 @@ function scr_create_enemy_projectile(x, y, target_x, target_y, speed, object)
 	_i.speed = speed;
 	_i.direction = point_direction(x, y, target_x, target_y);
 	_i.image_angle = _i.direction;
-	
-	//Send projectile to players
-	var _d = ds_map_create();
-	_d[? "cmd"] = "enemy_shoot";
-	_d[? "d"] = _i.direction;
-	_d[? "s"] = speed;
-	_d[? "x"] = x;
-	_d[? "y"] = y;
-	//_d[? "ind"] = object;
-	send_data(_d);
 	
 	return _i;
 }

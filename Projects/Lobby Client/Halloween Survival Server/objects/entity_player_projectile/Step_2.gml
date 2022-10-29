@@ -1,6 +1,6 @@
 /// @description
 if (lifetime == 0)
-	networking_send_new_projectile(x, y, direction, speed, image_data, proj_id);
+	networking_send_new_projectile(x, y, direction, speed, image_data, proj_id, friction);
 
 lifetime++;
 
@@ -30,5 +30,5 @@ if (instance_exists(entity_block))
 	}
 }
 
-if (lifetime > 3*room_speed || colliding_with_block)
+if (lifetime > room_speed + 20 || colliding_with_block)
 	instance_destroy();

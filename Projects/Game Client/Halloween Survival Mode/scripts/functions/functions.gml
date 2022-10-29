@@ -15,6 +15,7 @@ function scr_select_projectile_sprites(_index)
 	{
 		case PROJECTILE.egg: { return spr_projectile_egg; } break;
 		case PROJECTILE.wave: { return spr_projectile_wave; } break;
+		case PROJECTILE.wind: { return spr_projectile_wind; } break;
 		default: { return spr_projectile; } break;
 	}
 }
@@ -80,6 +81,51 @@ function scr_select_enemy_sprites(_index)
 		}
 		break;
 		
+		case ENEMY.ocean_node:
+		{
+			walk_sprite = spr_ocean_nodes;
+			run_sprite = spr_ocean_nodes;
+			idle_sprite = spr_ocean_nodes;
+			use_anim_index = false;
+			
+			sprite_index = spr_ocean_nodes;
+			image_index = irandom(image_number);
+			image_xscale = choose(1, -1);
+			
+			despawn_timer = -1;
+		}
+		break;
+		
+		case ENEMY.rock:
+		{
+			walk_sprite = spr_rock;
+			run_sprite = spr_rock;
+			idle_sprite = spr_rock;
+			use_anim_index = false;
+			
+			sprite_index = spr_rock;
+			image_index = irandom(image_number);
+			image_xscale = choose(1, -1);
+			
+			despawn_timer = -1;
+		}
+		break;
+		
+		case ENEMY.star:
+		{
+			walk_sprite = spr_star;
+			run_sprite = spr_star;
+			idle_sprite = spr_star;
+			use_anim_index = false;
+			
+			sprite_index = spr_star;
+			image_index = irandom(image_number);
+			image_xscale = choose(1, -1);
+			
+			despawn_timer = -1;
+		}
+		break;
+		
 		case ENEMY.gold_jumpkin:
 		{
 			walk_sprite = spr_gold_jumpkin;
@@ -113,6 +159,8 @@ function scr_select_enemy_sprites(_index)
 			run_sprite = spr_scarecrow;
 			idle_sprite = spr_scarecrow;
 			use_anim_index = true;
+			
+			despawn_timer = -1;
 		}
 		break;
 		
@@ -191,11 +239,14 @@ function scr_get_enemy_name(_index)
 		case ENEMY.skeleton_crab_minion: { return "Crab Minion"; } break;
 		case ENEMY.halloween_ham: { return "The Halloween Ham"; } break;
 		case ENEMY.ham_jumpkin: { return "Ham-Flavoured Jumpkin"; } break;
+		case ENEMY.ocean_node: { return "Ocean Node"; } break;
+		case ENEMY.rock: { return "Stone"; } break;
+		case ENEMY.star: { return "Star"; } break;
 	}
 }
 
 
-function create_pop_message(x, y, text, color)
+function create_pop_message(x, y, text, color, rate = 0.01)
 {
 	/*var _cx = camera_get_view_x(view_camera[0]);
 	var _cy = camera_get_view_y(view_camera[0]);
@@ -205,10 +256,10 @@ function create_pop_message(x, y, text, color)
 					
 	if (y > _cy && y < _cy + 768)
 		return;*/
-		
 	var _i = instance_create_layer(x, y, "Instances", efct_pop_message);
 	_i.text = string(text);
 	_i.color = color;
+	_i.rate = rate;
 }
 
 function execute_lobby()

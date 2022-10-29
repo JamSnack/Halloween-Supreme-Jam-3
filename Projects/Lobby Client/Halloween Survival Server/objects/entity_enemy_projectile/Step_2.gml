@@ -1,6 +1,6 @@
 /// @description
 if (lifetime == 0)
-	networking_send_new_projectile(x, y, direction, speed, image_data, proj_id);
+	networking_send_new_projectile(x, y, direction, speed, image_data, proj_id, friction);
 
 lifetime++;
 

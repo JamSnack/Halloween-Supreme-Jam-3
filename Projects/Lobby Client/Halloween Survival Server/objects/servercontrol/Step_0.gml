@@ -108,13 +108,40 @@ if (global.game_timer <= 0)
 	spawn_enemy();
 	
 	//Fill the world with nodes
-	repeat (35 - instance_number(ENTITY_NODE))
+	repeat (35 - (instance_number(entity_pumpkin) + instance_number(entity_weed)) )
 	{
 		var _x = irandom_range(3032, 5000-32);
 		var _y = irandom_range(3032, 5000-32)
 			
 		if (collision_point(_x, _y, entity_block, false, true) == noone)
 			instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	
+	}
+	
+	repeat (20 - instance_number(entity_ocean_node) )
+	{
+		var _x = irandom_range(32, 2700);
+		var _y = irandom_range(6200, 8000-32)
+			
+		if (collision_point(_x, _y, entity_block, false, true) == noone)
+			instance_create_layer(_x, _y, "Instances", entity_ocean_node);	
+	}
+	
+	repeat (30 - instance_number(entity_rock) )
+	{
+		var _x = irandom_range(32, 1580);
+		var _y = irandom_range(32, 5740);
+			
+		if (collision_point(_x, _y, entity_block, false, true) == noone)
+			instance_create_layer(_x, _y, "Instances", entity_rock);	
+	}
+	
+	repeat (3 - instance_number(entity_star))
+	{
+		var _x = irandom_range(500, 7500);
+		var _y = irandom_range(500, 7500)
+			
+		if (collision_point(_x, _y, entity_block, false, true) == noone)
+			instance_create_layer(_x, _y, "Instances", entity_star);	
 	}
 	
 	//passively increase game_stage

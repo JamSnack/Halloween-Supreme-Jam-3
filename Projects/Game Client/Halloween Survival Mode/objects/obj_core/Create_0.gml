@@ -13,3 +13,5 @@ free_surface_candy_pile = false;
 var _d = ds_map_create();
 _d[? "cmd"] = "request_core_update";
 send_data(_d);
+
+create_pop_message(x, y-10, "Deposit treats here to gain bonus stats.", c_white, 0.001);

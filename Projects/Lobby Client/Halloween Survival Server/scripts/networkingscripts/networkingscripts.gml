@@ -106,6 +106,8 @@ function handle_data(data)
 					
 				debug_log.append(_pn + " connected: " + string(_id));
 				
+				//draw_enable_drawevent(false);
+				
 				//Bounce to clients
 				send_data(parsed_data);
 			}
@@ -290,11 +292,12 @@ function handle_data(data)
 				{
 					var _x = parsed_data[? "x"];
 					var _y = parsed_data[? "y"]
+					var _proj_speed = instance_exists(entity_core) ? STAT_PROJ_SPEED : 0;
 				
 					var _s = instance_create_layer(_x, _y, "Instances", entity_player_projectile);
 					_s.direction = parsed_data[? "dir"];
 					_s.image_angle = _s.direction; //for collision purposes
-					_s.speed = 5;
+					_s.speed = 5 + _proj_speed;
 					_s.attack_damage = instance_nearest(_x, _y, entity_player).stat_attack_damage;
 				}
 			}

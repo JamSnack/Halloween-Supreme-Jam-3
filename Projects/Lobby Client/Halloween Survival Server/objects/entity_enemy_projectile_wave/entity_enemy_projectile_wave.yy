@@ -7,8 +7,8 @@
   "visible": true,
   "managed": true,
   "spriteMaskId": {
-    "name": "spr_hbox_projectile",
-    "path": "sprites/spr_hbox_projectile/spr_hbox_projectile.yy",
+    "name": "spr_proj_32",
+    "path": "sprites/spr_proj_32/spr_proj_32.yy",
   },
   "persistent": false,
   "parentObjectId": {

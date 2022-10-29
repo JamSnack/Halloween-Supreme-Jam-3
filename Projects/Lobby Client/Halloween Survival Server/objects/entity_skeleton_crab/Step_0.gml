@@ -47,7 +47,7 @@ if (projectile_shoot_delay2 <= 0)
 		{
 			var _speed = 2;
 			
-			scr_create_enemy_projectile(x, y, x+1, y, 3, entity_enemy_projectile_egg);
+			scr_create_enemy_projectile(x, y, x+1, y, 3, entity_enemy_projectile_wave);
 			scr_create_enemy_projectile(x, y, x + lengthdir_x(2, 30), y + lengthdir_y(2, 30), _speed, entity_enemy_projectile_wave);
 			scr_create_enemy_projectile(x, y, x + lengthdir_x(2, 60), y + lengthdir_y(2, 60), _speed, entity_enemy_projectile_wave);
 			scr_create_enemy_projectile(x, y, x + lengthdir_x(2, 90), y + lengthdir_y(2, 90), _speed, entity_enemy_projectile_wave);

@@ -24,8 +24,7 @@ debug_log =
 		if (-string_height(text) < -800)
 			serverControl.debug_scroll -= 64;
 			
-		draw_enable_drawevent(true);
-		
+		//draw_enable_drawevent(true);
 	}
 }
 
@@ -50,11 +49,10 @@ enum TARGET_TYPE
 
 //Game Stage
 //global.game_state = "INTERMISSION";
-global.game_stage = -3;
+global.game_stage = 500;
 global.game_timer = 30;
 bosses_alive = 0;
-boss_stage = 0;
-//next_wave_spawn_horde = false;
+boss_stage = 4;
 
 function spawn_enemy()
 {	
@@ -97,34 +95,46 @@ function spawn_enemy()
 			send_announcement("An Archfiend has appeared in the Marsh!");
 			boss_stage += 1;
 		}
-		else if (global.game_stage >= 100 && boss_stage == 2)
-		{
-			send_announcement("[Grevil the Galling]: You Trick or Treaters will NEVER have your treats back!");
-			boss_stage += 1;	
-		}
 		else if (global.game_stage >= 100 && boss_stage == 3)
 		{
-			send_announcement("[Grevil the Galling]: My minions will defeat you!");
+			send_announcement("[Grevil the Galling]: You Trick or Treaters will NEVER have your treats back!");
+			spawn_scarecrows(30);
+			bosses_alive = 0;
 			boss_stage += 1;
 		}
-		else if (global.game_stage >= 105 && boss_stage == 4)
+		else if (global.game_stage >= 101 && boss_stage == 4)
 		{
-			send_announcement("[Grevil the Galling]: Prepare to face my wrath...");
+			send_announcement("[Grevil the Galling]: My treat champions will defeat you!");
+			instance_create_layer( CENTER_X,  CENTER_Y - 350, "Instances", entity_poultrygeist );
+			instance_create_layer( CENTER_X - 450, CENTER_Y + 450, "Instances", entity_skeleton_crab );
+			instance_create_layer( CENTER_X + 450, CENTER_Y + 450, "Instances", entity_halloween_ham );
 			boss_stage += 1;
 		}
-		else if (global.game_stage >= 106 && boss_stage == 5)
+		else if (global.game_stage >= 102 && boss_stage == 5)
+		{
+			send_announcement("[Grevil the Galling]: FACE MY WRATH!");
+			boss_stage += 1;
+		}
+		else if (global.game_stage >= 103 && boss_stage == 6)
 		{
 			boss_stage += 1;
 		}
 	}
 }
 
+function spawn_scarecrows(amt)
+{
+	var _deg = 0;
+	repeat(amt)
+	{
+		_deg += 1/amt;
+		instance_create_layer(CENTER_X + lengthdir_x(1300, _deg*360), CENTER_Y + lengthdir_y(1300, _deg*360), "Instances", entity_scarecrow);
+	}
+}
+
 function on_game_start()
 {
-	/*
-    instance_create_layer( 7000, 7159, "Instances", entity_halloween_ham );
-	send_announcement("An Archfiend has appeared in the Marsh!");
-	*/
+	spawn_scarecrows(25);
 }
 
 global.next_id = 1;
@@ -172,6 +182,9 @@ enum ENEMY
 	skeleton_crab_minion,
 	halloween_ham,
 	ham_jumpkin,
+	ocean_node,
+	rock,
+	star,
 	last
 }
 
@@ -189,6 +202,7 @@ enum PROJECTILE
 	normal,
 	egg,
 	wave,
+	wind,
 	last	
 }
 

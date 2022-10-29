@@ -176,6 +176,9 @@ enum ENEMY
 	skeleton_crab_minion,
 	halloween_ham,
 	ham_jumpkin,
+	ocean_node,
+	rock,
+	star,
 	last
 }
 
@@ -184,6 +187,7 @@ enum PROJECTILE
 	normal,
 	egg,
 	wave,
+	wind,
 	last	
 }
 

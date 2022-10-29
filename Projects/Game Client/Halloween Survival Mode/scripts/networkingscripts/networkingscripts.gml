@@ -408,11 +408,14 @@ function handle_data(data)
 					var _y = parsed_data[? "y"];
 					instance_activate_region(_x-1, _y-1, _x, _y, true);
 					
-					var _c = collision_point(_x, _y, obj_block_entity, false, true);
+					if (instance_exists(obj_block_entity))
+					{
+						var _c = collision_point(_x, _y, obj_block_entity, false, true);
 					
-					if (_c != noone)
-						with (_c)
-							instance_destroy();
+						if (_c != noone)
+							with (_c)
+								instance_destroy();
+					}
 				}
 				else if (instance_exists(obj_block_entity))
 				{
@@ -430,15 +433,17 @@ function handle_data(data)
 			
 			case "tile_update":
 			{
+				var _x = parsed_data[? "x"];
+				var _y = parsed_data[? "y"];
+				
+				instance_activate_region(_x-1, _y-1, _x, _y, true);
+				
 				if (instance_exists(obj_block_entity))
 				{
-					var _t = collision_point(parsed_data[? "x"], parsed_data[? "y"], obj_block_entity, false, true);
+					var _t = collision_point(_x, _y, obj_block_entity, false, true);
 					
 					if (_t != noone)
-					{
 						_t.hp = parsed_data[? "hp"];	
-					}
-					//else request tile?
 				}
 			}
 			break;
@@ -465,15 +470,6 @@ function handle_data(data)
 				}
 			}
 			break;
-			
-			case "player_shoot":
-			{
-				var _s = instance_create_layer(parsed_data[? "x"], parsed_data[? "y"], "Instances", obj_projectile);
-				_s.direction = parsed_data[? "dir"];
-				_s.image_angle = _s.direction;
-				_s.speed = 5;
-			}
-			break;
 
 			case "projectile_shoot":
 			{
@@ -486,6 +482,7 @@ function handle_data(data)
 				_s.speed = parsed_data[? "s"];
 				_s.proj_id = parsed_data[? "id"];
 				_s.sprite_index = scr_select_projectile_sprites(parsed_data[? "indx"]);
+				_s.friction = parsed_data[? "f"];
 			}
 			break;
 			
