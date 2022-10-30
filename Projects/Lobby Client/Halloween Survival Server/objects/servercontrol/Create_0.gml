@@ -52,7 +52,7 @@ enum TARGET_TYPE
 global.game_stage = 0;
 global.game_timer = 30;
 bosses_alive = 0;
-boss_stage = 0;
+boss_stage = -1;
 
 function spawn_enemy()
 {	
@@ -137,14 +137,18 @@ function spawn_scarecrows(amt)
 
 function on_game_start()
 {
-	//scarecrows
-	spawn_scarecrows(25);
+	if (boss_stage == -1)
+	{
+		//scarecrows
+		spawn_scarecrows(25);
 	
-	//gravestones
-	repeat(50)
-		instance_create_layer(irandom_range(5800, 7800), irandom_range(32, 1128), "Instances", entity_gravestone);
-		
-	instance_create_layer(CENTER_X + 400, CENTER_Y + 400, "Instances", entity_ghost);
+		//gravestones
+		repeat(50)
+			instance_create_layer(irandom_range(5800, 7800), irandom_range(32, 1128), "Instances", entity_gravestone);
+			
+		boss_stage++;
+	}
+	//instance_create_layer(CENTER_X + 400, CENTER_Y + 400, "Instances", entity_imp);
 }
 
 global.next_id = 1;
@@ -197,6 +201,7 @@ enum ENEMY
 	star,
 	ghost,
 	gravestone,
+	imp,
 	last
 }
 

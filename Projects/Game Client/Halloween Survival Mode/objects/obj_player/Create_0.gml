@@ -7,7 +7,7 @@ show_debug_message("Player Created");
 //Entity variables
 p_id = 0;
 
-interpolation_rate = 0.5; //We want the player's position to be pretty accurate but still interpolate a bit
+interpolation_rate = 0.06; //We want the player's position to be pretty accurate but still interpolate a bit
 despawn_timer = -1; //never despawn
 
 // - animation
@@ -29,3 +29,6 @@ action_state = "SHOOT";
 //- Selected Block
 selected_block = 0;
 animate_building = 0;
+
+use_anim_index = false;
+use_animation_prediction = false;

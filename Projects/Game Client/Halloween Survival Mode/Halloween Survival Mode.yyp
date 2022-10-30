@@ -56,6 +56,7 @@
     {"id":{"name":"spr_projectile_wave","path":"sprites/spr_projectile_wave/spr_projectile_wave.yy",},"order":2,},
     {"id":{"name":"spr_glass_block","path":"sprites/spr_glass_block/spr_glass_block.yy",},"order":2,},
     {"id":{"name":"spr_ocean_nodes","path":"sprites/spr_ocean_nodes/spr_ocean_nodes.yy",},"order":15,},
+    {"id":{"name":"spr_imp","path":"sprites/spr_imp/spr_imp.yy",},"order":20,},
     {"id":{"name":"obj_enemy_entity","path":"objects/obj_enemy_entity/obj_enemy_entity.yy",},"order":5,},
     {"id":{"name":"spr_jumpkin","path":"sprites/spr_jumpkin/spr_jumpkin.yy",},"order":2,},
     {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},"order":7,},

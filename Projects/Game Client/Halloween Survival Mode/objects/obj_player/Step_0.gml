@@ -22,6 +22,9 @@ if (global.chatting)
 // - send desired movement to server
 if (moving)
 {
+	sprite_index = run_sprite;
+	
+	//send requested position
 	var _d = ds_map_create();
 	_d[? "cmd"] = "player_move";
 	_d[? "p_id"] = global.player_id;
@@ -29,7 +32,45 @@ if (moving)
 	_d[? "v"] = vmove;
 	_d[? "s"] = key_sprint;
 	send_data(_d);
+	
+	//new, drawn position
+	var _stat_speed = instance_exists(obj_core) ? STAT_SPEED : 0;
+	_stat_speed += gameControl.player_stats[STATS.movespeed]*0.33;
+
+	var x_speed = (1.5 + key_sprint*1.5 + _stat_speed)*hmove;
+	var y_speed = (1.5 + key_sprint*1.5 + _stat_speed)*vmove;
+						
+	//check for collision, setting speed to 0 if colliding
+	if (instance_exists(obj_block_entity))
+	{
+		//find collisions -> init vars
+		var h_collision = collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, obj_block_entity, false, true);
+		var v_collision = collision_rectangle(bbox_left, bbox_top + y_speed, bbox_right, bbox_bottom + y_speed, obj_block_entity, false, true);
+							
+		//horizontal collision
+		if (h_collision != noone && h_collision.object_index != obj_block_door_entity)
+			x_speed = 0;
+							
+		//vertical collision
+		if (v_collision != noone && v_collision.object_index != obj_block_door_entity)
+			y_speed = 0;
+	}
+						
+						
+	//apply speed to movement
+	draw_x += x_speed;
+	draw_y += y_speed;
+	x = draw_x;
+	y = draw_y;
+	
+	if (hmove != 0)
+		image_xscale = hmove;
 }
+else
+{
+	sprite_index = idle_sprite;	
+}
+
 
 //client-side item stuff
 /*
@@ -64,13 +105,15 @@ if (mouse_left && shoot_delay <= (_stats_attack_speed) && !global.chatting && ga
 			send_data(_d);
 	
 			//shoot delay
-			shoot_delay = 20;
+			shoot_delay = 22;
 	
 			//client effects
 			/*
+			var stat_proj_speed = (instance_exists(obj_core)) ? STAT_PROJ_SPEED : 0;
+			
 			var _s = instance_create_layer(x, y, "Instances", obj_projectile);
 			_s.direction = _dir;
-			_s.speed = 4;
+			_s.speed = 5 + stat_proj_speed;
 			_s.image_angle = _dir;
 			*/
 		}

@@ -121,3 +121,5 @@ if (room == rm_zero)
 	draw_character_sheet = 0;
 	draw_character_sheet_target = 0;
 }
+
+ping += 1;

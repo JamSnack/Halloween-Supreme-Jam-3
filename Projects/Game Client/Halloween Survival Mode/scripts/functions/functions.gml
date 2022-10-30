@@ -237,6 +237,17 @@ function scr_select_enemy_sprites(_index)
 			despawn_timer = -1;
 		}
 		break;
+		
+		case ENEMY.imp:
+		{
+			walk_sprite = spr_imp;
+			run_sprite = spr_imp;
+			idle_sprite = spr_imp;
+			use_anim_index = true;
+			
+			despawn_timer = -1;
+		}
+		break;
 	}
 }
 

@@ -52,21 +52,6 @@ if (imguigml_ready())
 }
 
 //HEARTBEAT
-with (entity_player)
-{
-	if (moved)
-	{
-		var _d = ds_map_create();
-		_d[? "cmd"] = "player_pos";
-		_d[? "p_id"] = p_id;
-		_d[? "x"] = x;
-		_d[? "y"] = y;
-		_d[? "xscale"] = image_xscale;
-		send_data(_d);
-			
-		moved = false;
-	}
-}
 
 
 //DEBUG SCROLLING (Fuck)
@@ -103,49 +88,51 @@ if (global.game_timer <= 0)
 		
 		on_game_start();
 	}
-	
-	//spawn mobs
-	spawn_enemy();
-	
-	//Fill the world with nodes
-	repeat (35 - (instance_number(entity_pumpkin) + instance_number(entity_weed)) )
+	else
 	{
-		var _x = irandom_range(3032, 5000-32);
-		var _y = irandom_range(3032, 5000-32)
-			
-		if (collision_point(_x, _y, entity_block, false, true) == noone)
-			instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	
-	}
+		//spawn mobs
+		spawn_enemy();
 	
-	repeat (20 - instance_number(entity_ocean_node) )
-	{
-		var _x = irandom_range(32, 2700);
-		var _y = irandom_range(6200, 8000-32)
+		//Fill the world with nodes
+		repeat (35 - (instance_number(entity_pumpkin) + instance_number(entity_weed)) )
+		{
+			var _x = irandom_range(3032, 5000-32);
+			var _y = irandom_range(3032, 5000-32)
 			
-		if (collision_point(_x, _y, entity_block, false, true) == noone)
-			instance_create_layer(_x, _y, "Instances", entity_ocean_node);	
-	}
+			if (collision_point(_x, _y, entity_block, false, true) == noone)
+				instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	
+		}
 	
-	repeat (30 - instance_number(entity_rock) )
-	{
-		var _x = irandom_range(32, 1580);
-		var _y = irandom_range(32, 5740);
+		repeat (20 - instance_number(entity_ocean_node) )
+		{
+			var _x = irandom_range(32, 2700);
+			var _y = irandom_range(6200, 8000-32)
 			
-		if (collision_point(_x, _y, entity_block, false, true) == noone)
-			instance_create_layer(_x, _y, "Instances", entity_rock);	
-	}
+			if (collision_point(_x, _y, entity_block, false, true) == noone)
+				instance_create_layer(_x, _y, "Instances", entity_ocean_node);	
+		}
 	
-	repeat (3 - instance_number(entity_star))
-	{
-		var _x = irandom_range(500, 7500);
-		var _y = irandom_range(500, 7500)
+		repeat (30 - instance_number(entity_rock) )
+		{
+			var _x = irandom_range(32, 1580);
+			var _y = irandom_range(32, 5740);
 			
-		if (collision_point(_x, _y, entity_block, false, true) == noone)
-			instance_create_layer(_x, _y, "Instances", entity_star);	
-	}
+			if (collision_point(_x, _y, entity_block, false, true) == noone)
+				instance_create_layer(_x, _y, "Instances", entity_rock);	
+		}
 	
-	//passively increase game_stage
-	global.game_stage += 1;
+		repeat (3 - instance_number(entity_star))
+		{
+			var _x = irandom_range(500, 7500);
+			var _y = irandom_range(500, 7500)
+			
+			if (collision_point(_x, _y, entity_block, false, true) == noone)
+				instance_create_layer(_x, _y, "Instances", entity_star);	
+		}
+	
+		//passively increase game_stage
+		global.game_stage += 1;
+	}
 }
 else
 {	

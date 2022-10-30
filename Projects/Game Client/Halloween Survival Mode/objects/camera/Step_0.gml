@@ -2,8 +2,8 @@
 // You can write your code in this editor
 if (instance_exists(follow_this))
 {
-	x = lerp(x, follow_this.x, 0.1);
-	y = lerp(y, follow_this.y, 0.1);
+	x = lerp(x, follow_this.draw_x, 0.1);
+	y = lerp(y, follow_this.draw_y, 0.1);
 }
 
 //update view

@@ -10,9 +10,20 @@ if (projectile_delay <= 0)
 		
 	if (distance_to_object(_p) < 32*9)
 	{
-		scr_create_enemy_projectile(x, y, _p.x, _p.y, 12, entity_enemy_projectile_ghost);
+		scr_create_enemy_projectile(x, y, _p.x, _p.y, 14, entity_enemy_projectile_ghost);
 			
-		projectile_delay = 60;
+		projectile_delay = max_projectile_delay;
+		max_projectile_delay /= 2;
+		
+		if (max_projectile_delay < 5)
+			max_projectile_delay = 5;
+	}
+	else
+	{
+		max_projectile_delay *= 2;
+		
+		if (max_projectile_delay > 240)
+			max_projectile_delay = 240;
 	}
 }
 else projectile_delay--;

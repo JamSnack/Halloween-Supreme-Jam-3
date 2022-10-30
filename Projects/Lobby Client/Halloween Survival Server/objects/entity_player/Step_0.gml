@@ -38,3 +38,16 @@ if (regen_delay <= 0 && hp < max_hp)
 }
 else if (regen_delay > 0)
 	regen_delay--;
+	
+
+if (moved)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "player_pos";
+	_d[? "p_id"] = p_id;
+	_d[? "x"] = x;
+	_d[? "y"] = y;
+	send_data(_d);
+			
+	moved = false;
+}

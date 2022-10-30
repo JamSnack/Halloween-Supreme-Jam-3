@@ -13,7 +13,8 @@ global.socket = noone;
 global.player_id = -1; //Will be granted on lobby-join. Keeps track of who's who
 global.player_name = "Player";
 global.use_effects = false;
-
+ping = 0;
+ping_draw = 0;
 
 //Keep track of multiplayer state:
 global.lobby_id = -1;
@@ -27,7 +28,7 @@ chat_overlay = {
 	{
 		text = text + "\n" + new_text;
 		
-		if (string_height(text) > 145)
+		if (string_height(text) > 190)
 		{
 			var _c = string_pos("\n", text);
 			text = string_delete(text, 1, _c);

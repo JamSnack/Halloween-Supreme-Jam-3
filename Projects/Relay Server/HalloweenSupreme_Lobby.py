@@ -42,7 +42,7 @@ class Lobby:
     def removeClient(self, index):
         self.message_disconnect(self.lobby_host, self.client_ids[index])
 
-        self.clients.pop(index)
+        self.clients.pop(index).close()
         self.client_ids.pop(index)
         self.client_names.pop(index)
 
@@ -77,13 +77,17 @@ class Lobby:
 
     # Sending packets to all clients, excluding the player who initially sent the packet (server to clients) OR send it to the packet to the lobby host (client to server)
     def broadcast(self, message, exclude):
-
         if (exclude == self.lobby_host):
             for client in self.clients:
                 if (client != exclude):
                         client.send(message)
         else:
-            self.lobby_host.send(message)
+            try:
+                self.lobby_host.send(message)
+            except:
+                print("Couldn't broadcast packet to host: disconnecting")
+                self.removeClient(self.clients.index(exclude))
+
 
         #print("Error in broadcast: client probably doesn't exist. Close it")
     
@@ -106,7 +110,6 @@ class Lobby:
                             message_length = int(header)
                         except:
                             message_length = -1
-                            print("Header pickled!")
                         break
                     else:
                         header = header + _c
@@ -147,7 +150,6 @@ class Lobby:
             if break_client:
                 index = self.clients.index(client)
                 self.removeClient(index)
-                client.close()
 
                 if (client == self.lobby_host):
                     print("Lobby "+str(self.id) + " has failed.")

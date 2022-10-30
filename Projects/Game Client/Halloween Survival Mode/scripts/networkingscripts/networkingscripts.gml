@@ -6,7 +6,7 @@ function joinLobby(lobby_id)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Try to connect to the main server.
-	var _s = network_connect_raw(global.socket, "26.198.169.147", 55555);
+	var _s = network_connect_raw(global.socket, "161.35.5.62", 55555);
 	
 	if (_s >= 0)
 	{
@@ -85,16 +85,12 @@ function handle_data(data)
 				var pl_id =  parsed_data[? "p_id"];
 				var _x = parsed_data[? "x"];
 				var _y = parsed_data[? "y"];
-				var _xscale = parsed_data[? "xscale"];
 				
 				//update current client's position
 				if (global.player_id == pl_id)
 				{
 					obj_player.x = _x;
 					obj_player.y = _y;
-					
-					if (_xscale != 0)
-						obj_player.image_xscale = _xscale;
 				}
 				else
 				{

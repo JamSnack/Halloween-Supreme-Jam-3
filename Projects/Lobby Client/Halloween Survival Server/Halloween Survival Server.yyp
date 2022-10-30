@@ -41,6 +41,8 @@
     {"id":{"name":"entity_fast_enemy","path":"objects/entity_fast_enemy/entity_fast_enemy.yy",},"order":1,},
     {"id":{"name":"entity_core","path":"objects/entity_core/entity_core.yy",},"order":3,},
     {"id":{"name":"entity_scarecrow","path":"objects/entity_scarecrow/entity_scarecrow.yy",},"order":10,},
+    {"id":{"name":"entity_imp","path":"objects/entity_imp/entity_imp.yy",},"order":22,},
+    {"id":{"name":"entity_enemy_projectile_imp","path":"objects/entity_enemy_projectile_imp/entity_enemy_projectile_imp.yy",},"order":16,},
     {"id":{"name":"spr_hbox_player","path":"sprites/spr_hbox_player/spr_hbox_player.yy",},"order":2,},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},"order":3,},
     {"id":{"name":"entity_weed","path":"objects/entity_weed/entity_weed.yy",},"order":5,},

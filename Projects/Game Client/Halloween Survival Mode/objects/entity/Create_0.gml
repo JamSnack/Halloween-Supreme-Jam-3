@@ -15,3 +15,4 @@ run_sprite = sprite_index;
 damage_animation = 0;
 
 use_anim_index = true;
+use_animation_prediction = true;

@@ -1,5 +1,5 @@
 /// @description Draw GUI
-
+draw_text(GUI_WIDTH-100, 60, "Ping: " + string(ping_draw));
 if (room == rm_zero)
 {
 	shader_set(shd_swapColors);

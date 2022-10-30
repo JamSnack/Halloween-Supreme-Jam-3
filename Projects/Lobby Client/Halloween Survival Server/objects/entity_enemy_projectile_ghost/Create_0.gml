@@ -6,3 +6,4 @@ event_inherited();
 
 lifetime = 0;
 proj_id = get_next_id();
+friction = 0.3;
