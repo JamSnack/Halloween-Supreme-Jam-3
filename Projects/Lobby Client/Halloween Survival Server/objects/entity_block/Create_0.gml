@@ -1,9 +1,6 @@
 /// @description
-function send_new_block_to_player(receiving_player)
+function send_new_block_to_player(receiving_player = -1)
 {
-	if (receiving_player == undefined)
-		receiving_player = -1;
-	
 	var _d = ds_map_create();
 	_d[? "cmd"] = "tile_place";
 	_d[? "x"] = x;
@@ -25,6 +22,7 @@ function update_block()
 	_d[? "x"] = x;
 	_d[? "y"] = y;
 	_d[? "hp"] = hp;
+	_d[? "type"] = type;
 	send_data(_d);
 }
 

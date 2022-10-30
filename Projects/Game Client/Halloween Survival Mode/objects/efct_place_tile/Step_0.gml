@@ -10,10 +10,7 @@ if (point_distance(x, y, target_x, target_y) <= rate)
 	instance_destroy();
 	
 	//request tile update
-	var _d = ds_map_create();
-	_d[? "cmd"] = "request_tile_update";
-	_d[? "t_id"] = object_id;
-	send_data(_d);
+	request_tile_update(object_id);
 }
 
 rate += 1;

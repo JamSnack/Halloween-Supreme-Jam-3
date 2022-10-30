@@ -1,7 +1,8 @@
 /// @description
 p_id = 0; //which player owns this object; pass player_id into this object on instantiation.
 p_n = ""; //The playername of this object
-moved = false; //If the player's position has changed since the last heartbeat
+moved = true; //If the player's position has changed since the last heartbeat
+override_client_position = true; //Whether or not the client-representation of this object will also be updated by this object's position (makes client-side movement matter)
 dead = false; //whether or not this player is dead
 
 //death_timer_reset = room_speed*600;
@@ -37,6 +38,9 @@ function damage(attack)
 		
 		send_held_candy();
 		
+		//override client position
+		override_client_position = true;
+		
 		//Revive player or restart the round
 		if (instance_exists(entity_core) && entity_core.player_revives > 0)
 		{
@@ -45,8 +49,8 @@ function damage(attack)
 			if (_col != noone)
 				with (_col) instance_destroy();
 			
-			x = CENTER_X - 16;
-			y = CENTER_Y + 16;
+			x = SPAWN_X;
+			y = SPAWN_Y;
 			entity_core.player_revives -= 1;
 			global.game_stage -= 1;
 			

@@ -58,3 +58,21 @@ function networking_send_player_colors()
 	
 	send_data(_d);
 }
+
+function request_enemy(enemy_id)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "request_enemy_entity";
+	_d[? "e_id"] = enemy_id;
+	send_data(_d);
+	
+	show_debug_message("Request Enemy");
+}
+
+function request_tile_update(tile_id)
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "request_tile_update";
+	_d[? "t_id"] = tile_id;
+	send_data(_d);
+}

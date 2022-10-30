@@ -219,4 +219,10 @@ draw_character_sheet_target = 0;
 cursor_text = "";
 
 
+//keep things real with the server
+enemy_update_index = 0;
+update_enemy_delay = 0;
+block_update_index = 0;
+update_block_delay = 0;
+
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

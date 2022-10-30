@@ -5,6 +5,8 @@
 #macro CENTER_Y 4000
 #macro WORLD_WIDTH 8000
 #macro WORLD_HEIGHT 8000
+#macro SPAWN_X CENTER_X - 16
+#macro SPAWN_Y CENTER_Y + 16
 
 //Popular equations:
 #macro STAT_HP ceil(100*(entity_core.candies_stored[CANDY.red]*0.001))

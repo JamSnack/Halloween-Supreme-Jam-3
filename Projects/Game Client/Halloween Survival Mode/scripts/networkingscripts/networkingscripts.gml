@@ -6,7 +6,7 @@ function joinLobby(lobby_id)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Try to connect to the main server.
-	var _s = network_connect_raw(global.socket, "161.35.5.62", 55555);
+	var _s = network_connect_raw(global.socket, "146.190.211.237", 55555);
 	
 	if (_s >= 0)
 	{
@@ -89,8 +89,11 @@ function handle_data(data)
 				//update current client's position
 				if (global.player_id == pl_id)
 				{
-					obj_player.x = _x;
-					obj_player.y = _y;
+					if (parsed_data[? "override"])
+					{
+						obj_player.x = _x;
+						obj_player.y = _y;
+					}
 				}
 				else
 				{
@@ -104,10 +107,10 @@ function handle_data(data)
 							x = _x;
 							y = _y;
 							
+							var _xscale = sign(x - xprevious);
+							
 							if (_xscale != 0)
 								image_xscale = _xscale;
-							
-							despawn_timer = despawn_timer_set;
 							
 							instance_updated = true;
 							break;
@@ -162,7 +165,7 @@ function handle_data(data)
 				
 				if (_id != global.player_id)
 				{
-					var _p = instance_create_layer(100, 100, "instances", obj_player_entity);
+					var _p = instance_create_layer(SPAWN_X , SPAWN_Y, "instances", obj_player_entity);
 					_p.p_id =_id;
 					_p.p_n = _pn;
 				}
@@ -201,8 +204,6 @@ function handle_data(data)
 						/*if (_xscale != 0)
 							image_xscale = _xscale;*/
 							
-						despawn_timer = despawn_timer_set;
-							
 						instance_updated = true;
 						break;
 					}
@@ -210,14 +211,7 @@ function handle_data(data)
 				
 				//if we didn't update an instance: ask the server for the instance
 				if (!instance_updated)
-				{
-					var _d = ds_map_create();
-					_d[? "cmd"] = "request_enemy_entity";
-					_d[? "e_id"] = e_id;
-					send_data(_d);
-					
-					show_debug_message("Request Enemy");
-				}
+					request_enemy(e_id);
 			}
 			break;
 			
@@ -267,8 +261,6 @@ function handle_data(data)
 					{
 						x = parsed_data[? "x"];
 						y = parsed_data[? "y"];
-							
-						despawn_timer = despawn_timer_set;
 							
 						instance_updated = true;
 						break;
@@ -363,14 +355,7 @@ function handle_data(data)
 				//Continue...
 				var _type = parsed_data[? "type"];
 				
-				switch (_type)
-				{
-					case 0: { _type = obj_block_entity; } break;
-					case 1: { _type = obj_block_door_entity; } break;
-					case 2: { _type = obj_block_glass_entity; } break;
-					case BUILD.false_block: { _type = obj_false_block; } break;
-					case BUILD.last: { _type = obj_core; } break;
-				}
+				_type = scr_get_block_object_from_type(_type);
 				
 				if (global.use_effects && _type != obj_false_block)
 				{
@@ -431,16 +416,24 @@ function handle_data(data)
 			{
 				var _x = parsed_data[? "x"];
 				var _y = parsed_data[? "y"];
+				var _t = scr_get_block_object_from_type(parsed_data[? "type"]);
 				
 				instance_activate_region(_x-1, _y-1, _x, _y, true);
 				
-				if (instance_exists(obj_block_entity))
+				if (instance_exists(_t))
 				{
-					var _t = collision_point(_x, _y, obj_block_entity, false, true);
+					var _t = collision_point(_x, _y, _t, false, true);
 					
 					if (_t != noone)
-						_t.hp = parsed_data[? "hp"];	
+					{
+						_t.hp = parsed_data[? "hp"];
+						return;
+					}
 				}
+				
+				//create a block that didn't exist
+				if (_t != noone )
+					instance_create_layer(_x, _y, "Instances", _t);	
 			}
 			break;
 			
@@ -469,14 +462,7 @@ function handle_data(data)
 								
 				//if we didn't update an instance: ask the server for the instance
 				if (!instance_updated)
-				{
-					var _d = ds_map_create();
-					_d[? "cmd"] = "request_enemy_entity";
-					_d[? "e_id"] = e_id;
-					send_data(_d);
-					
-					show_debug_message("Request Enemy");
-				}
+					request_enemy(e_id);
 			}
 			break;
 

@@ -4,7 +4,7 @@ global.use_effects = false;
 
 if (room == rm_world)
 {
-	var _p = instance_create_layer(100, 100, "Instances", obj_player);
+	var _p = instance_create_layer(SPAWN_X, SPAWN_Y, "Instances", obj_player);
 	_p.p_id = global.player_id;
 	
 	global.use_effects = true;

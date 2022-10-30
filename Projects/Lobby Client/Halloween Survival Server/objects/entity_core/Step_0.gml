@@ -69,8 +69,6 @@ if (base_regen_delay <= 0)
 		{
 			if (hp >= max_hp)
 				regen_hp = true;
-			else
-				update_block();
 		}
 		
 		tile_seeing++;

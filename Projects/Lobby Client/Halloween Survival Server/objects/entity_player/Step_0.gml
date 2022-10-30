@@ -47,7 +47,9 @@ if (moved)
 	_d[? "p_id"] = p_id;
 	_d[? "x"] = x;
 	_d[? "y"] = y;
+	_d[? "override"] = override_client_position;
 	send_data(_d);
-			
+		
+	override_client_position = false;
 	moved = false;
 }

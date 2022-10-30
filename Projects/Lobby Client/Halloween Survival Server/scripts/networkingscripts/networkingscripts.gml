@@ -6,7 +6,7 @@ function createLobby(port)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Connect to the relay server
-	var _s = network_connect_raw(global.socket, "161.35.5.62", port);
+	var _s = network_connect_raw(global.socket, "146.190.211.237", port);
 	
 	if (_s >= 0)
 	{
@@ -100,7 +100,7 @@ function handle_data(data)
 				var _pn = parsed_data[? "p_n"];
 				//var _pi = parsed_data[? "p_i"];
 				
-				var _p = instance_create_layer(CENTER_X - 32, CENTER_Y, "instances", entity_player);
+				var _p = instance_create_layer(SPAWN_X, SPAWN_Y, "instances", entity_player);
 				_p.p_id =_id;
 				_p.p_n = _pn;
 					
@@ -116,25 +116,25 @@ function handle_data(data)
 			case "player_move":
 			{
 				var pl_id = parsed_data[? "p_id"];
-				var blocks_exist = instance_exists(entity_block);
+				//var blocks_exist = instance_exists(entity_block);
 				
 				with (entity_player)
 				{
 					if (pl_id == p_id)
 					{
 						//take data from packet -> init vars
-						var _sprinting = parsed_data[? "s"];
-						var _x_dir = parsed_data[? "h"];
-						var _y_dir = parsed_data[? "v"];
+						//var _sprinting = parsed_data[? "s"];
+						//var _x_dir = parsed_data[? "h"];
+						//var _y_dir = parsed_data[? "v"];
 						
 						//init potential movement speed this step:
-						var _stat_speed = stat_movement_speed;
+						//var _stat_speed = stat_movement_speed;
 						
-						var x_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_x_dir;
-						var y_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_y_dir;
+						//var x_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_x_dir;
+						//var y_speed = (1.5 + _sprinting*1.5 + _stat_speed)*_y_dir;
 						
 						//check for collision, setting speed to 0 if colliding
-						if (blocks_exist)
+						/*if (blocks_exist)
 						{
 							//find collisions -> init vars
 							var h_collision = collision_rectangle(bbox_left + x_speed, bbox_top, bbox_right + x_speed, bbox_bottom, entity_block, false, true);
@@ -156,9 +156,12 @@ function handle_data(data)
 						
 						//set image_xscale
 						image_xscale = parsed_data[? "h"];
-						
+						*/
 						//flag this object as moved, sending new position to clients.
 						moved = true;
+						
+						x = parsed_data[? "x"];
+						y = parsed_data[? "y"];
 					
 						break;
 					}
@@ -235,6 +238,7 @@ function handle_data(data)
 				if (!instance_updated)
 				{
 					parsed_data[? "cmd"] = "enemy_destroy";
+					parsed_data[? "amt"] = 0;
 					send_data(parsed_data);
 				}
 			}
@@ -310,7 +314,7 @@ function handle_data(data)
 				var _index = parsed_data[? "type"];
 				_type = entity_block;
 				
-				if  (instance_exists(entity_player) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_player, false, true)) || ( instance_exists(entity_player) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_enemy, false, true) )
+				if  (instance_exists(entity_player) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_player, false, true)) || ( instance_exists(entity_enemy) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_enemy, false, true) )
 					return;
 				
 				if (instance_exists(entity_core) && entity_core.candies_stored[_index] > 0)
@@ -323,7 +327,9 @@ function handle_data(data)
 					}
 					
 					//create instance
-					if (instance_exists(entity_block) && collision_point(_x, _y, entity_block, false,true) == noone || !instance_exists(entity_block) )
+					var bc = collision_point(_x, _y, entity_block, false,true);
+					
+					if (instance_exists(entity_block) && bc == noone || !instance_exists(entity_block) )
 					{
 						instance_create_layer(_x, _y, "Instances", _type);
 						
@@ -333,6 +339,9 @@ function handle_data(data)
 						//update players
 						networking_update_core_candies_at_index(_index);
 					}
+					else
+						with (bc)
+							send_new_block_to_player();
 					
 				}
 				else

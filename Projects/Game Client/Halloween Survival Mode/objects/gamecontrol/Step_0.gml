@@ -123,3 +123,33 @@ if (room == rm_zero)
 }
 
 ping += 1;
+
+//Cyclical requests for enemies:
+if (update_enemy_delay <= 0)
+{
+	if (enemy_update_index < instance_number(obj_enemy_entity))
+	{
+		with (instance_find(obj_enemy_entity, enemy_update_index))
+			request_enemy(enemy_id);
+			
+		update_enemy_delay = 5;
+		enemy_update_index += 1;
+	} 
+	else enemy_update_index = 0;
+}
+else update_enemy_delay--;
+
+//Cyclical requests for blocks:
+if (update_block_delay <= 0)
+{
+	if (block_update_index < instance_number(obj_block_entity))
+	{
+		with (instance_find(obj_block_entity, block_update_index))
+			request_tile_update(tile_id);
+			
+		update_block_delay = 5;
+		block_update_index += 1;
+	}
+	else block_update_index = 0;
+}
+else update_block_delay--;

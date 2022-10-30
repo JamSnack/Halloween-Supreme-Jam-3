@@ -8,7 +8,6 @@ show_debug_message("Player Created");
 p_id = 0;
 
 interpolation_rate = 0.06; //We want the player's position to be pretty accurate but still interpolate a bit
-despawn_timer = -1; //never despawn
 
 // - animation
 walk_sprite = spr_player_walk;

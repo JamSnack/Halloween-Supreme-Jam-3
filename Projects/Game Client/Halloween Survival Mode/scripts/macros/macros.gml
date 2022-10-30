@@ -7,6 +7,9 @@
 #macro MOUSE_Y_IN_WORLD floor(mouse_y/32)*32 + 16
 #macro CENTER_X 4000
 #macro CENTER_Y 4000
+#macro SPAWN_X CENTER_X - 16
+#macro SPAWN_Y CENTER_Y + 16
+
 
 //Popular equations:
 #macro STAT_HP ceil(100*(obj_core.candies_stored[CANDY.red]*0.001))

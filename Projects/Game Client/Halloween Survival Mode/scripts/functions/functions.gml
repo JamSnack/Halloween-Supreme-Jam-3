@@ -61,8 +61,6 @@ function scr_select_enemy_sprites(_index)
 			sprite_index = spr_weed;
 			image_index = irandom(image_number);
 			image_xscale = choose(1, -1);
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -76,8 +74,6 @@ function scr_select_enemy_sprites(_index)
 			sprite_index = spr_pumpkin;
 			image_index = irandom(image_number);
 			image_xscale = choose(1, -1);
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -91,8 +87,6 @@ function scr_select_enemy_sprites(_index)
 			sprite_index = spr_ocean_nodes;
 			image_index = irandom(image_number);
 			image_xscale = choose(1, -1);
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -106,8 +100,6 @@ function scr_select_enemy_sprites(_index)
 			sprite_index = spr_rock;
 			image_index = irandom(image_number);
 			image_xscale = choose(1, -1);
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -121,8 +113,6 @@ function scr_select_enemy_sprites(_index)
 			sprite_index = spr_star;
 			image_index = irandom(image_number);
 			image_xscale = choose(1, -1);
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -159,8 +149,6 @@ function scr_select_enemy_sprites(_index)
 			run_sprite = spr_scarecrow;
 			idle_sprite = spr_scarecrow;
 			use_anim_index = true;
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -233,8 +221,6 @@ function scr_select_enemy_sprites(_index)
 			run_sprite = spr_gravestone;
 			idle_sprite = spr_gravestone;
 			use_anim_index = true;
-			
-			despawn_timer = -1;
 		}
 		break;
 		
@@ -244,8 +230,6 @@ function scr_select_enemy_sprites(_index)
 			run_sprite = spr_imp;
 			idle_sprite = spr_imp;
 			use_anim_index = true;
-			
-			despawn_timer = -1;
 		}
 		break;
 	}
@@ -361,5 +345,18 @@ function scr_apply_hsv_color_to_skin(hue, sat, val, part)
 			REPLACE_SKIN_DARK_ID[2] = -0.15 + color_get_blue(color)/255;
 		}
 		break;
+	}
+}
+
+function scr_get_block_object_from_type(type)
+{
+	switch (type)
+	{
+		case BUILD.block:		{ return obj_block_entity;		 } break;
+		case BUILD.door:		{ return obj_block_door_entity;  } break;
+		case BUILD.glass:		{ return obj_block_glass_entity; } break;
+		case BUILD.false_block:	{ return obj_false_block;		 } break;
+		case BUILD.last:		{ return obj_core;				 } break;
+		default:				{ return undefined;				 } break;
 	}
 }

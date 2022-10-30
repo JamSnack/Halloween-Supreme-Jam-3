@@ -28,15 +28,6 @@ if (use_animation_prediction)
 draw_x = lerp(draw_x, x, interpolation_rate);
 draw_y = lerp(draw_y, y, interpolation_rate);
 
-//Manage despawn timer
-if (despawn_timer > 0)
-{
-	despawn_timer--;
-	
-	if (despawn_timer <= 0)
-		instance_destroy();
-}
-
 //Damage animation
 if (damage_animation > 0)
 	damage_animation -= 0.1;

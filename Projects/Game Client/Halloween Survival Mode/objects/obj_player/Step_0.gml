@@ -24,15 +24,6 @@ if (moving)
 {
 	sprite_index = run_sprite;
 	
-	//send requested position
-	var _d = ds_map_create();
-	_d[? "cmd"] = "player_move";
-	_d[? "p_id"] = global.player_id;
-	_d[? "h"] = hmove;
-	_d[? "v"] = vmove;
-	_d[? "s"] = key_sprint;
-	send_data(_d);
-	
 	//new, drawn position
 	var _stat_speed = instance_exists(obj_core) ? STAT_SPEED : 0;
 	_stat_speed += gameControl.player_stats[STATS.movespeed]*0.33;
@@ -58,10 +49,19 @@ if (moving)
 						
 						
 	//apply speed to movement
-	draw_x += x_speed;
-	draw_y += y_speed;
-	x = draw_x;
-	y = draw_y;
+	x += x_speed;
+	y += y_speed;
+	draw_x = x;
+	draw_y = y;
+	
+	//send requested position
+	var _d = ds_map_create();
+	_d[? "cmd"] = "player_move";
+	_d[? "p_id"] = global.player_id;
+	_d[? "x"] = x;
+	_d[? "y"] = y;
+	//_d[? "s"] = key_sprint;
+	send_data(_d);
 	
 	if (hmove != 0)
 		image_xscale = hmove;
@@ -177,7 +177,6 @@ if (key_block || key_door || key_glass)
 
 //Animate
 animate_building = lerp(animate_building, (action_state == "BUILD"), 0.12);
-
 
 //health jam animation
 health_jam_animation = lerp(health_jam_animation, (1-hp/max_hp)*100, 0.1);
