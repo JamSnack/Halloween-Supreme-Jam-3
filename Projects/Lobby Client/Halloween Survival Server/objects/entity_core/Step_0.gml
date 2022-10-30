@@ -66,7 +66,12 @@ if (base_regen_delay <= 0)
 	if (instance_exists(entity_block))
 	{
 		with(instance_find(entity_block, tile_seeing))
-			regen_hp = true;
+		{
+			if (hp >= max_hp)
+				regen_hp = true;
+			else
+				update_block();
+		}
 		
 		tile_seeing++;
 		

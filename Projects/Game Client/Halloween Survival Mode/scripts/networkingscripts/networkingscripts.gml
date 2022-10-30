@@ -448,6 +448,7 @@ function handle_data(data)
 			{
 				
 				var e_id = parsed_data[? "e_id"];
+				var instance_updated = false;
 				
 				if (instance_exists(obj_enemy_entity))
 				{
@@ -459,10 +460,22 @@ function handle_data(data)
 							
 							//assume hp set here will always be a decrease
 							damage_animation = 1;
-							
+							instance_updated = true;
 							break;
 						}
 					}
+				}
+				
+								
+				//if we didn't update an instance: ask the server for the instance
+				if (!instance_updated)
+				{
+					var _d = ds_map_create();
+					_d[? "cmd"] = "request_enemy_entity";
+					_d[? "e_id"] = e_id;
+					send_data(_d);
+					
+					show_debug_message("Request Enemy");
 				}
 			}
 			break;

@@ -28,7 +28,7 @@ chat_overlay = {
 	{
 		text = text + "\n" + new_text;
 		
-		if (string_height(text) > 190)
+		if (string_height(text) > 160)
 		{
 			var _c = string_pos("\n", text);
 			text = string_delete(text, 1, _c);
@@ -172,7 +172,7 @@ enum ENEMY
 	troopie,
 	scarecrow,
 	poultrygeist,
-	tender_spirirt,
+	tender_spirit,
 	skeleton_crab,
 	skeleton_crab_minion,
 	halloween_ham,

@@ -173,7 +173,7 @@ function scr_select_enemy_sprites(_index)
 		}
 		break;
 		
-		case ENEMY.tender_spirirt:
+		case ENEMY.tender_spirit:
 		{
 			walk_sprite = spr_tender_spirit;
 			run_sprite = spr_tender_spirit;
@@ -265,7 +265,7 @@ function scr_get_enemy_name(_index)
 		case ENEMY.zombie: { return "Zombie"; } break;
 		case ENEMY.scarecrow: { return "Scarecrow"; } break;
 		case ENEMY.poultrygeist: { return "Poultrygeist"; } break;
-		case ENEMY.tender_spirirt: { return "Tender Spirit"; } break;
+		case ENEMY.tender_spirit: { return "Tender Spirit"; } break;
 		case ENEMY.skeleton_crab: { return "Skeleton Crab"; } break; 
 		case ENEMY.skeleton_crab_minion: { return "Crab Minion"; } break;
 		case ENEMY.halloween_ham: { return "The Halloween Ham"; } break;
