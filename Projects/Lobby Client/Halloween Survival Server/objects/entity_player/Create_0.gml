@@ -111,12 +111,7 @@ function damage(attack)
 	}
 		
 	//send results
-	var _d = ds_map_create();
-	_d[? "cmd"] = "player_hp";
-	_d[? "hp"] = hp;
-	_d[? "mhp"] = max_hp;
-	_d[? "p_id"] = p_id;
-	send_data(_d);
+	send_player_hp();
 	
 	//effects
 	if (attack > -1)

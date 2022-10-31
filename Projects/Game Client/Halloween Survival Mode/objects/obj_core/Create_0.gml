@@ -14,4 +14,6 @@ var _d = ds_map_create();
 _d[? "cmd"] = "request_core_update";
 send_data(_d);
 
+show_debug_message("Core exists");
+
 create_pop_message(x, y-10, "Deposit treats here to gain bonus stats.", c_white, 0.001);

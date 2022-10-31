@@ -146,6 +146,16 @@ function on_game_start()
 		repeat(50)
 			instance_create_layer(irandom_range(5800, 7800), irandom_range(32, 1128), "Instances", entity_gravestone);
 			
+		//initial pumpkin field
+		repeat (35 - (instance_number(entity_pumpkin) + instance_number(entity_weed)) )
+		{
+			var _x = irandom_range(3032, 5000-32);
+			var _y = irandom_range(3032, 5000-32)
+			
+			if (collision_point(_x, _y, entity_block, false, true) == noone)
+				instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	
+		}	
+		
 		boss_stage++;
 	}
 	//instance_create_layer(CENTER_X + 400, CENTER_Y + 400, "Instances", entity_imp);

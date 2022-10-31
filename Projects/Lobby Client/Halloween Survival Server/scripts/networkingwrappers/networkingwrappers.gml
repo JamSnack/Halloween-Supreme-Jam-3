@@ -82,3 +82,13 @@ function send_core_revives()
 	_d[? "r"] = entity_core.player_revives;
 	send_data(_d);	
 }
+
+function send_player_hp()
+{
+	var _d = ds_map_create();
+	_d[? "cmd"] = "player_hp";
+	_d[? "hp"] = hp;
+	_d[? "mhp"] = max_hp;
+	_d[? "p_id"] = p_id;
+	send_data(_d);	
+}

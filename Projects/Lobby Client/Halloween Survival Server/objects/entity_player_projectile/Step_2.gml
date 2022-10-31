@@ -30,5 +30,5 @@ if (instance_exists(entity_block))
 	}
 }
 
-if (lifetime > room_speed + 15 || colliding_with_block)
+if (lifetime > room_speed - 10 || colliding_with_block)
 	instance_destroy();

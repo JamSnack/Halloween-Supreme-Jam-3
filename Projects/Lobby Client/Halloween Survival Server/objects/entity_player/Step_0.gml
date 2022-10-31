@@ -35,6 +35,7 @@ if (regen_delay <= 0 && hp < max_hp)
 {
 	damage(-1);
 	regen_delay = room_speed*5;
+	send_player_hp();
 }
 else if (regen_delay > 0)
 	regen_delay--;
