@@ -6,7 +6,7 @@ function createLobby(port)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Connect to the relay server
-	var _s = network_connect_raw(global.socket, "146.190.211.237", port);
+	var _s = network_connect_raw(global.socket, "146.190.215.101", port);
 	
 	if (_s >= 0)
 	{

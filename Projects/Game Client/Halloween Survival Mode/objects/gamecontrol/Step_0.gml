@@ -5,7 +5,7 @@ if (imguigml_ready())
 	if (room == rm_zero)
 	{
 		var _s = 300;
-		imguigml_set_next_window_pos(global.display_width/2 - _s/2, 80);
+		imguigml_set_next_window_pos(784, 32);
 		imguigml_set_next_window_size(_s, 300);
 		
 		imguigml_begin("Multiplayer");
@@ -33,6 +33,33 @@ if (imguigml_ready())
 			execute_lobby();
 		
 		imguigml_end();
+		
+		//continuously play music
+		if (!audio_is_playing(mus_Marching_Over_Green_Lands))
+			audio_play_sound(mus_Marching_Over_Green_Lands, 10, false);
+			
+		//Move view around
+		var x_dir = sign(target_x_view - x_view);
+		var y_dir = sign(target_y_view - y_view);
+		
+		x_accel += 0.02*x_dir;
+		y_accel += 0.02*y_dir;
+		
+		x_accel = clamp(x_accel, -1, 1);
+		y_accel = clamp(y_accel, -1, 1);
+		
+		x_view += x_accel;
+		y_view += y_accel;
+		
+		if (point_distance(x_view, y_view, target_x_view, target_y_view) < 50)
+		{
+			
+			target_x_view = random_range(100, 1000);
+			target_y_view = random_range(100, 600);
+		}
+		
+		layer_sprite_x(bkg_sprite, x_view);
+		layer_sprite_y(bkg_sprite, y_view);
 	}
 }
 
@@ -40,7 +67,7 @@ if (imguigml_ready())
 if (global.lobby_id != -1 && room == rm_zero)
 {
 	room_goto(rm_world);
-	chat_overlay.append("Welcome to Treat Squad, " + string(global.player_name) + "!\nWorld: "+string(global.lobby_id));
+	chat_overlay.append("Welcome to Treat Squad, " + string(global.player_name) + "!\nLobby: "+string(global.lobby_id));
 }
 
 //Chatting

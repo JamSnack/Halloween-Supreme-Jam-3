@@ -4,7 +4,7 @@ if (room == rm_zero)
 {
 	shader_set(shd_swapColors);
 	scr_shader_swapColors_set_uniforms(REPLACE_SHIRT_LIGHT_ID, REPLACE_SHIRT_DARK_ID, REPLACE_SKIN_LIGHT_ID, REPLACE_SKIN_DARK_ID, REPLACE_PANTS_LIGHT_ID, REPLACE_PANTS_DARK_ID);
-	draw_sprite_ext(spr_player_run, current_time/100, 250, 250, 4, 4, 0, c_white, 1);
+	draw_sprite_ext(spr_player_run, current_time/100, 350, 300, 5, 5, 0, c_white, 1);
 	shader_reset();
 	
 	draw_set_font(fnt_default);
@@ -95,6 +95,8 @@ draw_set_alpha(global.chat_alpha/2 - 0.1);
 //bkg
 draw_rectangle_color(0, 448, max(string_width(chat_overlay.text), 200) + 4, 450+264, c_black, c_black, c_black, c_black, false);
 
+draw_rectangle_color(0, 446+270, max(string_width(chat_overlay.text), 200) + 4, 450+270+16, c_black, c_black, c_black, c_black, false);
+
 draw_set_alpha(global.chat_alpha);
 
 var _chat = chat_overlay.text + "\n-----------------\n";
@@ -104,7 +106,7 @@ if (_chat_text = "")
 	_chat_text = "|"
 
 draw_text(4, 450, _chat);
-draw_text(4, 450+250, _chat_text);
+draw_text(4, 450+270, _chat_text);
 
 draw_set_alpha(1);
 

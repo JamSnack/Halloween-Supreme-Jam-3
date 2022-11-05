@@ -72,6 +72,10 @@ else
 }
 
 
+//clamp to world
+x = clamp(x, 0, WORLD_WIDTH);
+y = clamp(y, 0, WORLD_HEIGHT);
+
 //client-side item stuff
 /*
 if (instance_exists(obj_item_entity))
@@ -115,7 +119,9 @@ if (mouse_left && shoot_delay <= (_stats_attack_speed) && !global.chatting && ga
 			_s.direction = _dir;
 			_s.speed = 5 + stat_proj_speed;
 			_s.image_angle = _dir;
+			_s.lag_timer = gameControl.ping;
 			*/
+		
 		}
 		break;
 		

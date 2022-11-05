@@ -8,3 +8,6 @@ if (instance_exists(follow_this))
 
 //update view
 camera_set_view_pos(view_get_camera(0), x - global.display_width/2, y - global.display_height/2);
+
+//Audio
+audio_listener_set_position(0, x, y, 0);

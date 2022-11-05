@@ -6,7 +6,7 @@ function joinLobby(lobby_id)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Try to connect to the main server.
-	var _s = network_connect_raw(global.socket, "146.190.211.237", 55555);
+	var _s = network_connect_raw(global.socket, "146.190.215.101", 55555);
 	
 	if (_s >= 0)
 	{
@@ -471,7 +471,13 @@ function handle_data(data)
 				var _x = parsed_data[? "x"];
 				var _y = parsed_data[? "y"];
 				
-				var _s = instance_create_layer(_x, _y, "Instances", obj_projectile);
+				var temp_variable = instance_nearest(_x, _y, ENTITY).object_index;
+
+				if (object_get_parent(temp_variable) == ENT_PLAYER)
+					temp_variable = obj_projectile;
+				else temp_variable = obj_enemy_projectile;
+				
+				var _s = instance_create_layer(_x, _y, "Instances", temp_variable);
 				_s.direction = parsed_data[? "d"];
 				_s.image_angle = _s.direction;
 				_s.speed = parsed_data[? "s"];
@@ -575,12 +581,14 @@ function handle_data(data)
 					xp = parsed_data[? "xp"];
 					xp_needed = parsed_data[? "xp_need"];
 					level = parsed_data[? "l"];
+					play_sound(snd_Level_Up, 10, false, false, parsed_data[? "x"], parsed_data[? "y"]);
 				}
 			}
 			break;
 			
 			case "damage":
 			{
+				play_sound(snd_hit, 5, false, true, parsed_data[? "x"], parsed_data[? "y"]);
 				create_pop_message(parsed_data[? "x"], parsed_data[? "y"], string(parsed_data[? "d"]), c_red);
 			}
 			

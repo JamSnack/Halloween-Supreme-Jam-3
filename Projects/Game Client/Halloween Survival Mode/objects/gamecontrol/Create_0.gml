@@ -125,7 +125,7 @@ client_inventory =
 */
 //Game state
 global.game_timer = 0;
-global.revives_remaining = 25;
+global.revives_remaining = 20;
 
 //animation cuvres
 global.pop_curve = animcurve_get_channel(ac_pop, 0);
@@ -225,4 +225,19 @@ update_enemy_delay = 0;
 block_update_index = 0;
 update_block_delay = 0;
 
+//view stuff
+x_view = 560;
+y_view = 560;
+target_x_view = 0;
+target_y_view = 0;
+x_accel = 0;
+y_accel = 0;
+
+bkg_sprite = layer_sprite_create("Assets_1", 0, 0, spr_menu_bkg);
+layer_sprite_xscale(bkg_sprite, 5);
+layer_sprite_yscale(bkg_sprite, 5);
+
+//global listener
+audio_listener_orientation(0, 0, 1, 0, -1, 0);
+audio_falloff_set_model(audio_falloff_linear_distance);
 //server_inventory = array_create(inventory_size, 0); //A representation of the server's inventory for this client.

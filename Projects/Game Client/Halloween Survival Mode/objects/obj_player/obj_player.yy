@@ -12,8 +12,8 @@
   },
   "persistent": false,
   "parentObjectId": {
-    "name": "ENTITY",
-    "path": "objects/ENTITY/ENTITY.yy",
+    "name": "ENT_PLAYER",
+    "path": "objects/ENT_PLAYER/ENT_PLAYER.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

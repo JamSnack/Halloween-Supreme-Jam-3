@@ -7,6 +7,8 @@
 #macro MOUSE_Y_IN_WORLD floor(mouse_y/32)*32 + 16
 #macro CENTER_X 4000
 #macro CENTER_Y 4000
+#macro WORLD_WIDTH 8000
+#macro WORLD_HEIGHT 8000
 #macro SPAWN_X CENTER_X - 16
 #macro SPAWN_Y CENTER_Y + 16
 
