@@ -12,5 +12,5 @@ if (blocks_sent < total_blocks)
 	else total_blocks = -1;
 }
 else instance_destroy();
-
+show_debug_message("ending stuff.");
 //TODO: Remove else instance_destroy above and make this object send enemies as well.

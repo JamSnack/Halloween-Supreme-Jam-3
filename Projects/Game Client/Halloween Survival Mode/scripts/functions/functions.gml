@@ -367,7 +367,7 @@ function play_sound(sound, priority, loops, interrupts_others, x = noone, y = no
 			audio_stop_sound(sound);
 	
 	if (x == noone && y == noone)
-		audio_play_sound(sound, priority, loops);	
+		audio_play_sound(sound, priority, loops);
 	else
 		audio_play_sound_at(sound, x, y, 0, 150, 600, 1.5, loops, priority);
 }

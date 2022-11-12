@@ -16,6 +16,12 @@ if (imguigml_ready())
 	if (imguigml_button("Spawn Enemy"))
 		spawn_enemy();
 	
+	if (imguigml_button("Toggle Headless (Optimal)"))
+	{
+		headless_mode = !headless_mode;
+		draw_enable_drawevent(!headless_mode);
+	}
+	
 	debug_scroll = clamp(debug_scroll, -string_height(debug_log.text) + 600, 0);
 	
 	//TERMINAL INPUT

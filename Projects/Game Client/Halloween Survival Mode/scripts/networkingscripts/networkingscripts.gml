@@ -6,7 +6,7 @@ function joinLobby(lobby_id)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Try to connect to the main server.
-	var _s = network_connect_raw(global.socket, "146.190.215.101", 55555);
+	var _s = network_connect_raw(global.socket, "134.209.72.94", 55555);
 	
 	if (_s >= 0)
 	{
@@ -225,7 +225,10 @@ function handle_data(data)
 					with (obj_enemy_entity)
 					{
 						if (enemy_id == _e_id)
+						{
+							ds_map_destroy(parsed_data);
 							return;
+						}
 					}
 				}
 				
@@ -326,7 +329,7 @@ function handle_data(data)
 			case "tile_place":
 			{
 				if (parsed_data[? "p_id"] != -1 && parsed_data[? "p_id"] != global.player_id)
-					return;
+					break;
 				
 				var _t_id = parsed_data[? "t_id"];
 				//does an effect in-flight with this id already exist?
@@ -337,7 +340,10 @@ function handle_data(data)
 						with (efct_place_tile)
 						{
 							if (_t_id == object_id)
+							{
+								ds_map_destroy(parsed_data);
 								return;
+							}
 						}
 					}
 				}
@@ -348,7 +354,10 @@ function handle_data(data)
 					with (obj_block_entity)
 					{
 						if (_t_id == tile_id)
+						{
+							ds_map_destroy(parsed_data);
 							return;
+						}
 					}
 				}
 				
@@ -427,7 +436,7 @@ function handle_data(data)
 					if (_t != noone)
 					{
 						_t.hp = parsed_data[? "hp"];
-						return;
+						break;
 					}
 				}
 				
@@ -682,11 +691,13 @@ function handle_data(data)
 						global.held_candy[_i] = parsed_data[? string(_i)];
 						
 					//update_held_candy = true;
-						
 				}
 			}
 			break;
 
 		}
+		
+		//cleanup
+		ds_map_destroy(parsed_data);
 	}
 }

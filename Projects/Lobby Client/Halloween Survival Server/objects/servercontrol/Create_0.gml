@@ -54,6 +54,8 @@ global.game_timer = 30;
 bosses_alive = 0;
 boss_stage = -1;
 
+headless_mode = false;
+
 function spawn_enemy()
 {	
 	if (global.game_stage >= 0)

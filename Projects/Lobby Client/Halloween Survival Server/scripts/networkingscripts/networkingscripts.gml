@@ -6,7 +6,7 @@ function createLobby(port)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Connect to the relay server
-	var _s = network_connect_raw(global.socket, "146.190.215.101", port);
+	var _s = network_connect_raw(global.socket, "134.209.72.94", port);
 	
 	if (_s >= 0)
 	{
@@ -315,7 +315,7 @@ function handle_data(data)
 				_type = entity_block;
 				
 				if  (instance_exists(entity_player) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_player, false, true)) || ( instance_exists(entity_enemy) && collision_rectangle(_x-16, _y-16, _x+16, _y+16, entity_enemy, false, true) )
-					return;
+					break;
 				
 				if (instance_exists(entity_core) && entity_core.candies_stored[_index] > 0)
 				{					
@@ -511,5 +511,8 @@ function handle_data(data)
 			}
 			break;
 		}
+		
+		//cleanup
+		ds_map_destroy(parsed_data);
 	}
 }
