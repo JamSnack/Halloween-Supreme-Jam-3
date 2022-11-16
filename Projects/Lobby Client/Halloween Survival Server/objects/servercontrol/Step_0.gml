@@ -2,43 +2,63 @@
 // You can write your code in this editor
 if (imguigml_ready())
 {
-	
 	//OUTPUT WINDOW
 	imguigml_set_next_window_size(600, 120);
 	imguigml_set_next_window_pos(0, 0);
-	imguigml_begin("Output");
-	if (imguigml_button("Clear Output"))
-		debug_log.clear_output();
-		
-	if (imguigml_button("Restart Lobby"))
-		game_restart();
-		
-	if (imguigml_button("Spawn Enemy"))
-		spawn_enemy();
 	
-	if (imguigml_button("Toggle Headless (Optimal)"))
+	imguigml_begin("Menu");
+	
+	if (menu_state == 0)
 	{
-		headless_mode = !headless_mode;
-		draw_enable_drawevent(!headless_mode);
-	}
-	
-	debug_scroll = clamp(debug_scroll, -string_height(debug_log.text) + 600, 0);
-	
-	//TERMINAL INPUT
-	terminal_input = imguigml_input_text("Terminal Input", terminal_input, 128)[1];
-	
-	//Interpret terminal input
-	if (keyboard_check_pressed(vk_enter) && terminal_input != "")
-	{
-		switch (terminal_input)
+		imguigml_text("What kind of game are you hosting?");
+		
+		if (imguigml_button("LAN - Local Multiplayer"))
 		{
-			case "/help": { debug_log.append("\n/help - List these commands\n/receive - Toggle view of incoming packets"); } break;
-			case "/receive": { debug_log.append("Toggled incoming packets."); setting_show_incoming_packets = !setting_show_incoming_packets} break;
-			case "/show log": { setting_show_log = !setting_show_log; } break;
-			default: { debug_log.append("Unknown command. Try /help for more info.") } break;
+			debug_log.append("Trying to create a LAN lobby...");
+			createLobby("127.0.0.1", 55555);
 		}
 		
-		terminal_input = "";
+		if (imguigml_button("WAN - Global Multiplayer"))
+		{
+			debug_log.append("Trying to create a WAN lobby...");
+			createLobby("127.0.0.1", 55555);
+		}
+	}
+	else if (menu_state == 1)
+	{
+		if (imguigml_button("Clear Output"))
+			debug_log.clear_output();
+		
+		if (imguigml_button("Restart Lobby"))
+			game_restart();
+		
+		if (imguigml_button("Spawn Wave"))
+			spawn_enemy();
+	
+		if (imguigml_button("Toggle Graphics (Optimal)"))
+		{
+			headless_mode = !headless_mode;
+			draw_enable_drawevent(!headless_mode);
+		}
+	
+		debug_scroll = clamp(debug_scroll, -string_height(debug_log.text) + 600, 0);
+	
+		//TERMINAL INPUT
+		terminal_input = "";//imguigml_input_text("Terminal Input", terminal_input, 128)[1];
+	
+		//Interpret terminal input
+		if (keyboard_check_pressed(vk_enter) && terminal_input != "")
+		{
+			switch (terminal_input)
+			{
+				case "/help": { debug_log.append("\n/help - List these commands\n/receive - Toggle view of incoming packets"); } break;
+				case "/receive": { debug_log.append("Toggled incoming packets."); setting_show_incoming_packets = !setting_show_incoming_packets} break;
+				case "/show log": { setting_show_log = !setting_show_log; } break;
+				default: { debug_log.append("Unknown command. Try /help for more info.") } break;
+			}
+		
+			terminal_input = "";
+		}
 	}
 	
 	imguigml_end();

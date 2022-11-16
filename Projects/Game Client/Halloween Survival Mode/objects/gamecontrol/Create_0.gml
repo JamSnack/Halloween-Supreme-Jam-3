@@ -3,6 +3,7 @@
 imguigml_activate();
 
 show_debug_overlay(true);
+network_set_config(network_config_connect_timeout, 2000);
 
 //vars
 stored_lobby_id = "";

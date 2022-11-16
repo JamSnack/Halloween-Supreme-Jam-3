@@ -1,12 +1,12 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function createLobby(port)
+function createLobby(ip, port)
 {
 	//Creates a lobby on the relay server
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Connect to the relay server
-	var _s = network_connect_raw(global.socket, "134.209.72.94", port);
+	var _s = network_connect_raw(global.socket, ip, port);
 	
 	if (_s >= 0)
 	{
@@ -91,6 +91,7 @@ function handle_data(data)
 			{
 				global.lobby_id = parsed_data[? "l_id"];
 				debug_log.append("Lobby Created Successfully!\n\nShare this ID with your friends to play together: " + string(global.lobby_id));
+				menu_state = 1;
 			}
 			break;
 			

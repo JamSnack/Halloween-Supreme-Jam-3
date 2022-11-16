@@ -1,18 +1,22 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function joinLobby(lobby_id)
+function joinLobby(ip, lobby_id)
 {
 	//server_status = "Connecting to server...";
 	global.socket = network_create_socket(network_socket_tcp);
 	
-	//Try to connect to the main server.
-	var _s = network_connect_raw(global.socket, "134.209.72.94", 55555);
+	//Try to connect to the main server. If we fail, look for a server over local host.
+	var _s = network_connect_raw(global.socket, ip, 55555);
 	
 	if (_s >= 0)
-	{
-		//after we've connected to the main server, attempt to join the desired lobby:
 		lobby_search(lobby_id);
-	}	
+	else
+	{
+		_s = network_connect_raw(global.socket, "127.0.0.1", 55555);	
+		
+		if (_s >= 0)
+			lobby_search(lobby_id);
+	}
 }
 
 function send_data(data_map)

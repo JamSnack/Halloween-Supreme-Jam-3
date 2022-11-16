@@ -21,7 +21,7 @@ if (imguigml_ready())
 		var join_lobby = imguigml_button("Join Lobby");
 	
 		if (join_lobby)
-			joinLobby(stored_lobby_id);
+			joinLobby("noth", stored_lobby_id);
 		
 		//Draw stuff
 		var l_text = (global.lobby_id == -1) ? "No lobby entered." : string(global.lobby_id);

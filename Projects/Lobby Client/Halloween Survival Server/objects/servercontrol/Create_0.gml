@@ -9,8 +9,10 @@ global.inventory_size = 8;
 
 //Init Imguigml
 imguigml_activate();
+menu_state = 0;
 
 debug_scroll = 0;
+draw_set_font(fnt_terminal);
 
 //Init debug log
 debug_log = 
@@ -19,17 +21,22 @@ debug_log =
 	clear_output : function clear_output() { text = ""; },
 	append : function append(_str)
 	{
-		text += "[" + string(TIME) + "]: " + string(_str) + "\n"; 
+		text += "\n" + string(_str);
 		
 		if (-string_height(text) < -800)
 			serverControl.debug_scroll -= 64;
+		
+		if (string_height(text) > 250)
+		{
+			var _c = string_pos("\n", text);
+			text = string_delete(text, 1, _c);
+		}
 			
 		//draw_enable_drawevent(true);
 	}
 }
 
 //We want to create the lobby right now
-debug_log.append("Trying to create lobby...");
 terminal_input = "";
 
 setting_show_incoming_packets = false;
@@ -125,6 +132,8 @@ function spawn_enemy()
 			boss_stage += 1;
 		}
 	}
+	
+	debug_log.append("Wave spawned. Game Stage is: " + string(global.game_stage));
 }
 
 function spawn_scarecrows(amt)

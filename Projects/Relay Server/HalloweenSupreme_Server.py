@@ -7,7 +7,7 @@ from ast import literal_eval
 #Python version 3.10
 
 # Connection Data
-ip = '26.198.169.147'
+ip = '127.0.0.1' #'26.198.169.147'
 port = 55555
 packet_size = 4096
 
