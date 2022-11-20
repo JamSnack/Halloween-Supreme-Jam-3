@@ -2,7 +2,7 @@
 // You can write your code in this editor
 imguigml_activate();
 
-show_debug_overlay(true);
+//show_debug_overlay(true);
 network_set_config(network_config_connect_timeout, 2000);
 
 //vars

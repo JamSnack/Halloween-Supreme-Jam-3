@@ -16,12 +16,13 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((ip, port))
 server.listen()
 
-test = """{ "cmd": "lobby_info", "id": 0.0 }"""
+'''test = """{ "cmd": "lobby_info", "id": 0.0 }"""
 print(test)
 print(type(test))
 print(len(test))
 test = json.loads(test)
-print("Decode Test: "+str(test["id"]))
+print("Decode Test: "+str(test["id"]))'''
+print("Proxy server online!\n\nLocal lobbies will use this space to make connections with local Treat Squad clients.\nUse a Treat Squad client to either join a lobby or create one.")
 
 # List of lobbies
 lobbies = []
