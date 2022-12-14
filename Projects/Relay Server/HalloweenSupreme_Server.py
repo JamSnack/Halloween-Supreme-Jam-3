@@ -16,12 +16,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((ip, port))
 server.listen()
 
-test = """{ "cmd": "lobby_info", "id": 0.0 }"""
-print(test)
-print(type(test))
-print(len(test))
-test = json.loads(test)
-print("Decode Test: "+str(test["id"]))
+print("Relay server online! Treat Squad game clients and game lobbies will be able to communicate with each other through this application.")
 
 # List of lobbies
 lobbies = []
