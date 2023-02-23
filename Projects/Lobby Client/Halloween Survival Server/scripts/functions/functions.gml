@@ -76,6 +76,17 @@ function scr_get_generic_enemy()
 	return choose(entity_fast_enemy, entity_jumpkin, entity_troopie, entity_zombie, entity_scarecrow, entity_tender_spirit);
 }
 
+function scr_create_enemy_spawn_handler(x1, y1, x2, y2, enemies = [], amt)
+{
+	var _inst = instance_create_layer(0, 0, "Instances", handler_enemy_spawns);
+	_inst.total_enemies = amt;
+	_inst.x1 = x1;
+	_inst.x2 = x2;
+	_inst.y1 = y1;
+	_inst.y2 = y2;
+	_inst.enemy_list = enemies;
+}
+
 function scr_get_boss()
 {
 	if (global.game_stage < 20)

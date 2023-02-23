@@ -49,7 +49,7 @@ def receive():
         print("Connected with {}".format(str(address)))
 
         #Add the client to the correct lobby
-        #NOTE: Client.recv MUST recieve the lobby_id packet. That means that we should later set up a temporary handler 
+        #NOTE: Client.recv MUST recieve the lobby_id packet. That means that we should later set up a temporary handler
         #that expects to receive packets from the client AND THEN have the lobby placement code inside that
         lobby_id = -1
         packet_list = []
@@ -72,7 +72,7 @@ def receive():
                             break
         except:
             print("Some exception...")
-            
+
         print("Requested Lobby ID:" + str(lobby_id))
         _success = False
 

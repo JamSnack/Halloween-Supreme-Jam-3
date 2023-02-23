@@ -21,14 +21,16 @@ if (imguigml_ready())
 		var join_lobby = imguigml_button("Join Lobby");
 	
 		if (join_lobby)
-			joinLobby("noth", stored_lobby_id);
+			joinLobby("167.99.150.73", stored_lobby_id);
 		
 		//Draw stuff
-		var l_text = (global.lobby_id == -1) ? "No lobby entered." : string(global.lobby_id);
+		//var l_text = (global.lobby_id == -1) ? "No lobby entered." : string(global.lobby_id);
 		
-		imguigml_text("Lobby ID: " + l_text);
+		//imguigml_text("Lobby ID: " + l_text);
 		
 		//execute lobby
+		imguigml_text("HOW TO PLAY SINGLEPLAYER:\nClick Host Lobby -> LAN -> Enter\ngenerated lobby ID -> Join Lobby");
+		
 		if (imguigml_button("Host Lobby"))
 			execute_lobby();
 		

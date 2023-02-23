@@ -6,13 +6,13 @@ function joinLobby(ip, lobby_id)
 	global.socket = network_create_socket(network_socket_tcp);
 	
 	//Try to connect to the main server. If we fail, look for a server over local host.
-	var _s = network_connect_raw(global.socket, ip, 55555);
+	var _s = network_connect_raw(global.socket, "127.0.0.1", 55555);
 	
 	if (_s >= 0)
 		lobby_search(lobby_id);
 	else
 	{
-		_s = network_connect_raw(global.socket, "127.0.0.1", 55555);	
+		_s = network_connect_raw(global.socket, ip, 55555);	
 		
 		if (_s >= 0)
 			lobby_search(lobby_id);

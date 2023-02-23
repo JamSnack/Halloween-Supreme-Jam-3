@@ -15,13 +15,14 @@ if (imguigml_ready())
 		if (imguigml_button("LAN - Local Multiplayer"))
 		{
 			debug_log.append("Trying to create a LAN lobby...");
+			execute_shell_simple(working_directory + "Localhost Proxy\\LocalhostRelayServer.exe");
 			createLobby("127.0.0.1", 55555);
 		}
 		
 		if (imguigml_button("WAN - Global Multiplayer"))
 		{
 			debug_log.append("Trying to create a WAN lobby...");
-			createLobby("127.0.0.1", 55555);
+			createLobby("167.99.150.73", 55555);
 		}
 	}
 	else if (menu_state == 1)
@@ -128,6 +129,8 @@ if (global.game_timer <= 0)
 			if (collision_point(_x, _y, entity_block, false, true) == noone)
 				instance_create_layer(_x, _y, "Instances", choose(entity_weed, entity_pumpkin, entity_pumpkin) );	
 		}
+		//var e = [entity_weed, entity_pumpkin];
+		//scr_create_enemy_spawn_handler(3032, 5000-32, 3032, 5000-32, e, 35 - instance_number(entity_pumpkin) + instance_number(entity_weed) );
 	
 		repeat (20 - instance_number(entity_ocean_node) )
 		{
