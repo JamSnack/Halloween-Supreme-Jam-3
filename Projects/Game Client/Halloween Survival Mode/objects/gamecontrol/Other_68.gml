@@ -23,12 +23,9 @@ switch(t)
 				temp_data = "";
 			}
 		}
-		
+
 		//buffer cleanup
 		buffer_delete(b_data);
-		
-		ping_draw = ping;
-		ping = 0;
 	}
 	break;
 }
