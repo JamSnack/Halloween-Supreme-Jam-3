@@ -1,6 +1,8 @@
 /// @description Init and create lobby
 randomize();
 
+direct_connect = "165.22.184.25";
+
 
 //Init variables
 global.lobby_id = -1;

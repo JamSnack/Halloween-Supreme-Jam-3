@@ -18,10 +18,13 @@ if (imguigml_ready())
 		
 		imguigml_text("Enter Lobby ID:");
 		stored_lobby_id = imguigml_input_text("", stored_lobby_id, 5)[1]; //returns imguigml_input_text at [1], which is the text feild portion of the array.
+		
+		imguigml_text("Direct Connect:");
+		direct_connect = imguigml_input_text("IP Address", direct_connect, 14)[1];
+		
 		var join_lobby = imguigml_button("Join Lobby");
-	
 		if (join_lobby)
-			joinLobby("167.99.150.73", stored_lobby_id);
+			joinLobby(direct_connect, stored_lobby_id);
 		
 		//Draw stuff
 		//var l_text = (global.lobby_id == -1) ? "No lobby entered." : string(global.lobby_id);

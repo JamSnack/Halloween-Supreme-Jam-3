@@ -3,7 +3,7 @@
 if (imguigml_ready())
 {
 	//OUTPUT WINDOW
-	imguigml_set_next_window_size(600, 120);
+	imguigml_set_next_window_size(600, 160);
 	imguigml_set_next_window_pos(0, 0);
 	
 	imguigml_begin("Menu");
@@ -19,10 +19,13 @@ if (imguigml_ready())
 			createLobby("127.0.0.1", 55555);
 		}
 		
+		imguigml_text("Global Connections:");
+		direct_connect = imguigml_input_text("IP Address", direct_connect, 14)[1];
+		
 		if (imguigml_button("WAN - Global Multiplayer"))
 		{
 			debug_log.append("Trying to create a WAN lobby...");
-			createLobby("167.99.150.73", 55555);
+			createLobby(direct_connect, 55555);
 		}
 	}
 	else if (menu_state == 1)

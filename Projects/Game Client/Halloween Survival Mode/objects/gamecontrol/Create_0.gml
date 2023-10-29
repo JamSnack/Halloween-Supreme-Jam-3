@@ -7,6 +7,7 @@ network_set_config(network_config_connect_timeout, 2000);
 
 //vars
 stored_lobby_id = "";
+direct_connect = "165.22.184.25";
 
 //Initialize Multiplayer stuff
 global.port = 55555;
